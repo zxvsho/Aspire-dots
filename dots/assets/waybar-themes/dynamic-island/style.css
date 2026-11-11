@@ -1,0 +1,68 @@
+/* aspire-bar:settings:start
+{
+  "use_aspire_palette": true,
+  "font_family": "JetBrainsMono Nerd Font, monospace",
+  "font_size": 12,
+  "border_radius": 21,
+  "border_width": 1,
+  "border_color": "background-alt",
+  "border_style": "solid",
+  "shadow": true,
+  "module_padding_vertical": 4,
+  "module_padding_horizontal": 9,
+  "module_margin_horizontal": 3
+}
+aspire-bar:settings:end */
+
+* {
+  font-weight: 500;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+#group-island {
+  background-color: @background;
+  border: 1px solid @background-alt;
+  border-radius: 999px;
+  padding: 3px 10px;
+  box-shadow: 0 4px 24px alpha(@background, 0.6);
+  transition: all 250ms ease;
+}
+
+#group-island:hover {
+  border-color: @selected;
+  box-shadow: 0 0 18px alpha(@selected, 0.35);
+}
+
+#custom-island-trigger {
+  color: @selected;
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+.island-child {
+  color: @foreground;
+  background-color: @background-alt;
+  border-radius: 999px;
+  padding: 0 8px;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0 6px;
+}
+
+#workspaces button.active {
+  color: @selectedtext;
+  background-color: @selected;
+}
+
+#clock {
+  color: @active;
+  font-weight: bold;
+}

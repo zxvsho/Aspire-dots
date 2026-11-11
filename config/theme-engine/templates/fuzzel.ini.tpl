@@ -1,0 +1,11 @@
+[colors]
+background=${background}f2
+text=${foreground}ff
+prompt=${selected}ff
+placeholder=${color8}ff
+input=${foreground}ff
+match=${selected}ff
+selection=${background_alt}ff
+selection-text=${foreground}ff
+selection-match=${selected}ff
+border=${selected}ff

@@ -1,0 +1,23 @@
+# Mako config — minimalista, colores desde theme-engine
+include=~/.config/theme-engine/current/mako
+
+font=JetBrainsMonoNL Nerd Font Propo 10
+width=340
+outer-margin=10
+margin=10
+padding=12
+border-size=1
+border-radius=6
+
+default-timeout=3000
+ignore-timeout=0
+
+max-visible=3
+sort=-time
+
+icons=0
+markup=1
+
+
+[urgency=critical]
+default-timeout=0

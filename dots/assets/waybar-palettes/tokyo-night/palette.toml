@@ -1,0 +1,12 @@
+name = "Tokyo Night"
+author = "Mangowm_dots"
+description = "Tonos nocturnos con acentos azulados y violetas."
+
+[colors]
+background = "#1a1b26"
+background-alt = "#24283b"
+foreground = "#c0caf5"
+selected = "#bb9af7"
+selectedtext = "#1a1b26"
+active = "#7aa2f7"
+urgent = "#f7768e"

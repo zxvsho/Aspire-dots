@@ -1,0 +1,12 @@
+name = "Catppuccin Frappe"
+author = "Mangowm_dots"
+description = "Catppuccin de contraste medio."
+
+[colors]
+background = "#303446"
+background-alt = "#414559"
+foreground = "#c6d0f5"
+selected = "#ca9ee6"
+selectedtext = "#232634"
+active = "#8caaee"
+urgent = "#e78284"

@@ -1,0 +1,7 @@
+name = "vertical-left"
+author = "Mangowm_dots"
+description = "Barra vertical lateral compacta con espacios y módulos en columna."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "clock", "pulseaudio", "battery", "tray"]
+optional-dependencies = []
+allow-fixed-colors = false

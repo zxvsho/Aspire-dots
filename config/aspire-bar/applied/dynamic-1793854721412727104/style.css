@@ -1,0 +1,212 @@
+/* aspire-bar:import:start */
+@import url("file:///home/miguel/.config/theme-engine/current/colors.css");
+/* aspire-bar:import:end */
+/* aspire-bar:settings:start
+{
+  "use_aspire_palette": true,
+  "palette_id": "dynamic",
+  "font_family": "FiraCode Nerd Font",
+  "font_size": 16,
+  "foreground": "foreground",
+  "background": "background",
+  "opacity": 0.95,
+  "border_radius": 0,
+  "border_width": 1,
+  "border_color": "active",
+  "border_style": "none",
+  "shadow": false,
+  "module_padding_vertical": 3,
+  "module_padding_horizontal": 5,
+  "module_margin_horizontal": 1,
+  "modules": {
+    "ext/workspaces": {
+      "states": {
+        "active": {
+          "foreground": "background",
+          "background": "selected"
+        },
+        "normal": {
+          "foreground": "selected",
+          "background": "background"
+        }
+      }
+    }
+  }
+}
+aspire-bar:settings:end */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @foreground;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 10px;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 5px;
+}
+
+#workspaces button.active {
+  color: @selectedtext;
+  background-color: @selected;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#custom-power {
+  color: @urgent;
+  padding-left: 8px;
+}
+
+/* aspire-bar:rules:start */
+* {
+    color: @foreground;
+}
+
+window#waybar {
+    background-color: @background;
+}
+
+#battery,
+#clock,
+#custom-power,
+#ext-workspaces,
+#network,
+#pulseaudio,
+#tray {
+    color: @foreground;
+    background-color: transparent;
+}
+
+#battery:hover,
+#clock:hover,
+#custom-power:hover,
+#ext-workspaces:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover {
+    color: @foreground;
+    background-color: @background-alt;
+}
+
+#battery.warning,
+#clock.warning,
+#custom-power.warning,
+#ext-workspaces.warning,
+#network.warning,
+#pulseaudio.warning,
+#tray.warning {
+    color: @selected;
+}
+
+#battery.critical,
+#clock.critical,
+#custom-power.critical,
+#ext-workspaces.critical,
+#network.critical,
+#pulseaudio.critical,
+#tray.critical,
+#battery.urgent,
+#clock.urgent,
+#custom-power.urgent,
+#ext-workspaces.urgent,
+#network.urgent,
+#pulseaudio.urgent,
+#tray.urgent,
+#battery.disconnected,
+#clock.disconnected,
+#custom-power.disconnected,
+#ext-workspaces.disconnected,
+#network.disconnected,
+#pulseaudio.disconnected,
+#tray.disconnected {
+    color: @foreground;
+    background-color: @background;
+    border: 1px solid @urgent;
+}
+
+#battery.active,
+#clock.active,
+#custom-power.active,
+#ext-workspaces.active,
+#network.active,
+#pulseaudio.active,
+#tray.active {
+    color: @selectedtext;
+    background-color: @active;
+}
+
+#battery.muted,
+#clock.muted,
+#custom-power.muted,
+#ext-workspaces.muted,
+#network.muted,
+#pulseaudio.muted,
+#tray.muted,
+#battery.disabled,
+#clock.disabled,
+#custom-power.disabled,
+#ext-workspaces.disabled,
+#network.disabled,
+#pulseaudio.disabled,
+#tray.disabled {
+    color: @background-alt;
+}
+
+#workspaces button { color: @foreground; }
+#workspaces button:hover { color: @foreground; background-color: @background-alt; }
+#workspaces button.active { color: @selectedtext; background-color: @selected; animation: none; }
+#workspaces button.urgent { color: @foreground; background-color: @background; border: 1px solid @urgent; }
+
+* {
+    font-family: "FiraCode Nerd Font";
+    font-size: 16px;
+    color: @foreground;
+}
+
+window#waybar {
+    background-color: @background;
+    opacity: 0.95;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+}
+
+#battery,
+#clock,
+#custom-power,
+#ext-workspaces,
+#network,
+#pulseaudio,
+#tray {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+#ext-workspaces.active {
+    color: @background;
+    background-color: @selected;
+}
+
+#ext-workspaces {
+    color: @selected;
+    background-color: @background;
+}/* aspire-bar:rules:end */

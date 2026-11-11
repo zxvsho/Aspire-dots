@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "./herdr-opencode"
+  ],
+  "theme": {
+    "name": "everforest"
+  }
+}

@@ -1,0 +1,312 @@
+[
+    {
+        "position": "top",
+        "height": 46,
+        "spacing": 12,
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-left": 0,
+        "margin-right": 0,
+        "modules-left": [
+            "ext/workspaces"
+        ],
+        "modules-center": [
+            "clock",
+            "mpris",
+            "temperature"
+        ],
+        "modules-right": [
+            "tray",
+            "bluetooth",
+            "network",
+            "pulseaudio",
+            "backlight",
+            "cpu",
+            "battery",
+            "custom/power"
+        ],
+        "hyprland/workspaces": {
+            "format": "{id}",
+            "on-scroll-up": "hyprctl dispatch workspace e-1",
+            "on-scroll-down": "hyprctl dispatch workspace e+1",
+            "persistent-workspaces": {
+                "*": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            "anim-color-1": "#8be9fd",
+            "anim-color-2": "#bd93f9",
+            "anim-duration": 3,
+            "button-radius": 15,
+            "button-pad-v": 0,
+            "button-pad-h": 4,
+            "button-minw": 35
+        },
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 60,
+            "separate-outputs": true
+        },
+        "clock": {
+            "format": "{:%H:%M}",
+            "tooltip-format": "{calendar}",
+            "timezone": "America/Monterrey",
+            "locale": "es_MX.utf8",
+            "interval": 1,
+            "on-click": "flatpak run com.ml4w.calendar",
+            "on-click-right": "alacritty --app-id=alacritty-peaclock -e peaclock",
+            "tooltip": true,
+            "calendar": {
+                "mode": "month",
+                "mode-monitor": "month-year",
+                "format": {
+                    "months": "<span color='#cdd6f4'><b>{}</b></span>",
+                    "days": "<span color='#cdd6f4'>{}</span>",
+                    "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                    "today": "<span color='#f38ba8'><b>{}</b></span>"
+                }
+            },
+            "_inverted": false
+        },
+        "cpu": {
+            "format": "󰻠 {usage}%",
+            "tooltip": true,
+            "interval": 2,
+            "on-click": "alacritty --app-id=alacritty-btop -e btop"
+        },
+        "memory": {
+            "format": "󰾆 {used:0.1f}G",
+            "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
+            "interval": 5
+        },
+        "network": {
+            "format-wifi": "󰤨",
+            "format-ethernet": "󰈀",
+            "format-disconnected": "󰤭",
+            "tooltip-format": "{ifname}: {ipaddr}",
+            "on-click": "alacritty --app-id=alacritty-impala -e impala",
+            "interval": 3
+        },
+        "bluetooth": {
+            "format": "󰂯",
+            "format-disabled": "󰂲",
+            "format-connected": "󰂱 {num_connections}",
+            "tooltip-format": "{controller_alias}",
+            "on-click": "alacritty --app-id=alacritty-bluetui -e bluetui"
+        },
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-muted": "󰝟",
+            "format-icons": {
+                "default": [
+                    "󰕿",
+                    "󰖀",
+                    "󰕾"
+                ]
+            },
+            "on-click": "alacritty --app-id=alacritty-wiremix -e wiremix",
+            "scroll-step": 5
+        },
+        "battery": {
+            "format": "{icon} {capacity}%",
+            "format-icons": [
+                "󰂎",
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ],
+            "format-charging": "󰂄 {capacity}%",
+            "format-plugged": "󰚥 {capacity}%",
+            "states": {
+                "warning": 20,
+                "critical": 10
+            }
+        },
+        "backlight": {
+            "format": "{icon} {percent}%",
+            "format-icons": [
+                "󰃞",
+                "󰃟",
+                "󰃠"
+            ]
+        },
+        "mpris": {
+            "format": "{status_icon} {artist} - {title}",
+            "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+            "status-icons": {
+                "playing": "⏸",
+                "paused": "▶"
+            },
+            "max-length": 40,
+            "interval": 1,
+            "_inverted": false
+        },
+        "tray": {
+            "spacing": 10,
+            "icon-size": 18
+        },
+        "custom/arch": {
+            "format": "<span font='JetBrainsMono Nerd Font Mono 22' color='#bd93f9'>󱘋</span>",
+            "on-click": "$HOME/.local/bin/vsfetch",
+            "tooltip": false,
+            "arch-icon-glyph": "󱘋",
+            "arch-pad-left": 15,
+            "arch-pad-right": 10
+        },
+        "custom/weather": {
+            "format": "{}",
+            "exec": "$HOME/.config/waybar/scripts/weather.py",
+            "return-type": "json",
+            "interval": 3600,
+            "tooltip": true,
+            "on-click": "flatpak run io.github.amit9838.mousam"
+        },
+        "custom/updates": {
+            "exec": "count=$(checkupdates 2>/dev/null | wc -l); [ \"$count\" -gt 0 ] && echo '{\"text\":\"󰚰 '\"$count\"'\",\"class\":\"pending\"}' || echo '{\"text\":\"󰚰 0\",\"class\":\"updated\"}'",
+            "return-type": "json",
+            "interval": 60,
+            "tooltip": false,
+            "on-click": "kitty --class floating-terminal -e ~/.config/hypr/scripts/install-updates.sh"
+        },
+        "custom/swaync": {
+            "format": "<span font='JetBrainsMono Nerd Font Mono 16'>{icon}</span>",
+            "format-icons": {
+                "none": "󰂚",
+                "notification": "󰂜",
+                "dnd-none": "󰂛",
+                "dnd-notification": "󰂛"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true,
+            "tooltip": false
+        },
+        "custom/power": {
+            "format": "󰐥",
+            "on-click": "wlogout",
+            "tooltip": false
+        },
+        "custom/settings": {
+            "format": "󰒓",
+            "on-click": "vswaybar-studio",
+            "tooltip": false
+        },
+        "custom/claudebar": {
+            "exec": "claudebar --format '{session_bar} {session_pct}% · {session_reset}'",
+            "return-type": "json",
+            "interval": 30,
+            "signal": 13,
+            "tooltip": true,
+            "on-click": "xdg-open https://claude.ai/settings/usage"
+        },
+        "custom/bar-cpu": {
+            "exec": "$HOME/.config/waybar/scripts/vsbar.py --type cpu",
+            "return-type": "json",
+            "interval": 2,
+            "tooltip": true
+        },
+        "custom/bar-mem": {
+            "exec": "$HOME/.config/waybar/scripts/vsbar.py --type mem",
+            "return-type": "json",
+            "interval": 5,
+            "tooltip": true
+        },
+        "custom/bar-vol": {
+            "exec": "$HOME/.config/waybar/scripts/vsbar.py --type vol",
+            "return-type": "json",
+            "interval": 2,
+            "tooltip": true,
+            "on-click": "pavucontrol"
+        },
+        "custom/bar-wifi": {
+            "exec": "$HOME/.config/waybar/scripts/vsbar.py --type wifi",
+            "return-type": "json",
+            "interval": 5,
+            "tooltip": true,
+            "on-click": "nm-connection-editor"
+        },
+        "name": "bar",
+        "ext/workspaces": {
+            "format": "{icon}",
+            "ignore-hidden": true,
+            "on-click": "mmsg dispatch workspace {index}",
+            "on-click-right": "mmsg dispatch workspace {index}",
+            "on-scroll-up": "mmsg dispatch workspace +1",
+            "on-scroll-down": "mmsg dispatch workspace -1"
+        }
+    },
+    {
+        "name": "dock",
+        "position": "bottom",
+        "height": 54,
+        "spacing": 6,
+        "layer": "top",
+        "margin-top": 0,
+        "margin-bottom": 8,
+        "margin-left": 0,
+        "margin-right": 0,
+        "exclusive": true,
+        "passthrough": false,
+        "gtk-layer-shell": true,
+        "modules-left": [],
+        "modules-center": [
+            "custom/rofi",
+            "custom/firefox",
+            "custom/nautilus",
+            "custom/dolphin",
+            "custom/terminal",
+            "custom/vscode"
+        ],
+        "modules-right": [],
+        "custom/rofi": {
+            "format": "󱓟",
+            "tooltip": true,
+            "on-click": "rofi -show drun",
+            "tooltip-format": "App Launcher"
+        },
+        "custom/firefox": {
+            "format": "󰈹",
+            "tooltip": true,
+            "on-click": "firefox",
+            "tooltip-format": "Firefox"
+        },
+        "custom/nautilus": {
+            "format": "󰝰",
+            "tooltip": true,
+            "on-click": "nautilus",
+            "tooltip-format": "Files"
+        },
+        "custom/dolphin": {
+            "format": "󰝰",
+            "tooltip": true,
+            "on-click": "dolphin",
+            "tooltip-format": "Dolphin"
+        },
+        "custom/terminal": {
+            "format": "󰄛",
+            "tooltip": true,
+            "on-click": "kitty",
+            "tooltip-format": "Kitty"
+        },
+        "custom/vscode": {
+            "format": "󰨞",
+            "tooltip": true,
+            "on-click": "code",
+            "tooltip-format": "VS Code"
+        }
+    }
+]

@@ -1,0 +1,12 @@
+name = "Catppuccin Macchiato"
+author = "Mangowm_dots"
+description = "Catppuccin oscuro de contraste equilibrado."
+
+[colors]
+background = "#24273a"
+background-alt = "#363a4f"
+foreground = "#cad3f5"
+selected = "#c6a0f6"
+selectedtext = "#181926"
+active = "#8aadf4"
+urgent = "#ed8796"

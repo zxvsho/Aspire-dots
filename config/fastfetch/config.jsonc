@@ -1,0 +1,88 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/ascii-art.txt",
+    "padding": {
+      "top": 2,
+      "left": 1,
+      "right": 3
+    }
+  },
+"display": {
+        "separator": "  ",
+        "color": "white"
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "key": "╭─────────────────────────────────────────╮"
+        },
+        {
+            "type": "custom",
+            "key": "│                                         │"
+        },
+         {
+            "type": "os",
+            "key": "│  OS         ",
+            "format": "{pretty-name>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Kernel     ",
+            "text": "uname -r | cut -d '-' -f1",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Uptime     ",
+            "text": "uptime -p | sed -E 's/up //; s/ days?/d/g; s/ hours?/h/g; s/ minutes?/m/g'",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "shell",
+            "key": "│  Shell      ",
+            "format": "{pretty-name>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  WM         ",
+            "text": "echo $XDG_CURRENT_DESKTOP",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Ram        ",
+            "text": "free -m | awk 'NR==2{printf \"%.2f / %.2f GiB\",$3/1024,$2/1024}'",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  CPU        ",
+            "text": "lscpu | grep 'Model name' | sed -E 's/.*(i[0-9]-[0-9A-Za-z]+).*/\\1/'",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Disk       ",
+            "text": "df -h --output=size,used,fstype / | awk 'NR==2 {gsub(/G/,\"\",$1); gsub(/G/,\"\",$2); print $2 \" / \" $1 \" GiB - \" $3}'",
+            "format": "{>24}  │"
+        },
+        {
+            "type": "packages",
+            "key": "│  Packages   ",
+            "format": "{all>24}  │"
+        },
+        {
+            "type": "custom",
+            "key": "│                                         │"
+        },
+        {
+            "type": "custom",
+            "key": "╰─────────────────────────────────────────╯"
+        },
+        "break"
+    ]
+}
+  

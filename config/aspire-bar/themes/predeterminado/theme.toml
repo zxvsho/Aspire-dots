@@ -1,0 +1,16 @@
+name = "predeterminado"
+display_name = "Predeterminado"
+author = "Personal"
+description = "Tema «Predeterminado» creado con aspire-bar."
+version = "1.0.0"
+palette = "dynamic"
+required-modules = [
+    "battery",
+    "clock",
+    "ext/workspaces",
+    "network",
+    "pulseaudio",
+    "tray",
+]
+optional-dependencies = []
+allow-fixed-colors = false

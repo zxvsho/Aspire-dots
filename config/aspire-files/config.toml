@@ -1,0 +1,12 @@
+[theme]
+engine = "auto"
+colors_file = "~/.config/theme-engine/current/colors.css"
+
+[preferences]
+default_view = "grid"
+icon_size = 128
+show_hidden = false
+sidebar_visible = true
+sort_by = "modified"
+sort_descending = false
+folders_first = true

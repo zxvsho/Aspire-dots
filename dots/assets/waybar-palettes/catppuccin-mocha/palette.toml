@@ -1,0 +1,12 @@
+name = "Catppuccin Mocha"
+author = "Mangowm_dots"
+description = "Catppuccin oscuro, con acentos suaves."
+
+[colors]
+background = "#1e1e2e"
+background-alt = "#313244"
+foreground = "#cdd6f4"
+selected = "#cba6f7"
+selectedtext = "#1e1e2e"
+active = "#89b4fa"
+urgent = "#f38ba8"

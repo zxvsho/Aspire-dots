@@ -1,0 +1,17 @@
+name = "dynamic"
+display_name = "Dynamic"
+author = "Personal"
+description = "Tema «Dynamic» creado con aspire-bar."
+version = "1.0.0"
+palette = "dynamic"
+required-modules = [
+    "battery",
+    "clock",
+    "cpu",
+    "ext/workspaces",
+    "mpris",
+    "network",
+    "pulseaudio",
+]
+optional-dependencies = []
+allow-fixed-colors = false

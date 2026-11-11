@@ -1,0 +1,526 @@
+use aspire_menu::menu_logic::{self, RgbColor};
+use gtk::gdk::{Key, ModifierType};
+use gtk::glib::{self, Propagation};
+use gtk::prelude::*;
+use gtk::{
+    Application, ApplicationWindow, Box as GtkBox, ContentFit, CssProvider, Entry, Label, ListBox,
+    ListBoxRow, Orientation, Picture, PolicyType, ScrolledWindow, Separator, Stack, TextView,
+    WrapMode,
+};
+use gtk4_layer_shell::{KeyboardMode, Layer, LayerShell};
+use serde::Deserialize;
+use std::cell::RefCell;
+use std::io::Write;
+use std::rc::Rc;
+
+/// Tamaño fijo del panel (ni grande ni pequeño) y ancho de la lista.
+const WIN_W: i32 = 880;
+const WIN_H: i32 = 520;
+const LEFT_W: i32 = 438;
+
+/// Cuántas entradas se muestran (las más recientes). 30 textos e
+/// imágenes perezosas no mueven el consumo: solo la seleccionada se
+/// decodifica, el resto son líneas de texto en memoria.
+const MAX_ITEMS: usize = 30;
+
+#[derive(Debug, Clone, Deserialize)]
+struct ClipEntry {
+    #[serde(default)]
+    value: String,
+    #[serde(default)]
+    filePath: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct ClipHistory {
+    #[serde(default, rename = "clipboardHistory")]
+    items: Vec<ClipEntry>,
+}
+
+#[derive(Clone)]
+struct Item {
+    summary: String,
+    is_image: bool,
+    text: String,
+    path: String,
+}
+
+struct Clip {
+    all: Vec<Item>,
+    shown: Vec<Item>,
+    current: usize,
+}
+
+#[derive(Clone)]
+struct Ui {
+    app: Application,
+    window: ApplicationWindow,
+    entry: Entry,
+    list: ListBox,
+    list_scroll: ScrolledWindow,
+    stack: Stack,
+    text: TextView,
+    picture: Picture,
+    state: Rc<RefCell<Clip>>,
+}
+
+fn hex(c: Option<RgbColor>, fallback: &str) -> String {
+    c.map(|v| format!("#{:02x}{:02x}{:02x}", v.r, v.g, v.b))
+        .unwrap_or_else(|| fallback.to_string())
+}
+
+fn build_css() -> String {
+    let colors = menu_logic::load_theme_colors();
+    let bg = hex(colors.background, "#1e1e2e");
+    let alt = hex(colors.background_alt, "#313244");
+    let fg = hex(colors.foreground, "#cdd6f4");
+    let sel = hex(colors.selected, "#cba6f7");
+    let seltext = hex(colors.selectedtext, "#000000");
+    format!(
+        r#"
+.clip-window {{ background-color: transparent; border: none; font-family: "DejaVu Sans Mono"; }}
+.clip-card {{ background-color: {bg}; border: 1px solid {sel}; border-radius: 0; }}
+.clip-search {{ min-height: 50px; border-bottom: 1px solid {alt}; padding-left: 20px; padding-right: 20px; background: transparent; }}
+.clip-entry {{ background: transparent; border: none; box-shadow: none; outline: none; color: {fg}; font-size: 17px; padding: 0px; }}
+.clip-entry placeholder {{ color: {fg}; opacity: 0.9; }}
+.clip-list {{ background: transparent; padding: 10px 14px 16px 14px; }}
+.clip-list row {{ min-height: 40px; background: transparent; border-radius: 0px; outline: none; }}
+.clip-list row:selected {{ background-color: {sel}; }}
+.clip-list row:selected label {{ color: {seltext}; }}
+.clip-item {{ color: {fg}; font-size: 15px; }}
+.clip-sep {{ background-color: {alt}; }}
+.clip-preview {{ color: {fg}; font-size: 15px; background: transparent; }}
+.clip-preview text {{ background: transparent; color: {fg}; }}
+.clip-hint {{ color: {fg}; font-size: 12px; opacity: 0.6; padding: 6px 20px 10px 20px; }}
+"#
+    )
+}
+
+fn is_image_entry(e: &ClipEntry) -> bool {
+    let p = e.filePath.trim();
+    if p.is_empty() || p == "null" {
+        return false;
+    }
+    let lower = p.to_lowercase();
+    (lower.ends_with(".png")
+        || lower.ends_with(".jpg")
+        || lower.ends_with(".jpeg")
+        || lower.ends_with(".webp")
+        || lower.ends_with(".gif")
+        || lower.ends_with(".bmp"))
+        && std::path::Path::new(p).is_file()
+}
+
+fn to_item(e: &ClipEntry) -> Item {
+    if is_image_entry(e) {
+        let name = std::path::Path::new(e.filePath.trim())
+            .file_name()
+            .map(|s| s.to_string_lossy().into_owned())
+            .unwrap_or_else(|| "imagen".to_string());
+        Item {
+            summary: format!("[img] {name}"),
+            is_image: true,
+            text: String::new(),
+            path: e.filePath.trim().to_string(),
+        }
+    } else {
+        let first = e.value.lines().next().unwrap_or("").trim();
+        // Resumen corto por código: garantiza que ninguna línea ensanche
+        // la lista y comprima el preview.
+        let mut s: String = first.chars().take(40).collect();
+        if first.chars().count() > 40 {
+            s.push('…');
+        }
+        if s.is_empty() {
+            s = "(vacío)".to_string();
+        }
+        Item {
+            summary: s,
+            is_image: false,
+            text: e.value.clone(),
+            path: String::new(),
+        }
+    }
+}
+
+fn load_history() -> Vec<Item> {
+    let path = std::env::var("ASPIRE_CLIP_HISTORY").unwrap_or_else(|_| {
+        format!(
+            "{}/.config/clipse/clipboard_history.json",
+            dirs::home_dir().map(|h| h.display().to_string()).unwrap_or_default()
+        )
+    });
+    let Ok(text) = std::fs::read_to_string(&path) else {
+        return Vec::new();
+    };
+    let Ok(hist) = serde_json::from_str::<ClipHistory>(&text) else {
+        return Vec::new();
+    };
+    hist.items
+        .iter()
+        .take(MAX_ITEMS)
+        .map(to_item)
+        .collect()
+}
+
+fn make_row(summary: &str) -> ListBoxRow {
+    let label = Label::new(Some(summary));
+    label.set_xalign(0.0);
+    label.set_ellipsize(gtk::pango::EllipsizeMode::End);
+    // Topa el ancho natural: sin esto, una línea larga ensancha la lista
+    // y comprime el preview (el ellipsize solo recorta al pintar).
+    label.set_max_width_chars(40);
+    label.set_margin_start(12);
+    label.set_margin_end(12);
+    label.add_css_class("clip-item");
+    let row = ListBoxRow::new();
+    row.set_child(Some(&label));
+    row
+}
+
+fn update_preview(ui: &Ui) {
+    let item = {
+        let st = ui.state.borrow();
+        st.shown.get(st.current).cloned()
+    };
+    let Some(item) = item else {
+        ui.stack.set_visible_child_name("text");
+        ui.text.buffer().set_text("");
+        return;
+    };
+    if item.is_image {
+        // Decodifica ya al tamaño del panel con interpolación de calidad:
+        // dejar un 1920px a la GPU lo suaviza y gasta VRAM de más.
+        match gdk_pixbuf::Pixbuf::from_file_at_scale(&item.path, 400, 400, true) {
+            Ok(px) => {
+                let tex = gtk::gdk::Texture::for_pixbuf(&px);
+                ui.picture.set_paintable(Some(&tex));
+            }
+            Err(_) => ui
+                .picture
+                .set_filename(Some(std::path::Path::new(&item.path))),
+        }
+        ui.stack.set_visible_child_name("image");
+    } else {
+        ui.text.buffer().set_text(&item.text);
+        ui.stack.set_visible_child_name("text");
+    }
+}
+
+fn refresh(ui: &Ui) {
+    let query = ui.entry.text().to_string().to_lowercase();
+    {
+        let mut st = ui.state.borrow_mut();
+        st.shown = if query.is_empty() {
+            st.all.clone()
+        } else {
+            st.all
+                .iter()
+                .filter(|it| it.summary.to_lowercase().contains(&query))
+                .cloned()
+                .collect()
+        };
+        st.current = 0;
+    }
+    ui.list.remove_all();
+    let n = ui.state.borrow().shown.len();
+    if n == 0 {
+        let row = make_row("Sin resultados");
+        row.set_activatable(false);
+        row.set_selectable(false);
+        ui.list.append(&row);
+    } else {
+        for it in ui.state.borrow().shown.iter() {
+            ui.list.append(&make_row(&it.summary));
+        }
+        if let Some(row) = ui.list.row_at_index(0) {
+            ui.list.select_row(Some(&row));
+        }
+    }
+    update_preview(ui);
+}
+
+fn move_selection(ui: &Ui, delta: isize) {
+    let next = {
+        let mut st = ui.state.borrow_mut();
+        let n = st.shown.len() as isize;
+        if n == 0 {
+            return;
+        }
+        st.current = (st.current as isize).wrapping_add(delta).rem_euclid(n) as usize;
+        st.current as i32
+    };
+    if let Some(row) = ui.list.row_at_index(next) {
+        ui.list.select_row(Some(&row));
+        scroll_to_row(ui, &row);
+    }
+    update_preview(ui);
+}
+
+/// Lleva el viewport a la fila elegida: la selección programática no
+/// hace scroll sola y sin esto no se llega a las opciones de abajo.
+fn scroll_to_row(ui: &Ui, row: &ListBoxRow) {
+    let alloc = row.allocation();
+    let view_h = ui.list_scroll.allocation().height();
+    if alloc.height() <= 0 || view_h <= 0 {
+        return;
+    }
+    let adj = ui.list_scroll.vadjustment();
+    let target = (alloc.y() + alloc.height() / 2 - view_h / 2) as f64;
+    let max = (adj.upper() - adj.page_size()).max(0.0);
+    adj.set_value(target.clamp(0.0, max));
+}
+
+fn copy_current(ui: &Ui) {
+    let item = {
+        let st = ui.state.borrow();
+        st.shown.get(st.current).cloned()
+    };
+    let Some(item) = item else { return };
+    if item.is_image {
+        let Ok(bytes) = std::fs::read(&item.path) else { return };
+        if let Ok(mut child) = std::process::Command::new("wl-copy")
+            .args(["--type", "image/png"])
+            .stdin(std::process::Stdio::piped())
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .spawn()
+        {
+            if let Some(mut stdin) = child.stdin.take() {
+                let _ = stdin.write_all(&bytes);
+            }
+            let _ = child.wait();
+        }
+    } else if !item.text.is_empty() {
+        if let Ok(mut child) = std::process::Command::new("wl-copy")
+            .stdin(std::process::Stdio::piped())
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .spawn()
+        {
+            if let Some(mut stdin) = child.stdin.take() {
+                let _ = stdin.write_all(item.text.as_bytes());
+            }
+            let _ = child.wait();
+        }
+    } else {
+        return;
+    }
+    ui.app.quit();
+}
+
+fn connect_signals(ui: &Ui) {
+    {
+        let ui_c = ui.clone();
+        ui.entry.connect_changed(move |_| refresh(&ui_c));
+    }
+    {
+        let ui_s = ui.clone();
+        ui.list.connect_selected_rows_changed(move |_| {
+            let idx = {
+                let st = ui_s.state.borrow();
+                (0..st.shown.len() as i32).find_map(|i| {
+                    ui_s.list
+                        .row_at_index(i)
+                        .filter(|r| r.is_selected())
+                        .map(|_| i as usize)
+                })
+            };
+            if let Some(i) = idx {
+                ui_s.state.borrow_mut().current = i;
+                update_preview(&ui_s);
+            }
+        });
+    }
+    {
+        let ui_r = ui.clone();
+        ui.list.connect_row_activated(move |_, _| copy_current(&ui_r));
+    }
+    let key = gtk::EventControllerKey::new();
+    key.set_propagation_phase(gtk::PropagationPhase::Capture);
+    {
+        let ui_k = ui.clone();
+        key.connect_key_pressed(move |_, keyval, _, state| {
+            let ctrl_alt = state.contains(ModifierType::CONTROL_MASK)
+                || state.contains(ModifierType::ALT_MASK);
+            if ctrl_alt {
+                if keyval == Key::h {
+                    ui_k.entry.set_text("");
+                    return Propagation::Stop;
+                }
+                if keyval == Key::j {
+                    move_selection(&ui_k, 1);
+                    return Propagation::Stop;
+                }
+                if keyval == Key::k {
+                    move_selection(&ui_k, -1);
+                    return Propagation::Stop;
+                }
+                if keyval == Key::l {
+                    copy_current(&ui_k);
+                    return Propagation::Stop;
+                }
+                return Propagation::Proceed;
+            }
+            if keyval == Key::Escape {
+                ui_k.app.quit();
+                Propagation::Stop
+            } else if keyval == Key::Return || keyval == Key::KP_Enter {
+                copy_current(&ui_k);
+                Propagation::Stop
+            } else if keyval == Key::Up {
+                move_selection(&ui_k, -1);
+                Propagation::Stop
+            } else if keyval == Key::Down {
+                move_selection(&ui_k, 1);
+                Propagation::Stop
+            } else {
+                Propagation::Proceed
+            }
+        });
+    }
+    ui.window.add_controller(key);
+}
+
+fn build_ui(app: &Application, items: Vec<Item>) {
+    let window = ApplicationWindow::builder()
+        .application(app)
+        .title("Aspire Clipboard")
+        .build();
+    window.add_css_class("clip-window");
+    window.set_size_request(WIN_W, -1);
+    window.set_decorated(false);
+
+    window.init_layer_shell();
+    window.set_layer(Layer::Overlay);
+    window.set_namespace(Some("aspire-clip"));
+    window.set_keyboard_mode(KeyboardMode::Exclusive);
+    window.set_exclusive_zone(0);
+
+    let card = GtkBox::new(Orientation::Horizontal, 0);
+    card.add_css_class("clip-card");
+    // card.set_overflow(gtk::Overflow::Hidden);
+
+    // Izquierda: buscador + lista.
+    let left = GtkBox::new(Orientation::Vertical, 0);
+    left.set_size_request(LEFT_W, -1);
+    let search = GtkBox::new(Orientation::Horizontal, 0);
+    search.add_css_class("clip-search");
+    let entry = Entry::new();
+    entry.set_placeholder_text(Some("Search clipboard..."));
+    entry.add_css_class("clip-entry");
+    entry.set_hexpand(true);
+    entry.set_valign(gtk::Align::Center);
+    search.append(&entry);
+    let list_scroll = ScrolledWindow::new();
+    list_scroll.set_policy(PolicyType::Never, PolicyType::Automatic);
+    list_scroll.set_propagate_natural_height(false);
+    // Sin propagar el ancho natural, el tope de abajo se ignora y las
+    // líneas largas ensanchan la lista (mismo detalle que en la altura).
+    list_scroll.set_propagate_natural_width(true);
+    // Topa el ancho natural para que la lista nunca comprima el preview.
+    list_scroll.set_max_content_width(LEFT_W - 48);
+    list_scroll.set_has_frame(false);
+    list_scroll.set_vexpand(true);
+    list_scroll.set_hexpand(true);
+    let list = ListBox::new();
+    list.add_css_class("clip-list");
+    list.set_selection_mode(gtk::SelectionMode::Single);
+    list_scroll.set_child(Some(&list));
+    left.append(&search);
+    left.append(&list_scroll);
+
+    let sep = Separator::new(Orientation::Vertical);
+    sep.add_css_class("clip-sep");
+
+    // Derecha: vista previa (texto o imagen) + hint.
+    let right = GtkBox::new(Orientation::Vertical, 0);
+    right.set_hexpand(true);
+    // Mínimo propio: con el de la izquierda (LEFT_W) el reparto queda
+    // mitad-mitad y si la ventana crece, el extra va al preview.
+    right.set_size_request(440, -1);
+    let stack = Stack::new();
+    stack.set_vexpand(true);
+    stack.set_hexpand(true);
+    let text_scroll = ScrolledWindow::new();
+    text_scroll.set_policy(PolicyType::Automatic, PolicyType::Automatic);
+    text_scroll.set_has_frame(false);
+    text_scroll.set_hexpand(true);
+    text_scroll.set_vexpand(true);
+    let text = TextView::new();
+    text.set_editable(false);
+    text.set_cursor_visible(false);
+    text.set_wrap_mode(WrapMode::Word);
+    text.set_monospace(true);
+    text.set_top_margin(16);
+    text.set_left_margin(20);
+    text.set_right_margin(20);
+    text.add_css_class("clip-preview");
+    text_scroll.set_child(Some(&text));
+    let img_scroll = ScrolledWindow::new();
+    img_scroll.set_policy(PolicyType::Automatic, PolicyType::Automatic);
+    img_scroll.set_has_frame(false);
+    img_scroll.set_hexpand(true);
+    img_scroll.set_vexpand(true);
+    // Mínimo explícito: sin esto el viewport se queda compacto y la
+    // imagen se ve en miniatura con el panel vacío alrededor.
+    img_scroll.set_min_content_width(420);
+    img_scroll.set_min_content_height(380);
+    let picture = Picture::new();
+    picture.set_content_fit(ContentFit::ScaleDown);
+    picture.set_hexpand(true);
+    picture.set_vexpand(true);
+    img_scroll.set_child(Some(&picture));
+    stack.add_named(&text_scroll, Some("text"));
+    stack.add_named(&img_scroll, Some("image"));
+    let hint = Label::new(Some("Enter copiar · Esc cerrar"));
+    hint.set_xalign(0.0);
+    hint.add_css_class("clip-hint");
+    right.append(&stack);
+    right.append(&hint);
+
+    card.append(&left);
+    card.append(&sep);
+    card.append(&right);
+    window.set_child(Some(&card));
+
+    let provider = CssProvider::new();
+    provider.load_from_string(&build_css());
+    let display = gtk::gdk::Display::default().expect("aspire-clip: sin display");
+    gtk::style_context_add_provider_for_display(
+        &display,
+        &provider,
+        gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+    );
+
+    let shown = items.clone();
+    let ui = Ui {
+        app: app.clone(),
+        window: window.clone(),
+        entry: entry.clone(),
+        list: list.clone(),
+        list_scroll: list_scroll.clone(),
+        stack: stack.clone(),
+        text: text.clone(),
+        picture: picture.clone(),
+        state: Rc::new(RefCell::new(Clip {
+            all: items,
+            shown,
+            current: 0,
+        })),
+    };
+
+    connect_signals(&ui);
+    refresh(&ui);
+    window.set_default_size(WIN_W, WIN_H);
+    window.present();
+    entry.grab_focus();
+}
+
+fn main() -> glib::ExitCode {
+    unsafe { std::env::set_var("GSK_RENDERER", "cairo"); }
+    let items = load_history();
+    let app = Application::builder().build();
+    app.connect_activate(move |app| build_ui(app, items.clone()));
+    app.run()
+}

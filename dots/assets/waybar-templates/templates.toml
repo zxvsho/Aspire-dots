@@ -1,0 +1,41 @@
+[[template]]
+id = "minimal"
+name = "Minimal"
+category = "minimal"
+description = "Espacios, reloj y controles esenciales en una barra ligera."
+source = "../waybar-themes/minimal"
+
+[[template]]
+id = "capsule"
+name = "Capsule / Islas"
+category = "capsule"
+description = "Módulos agrupados en cápsulas separadas, con foco en los espacios."
+source = "../waybar-themes/capsule-islands"
+
+[[template]]
+id = "dynamic-island"
+name = "Isla dinámica"
+category = "capsule"
+description = "Estructura central compacta con group/drawer para desplegar módulos."
+source = "../waybar-themes/dynamic-island"
+
+[[template]]
+id = "full"
+name = "Barra completa"
+category = "full"
+description = "Información de sistema, red, sonido y reloj en tres zonas."
+source = "../waybar-themes/full-edge"
+
+[[template]]
+id = "gaming"
+name = "Gaming"
+category = "gaming"
+description = "Distribución compacta para espacios, rendimiento y audio."
+source = "../waybar-themes/retro-terminal"
+
+[[template]]
+id = "productivity"
+name = "Productivity"
+category = "productivity"
+description = "Controles cotidianos y reloj agrupados en la barra inferior."
+source = "../waybar-themes/compact-bottom"

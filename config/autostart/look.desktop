@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Look
+Exec=/usr/bin/lookapp
+Icon=lookapp
+Comment=Desktop launcher
+X-GNOME-Autostart-enabled=true
+StartupNotify=false

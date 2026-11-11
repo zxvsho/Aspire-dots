@@ -1,0 +1,29 @@
+/**
+ *
+ * Colors — generado por aspire-bg (tinty)
+ **/
+* {
+    background:     #282a36FF;
+    background-alt: #21222cFF;
+    foreground:     #f8f8f2FF;
+    selected:       #bd93f9FF;
+    selectedtext:   #282a36FF;
+    active:         #bd93f9FF;
+    urgent:         #ff5555FF;
+    color0:       #282a36FF;
+    color1:       #ff5555FF;
+    color2:       #50fa7bFF;
+    color3:       #f1fa8cFF;
+    color4:       #bd93f9FF;
+    color5:       #ff79c6FF;
+    color6:       #8be9fdFF;
+    color7:       #f8f8f2FF;
+    color8:       #6272a4FF;
+    color9:       #ff6e6eFF;
+    color10:       #69ff94FF;
+    color11:       #ffffa5FF;
+    color12:       #d6acffFF;
+    color13:       #ff92dfFF;
+    color14:       #a4ffffFF;
+    color15:       #ffffffFF;
+}

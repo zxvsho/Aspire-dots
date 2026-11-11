@@ -1,0 +1,14 @@
+# Fuente oficial: https://github.com/rose-pine/palette/blob/main/palette.json
+id = "rose-pine"
+name = "Rosé Pine"
+author = "Rosé Pine"
+description = "Paleta main con base ciruela, iris y foam."
+
+[colors]
+background = "#191724"
+background-alt = "#1f1d2e"
+foreground = "#e0def4"
+selected = "#c4a7e7"
+selectedtext = "#191724"
+active = "#9ccfd8"
+urgent = "#eb6f92"

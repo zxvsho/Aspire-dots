@@ -1,0 +1,161 @@
+```css
+/* style.css para Waybar (MangoWM). Colores desde el motor de color. */
+@import "/home/miguel/.config/theme-engine/current/colors.css";
+
+* {
+  font-family: "FiraCode Nerd Font", "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  color: @foreground;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @foreground;
+  opacity: 0.95;
+  border-radius: 8px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 10px;
+}
+
+tooltip {
+  background-color: @background;
+  border: 1px solid @background-alt;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+/* ---------- Botones GTK ---------- */
+button {
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  background-image: none;
+}
+
+/* ---------- Módulos normales ---------- */
+#backlight,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#memory,
+#mpris,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#custom-power {
+  padding: 0 8px;
+  margin: 0;
+  color: @foreground;
+  background-color: transparent;
+}
+
+#backlight:hover,
+#battery:hover,
+#bluetooth:hover,
+#clock:hover,
+#cpu:hover,
+#disk:hover,
+#memory:hover,
+#mpris:hover,
+#network:hover,
+#pulseaudio:hover,
+#temperature:hover,
+#tray:hover,
+#custom-power:hover {
+  background-color: @background-alt;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#custom-power {
+  color: @urgent;
+  padding-left: 8px;
+}
+
+/* ---------- Estados ---------- */
+#battery.warning,
+#cpu.warning,
+#memory.warning,
+#temperature.warning {
+  color: @selected;
+}
+
+#battery.critical,
+#cpu.critical,
+#memory.critical,
+#temperature.critical,
+#network.disconnected,
+#bluetooth.disconnected {
+  color: @foreground;
+  background-color: @background;
+  border: 1px solid @urgent;
+  border-radius: 8px;
+}
+
+#pulseaudio.muted,
+#backlight.disabled {
+  color: @background-alt;
+}
+
+/* ---------- Workspaces / tags de MangoWM ---------- */
+#workspaces {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  margin: 0 2px;
+  border-radius: 8px;
+  color: @foreground;
+  background-color: transparent;
+}
+
+#workspaces button:hover {
+  color: @foreground;
+  background-color: @background-alt;
+}
+
+/* Workspace activo: contraste automático */
+#workspaces button.active {
+  background-color: @active;
+  color: @activetext;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  color: @foreground;
+  background-color: @background;
+  border: 1px solid @urgent;
+}
+
+#workspaces button.empty,
+#workspaces button.hidden {
+  color: @background-alt;
+}
+
+/* ---------- Bandeja ---------- */
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+```

@@ -1,0 +1,250 @@
+@define-color base     #2d353b;
+@define-color mantle   #272e33;
+@define-color crust    #232a2e;
+@define-color surface0 #343f44;
+@define-color surface1 #3d484d;
+@define-color overlay0 #859289;
+@define-color text     #d3c6aa;
+@define-color subtext0 #9da9a0;
+@define-color blue     #7fbbb3;
+@define-color mauve    #d699b6;
+@define-color red      #e67e80;
+@define-color green    #a7c080;
+@define-color yellow   #dbbc7f;
+@define-color peach    #e69875;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: transparent;
+    border-radius: 0px;
+    border: none;
+    color: @text;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: alpha(@base, 0.90);
+    border-radius: 14px;
+    padding: 2px 8px;
+    border: none;
+    min-height: 0;
+}
+
+.modules-right {
+    padding-right: 18px;
+}
+
+/* Arch icon */
+#custom-arch {
+    color: @blue;
+    padding: 0 10px 0 15px;
+}
+
+/* Workspaces */
+#workspaces {
+    background: transparent;
+}
+
+#workspaces button {
+    border-radius: 10px;
+    padding: 0px 4px;
+    min-width: 35px;
+    background: transparent;
+    color: @subtext0;
+    border: none;
+}
+
+#workspaces button:hover {
+    background: @surface0;
+    color: @text;
+}
+
+#workspaces button.active {
+    background: @blue;
+    color: @base;
+    animation: ws-active 3s ease infinite;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: @base;
+}
+
+@keyframes ws-active {
+    0%  { background-color: #7fbbb3; }
+    50% { background-color: #d699b6; }
+    100%{ background-color: #abd290; }
+}
+
+/* Window title */
+#window {
+    color: @subtext0;
+    font-style: italic;
+}
+
+/* Clock */
+#clock {
+    color: @blue;
+    font-weight: bold;
+}
+
+/* System modules */
+#cpu {
+    color: @peach;
+}
+
+#memory {
+    color: @mauve;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#battery.charging {
+    color: @green;
+}
+
+#network {
+    color: @green;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+#pulseaudio {
+    color: @blue;
+}
+
+#pulseaudio.muted {
+    color: @overlay0;
+}
+
+/* Tray */
+#tray {
+    color: @subtext0;
+}
+
+/* Custom modules */
+#custom-weather {
+    color: @peach;
+}
+
+#custom-updates {
+    color: @green;
+}
+
+#custom-updates.pending {
+    color: @yellow;
+}
+
+#custom-swaync {
+    color: @text;
+}
+
+#custom-power {
+    color: @red;
+}
+
+#custom-settings {
+    color: @subtext0;
+}
+
+/* Tooltip */
+tooltip {
+    background: @surface0;
+    border: 1px solid @overlay0;
+    border-radius: 8px;
+    color: @text;
+}
+
+tooltip label {
+    color: @text;
+}
+/* vswaybar:modpad */
+window#waybar #clock, window#waybar #cpu, window#waybar #memory, window#waybar #network,
+window#waybar #pulseaudio, window#waybar #battery, window#waybar #tray,
+window#waybar #custom-updates, window#waybar #custom-weather, window#waybar #custom-swaync,
+window#waybar #custom-power, window#waybar #custom-settings, window#waybar #custom-claudebar,
+window#waybar #custom-bar-cpu, window#waybar #custom-bar-mem,
+window#waybar #custom-bar-vol, window#waybar #custom-bar-wifi {
+    padding: 0 8px;
+}
+window#waybar #custom-arch {
+    padding: 0 10px 0 15px;
+}
+window#waybar #custom-bar-cpu  { color: @peach; }
+window#waybar #custom-bar-mem  { color: @mauve; }
+window#waybar #custom-bar-vol  { color: @blue; }
+window#waybar #custom-bar-wifi { color: @green; }
+
+
+/* vswaybar:dock:begin */
+window#waybar.dock * {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 22px;
+}
+
+window#waybar.dock {
+    background: transparent;
+    border: none;
+}
+
+window#waybar.dock .modules-left,
+window#waybar.dock .modules-center,
+window#waybar.dock .modules-right {
+    background: transparent;
+    border: none;
+    padding: 0;
+    min-height: 0;
+    min-width: 0;
+}
+
+window#waybar.dock .modules-center {
+    background: alpha(@base, 0.90);
+    border-radius: 16px;
+    padding: 4px 14px;
+    border: 2px solid @surface0;
+    min-height: 0;
+}
+
+/* Dock icons */
+window#waybar.dock #custom-rofi,
+window#waybar.dock #custom-firefox,
+window#waybar.dock #custom-nautilus,
+window#waybar.dock #custom-dolphin,
+window#waybar.dock #custom-terminal,
+window#waybar.dock #custom-vscode {
+    padding: 4px 14px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    min-width: 30px;
+}
+
+window#waybar.dock #custom-rofi { color: #ff79c6; }
+window#waybar.dock #custom-firefox { color: #89b4fa; }
+window#waybar.dock #custom-nautilus { color: #f1fa8c; }
+window#waybar.dock #custom-dolphin { color: #f1fa8c; }
+window#waybar.dock #custom-terminal { color: #50fa7b; }
+window#waybar.dock #custom-vscode { color: #bd93f9; }
+
+window#waybar.dock #custom-rofi:hover { color: @mauve; background: rgba(203,166,247,0.12); }
+window#waybar.dock #custom-firefox:hover { color: @blue; background: rgba(139,213,202,0.12); }
+window#waybar.dock #custom-nautilus:hover { color: @yellow; background: rgba(249,226,175,0.12); }
+window#waybar.dock #custom-dolphin:hover { color: @yellow; background: rgba(249,226,175,0.12); }
+window#waybar.dock #custom-terminal:hover { color: @green; background: rgba(166,227,161,0.12); }
+window#waybar.dock #custom-vscode:hover { color: @mauve; background: rgba(203,166,247,0.12); }

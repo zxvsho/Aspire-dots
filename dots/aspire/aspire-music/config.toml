@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# aspire-music — configuración centralizada
+# La app busca este fichero, en orden:
+#   1. ./config.toml          (carpeta de trabajo — útil en desarrollo)
+#   2. ~/.config/aspire-music/config.toml
+# ─────────────────────────────────────────────────────────────────────────────
+
+[app]
+# Idioma de la interfaz: "es" | "en"
+lang = "es"
+
+# Directorio donde escanear música local (solo fuente [1] Local)
+music_dir = "~/Music"
+
+[theme]
+# Paleta de colores: "tokyo-night" | "catppuccin"
+name = "tokyo-night"
+
+[auth]
+# Credenciales de Spotify (Client Credentials para busquedas).
+# Para streaming premium real se usará librespot con esta misma cuenta.
+spotify_client_id     = "TU_CLIENT_ID"
+spotify_client_secret = "TU_CLIENT_SECRET"
+
+# Ruta al cookies.txt (formato Netscape) para YouTube/SoundCloud
+# Requerido si tienes N age-gate o quieres chatar letitud de tu cuenta.
+yt_cookies_path = "~/.config/aspire-music/cookies.txt"
+
+[player]
+# Volumen inicial (0–130)
+volume = 80

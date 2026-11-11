@@ -1,0 +1,32 @@
+[waybar]
+signal = "SIGUSR2"
+process = "waybar"
+
+[mako]
+command = "makoctl reload"
+
+[mango]
+command = "mmsg dispatch reload_config"
+
+[foot]
+signal = "SIGUSR1"
+process = "foot"
+
+[footclient]
+signal = "SIGUSR1"
+process = "footclient"
+
+[kitty]
+signal = "SIGUSR1"
+process = "kitty"
+
+[ghostty]
+signal = "SIGUSR2"
+process = "ghostty"
+
+[rio]
+command = "touch ~/.config/rio/config.toml"
+
+[aspire-files]
+signal = "SIGUSR1"
+process = "aspire-files"

@@ -1,0 +1,20 @@
+[terminal.shell]
+program = "/usr/bin/zsh"
+
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+opacity = 0.95
+
+[general]
+import = ["~/.config/alacritty/colors.toml"]
+
+[font]
+normal.family = "JetBrainsMonoNL Nerd Font"
+size = 11
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+thickness = 0.17
+blink_interval = 500
+

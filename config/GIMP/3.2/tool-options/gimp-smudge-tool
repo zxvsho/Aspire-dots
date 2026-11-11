@@ -1,0 +1,13 @@
+# GIMP gimp-smudge-tool options
+
+(background
+    (color "R'G'B'A float" 16 "\1\0\200\77\1\0\200\77\1\0\200\77\0\0\200\77" 0))
+(brush "2. Hardness 075")
+(dynamics "Pressure Size")
+(pattern "Pine")
+(gradient "PP a FD (RGB)")
+(palette "Histórico de color")
+(brush-size 51)
+(brush-hardness 0.75)
+
+# end of gimp-smudge-tool options

@@ -1,0 +1,14 @@
+# Fuente oficial: https://github.com/morhetz/gruvbox/blob/master/colors/gruvbox.vim
+id = "gruvbox-dark"
+name = "Gruvbox Dark"
+author = "Gruvbox"
+description = "Tonos cálidos oscuros con amarillo, aqua y rojo."
+
+[colors]
+background = "#282828"
+background-alt = "#3c3836"
+foreground = "#ebdbb2"
+selected = "#fabd2f"
+selectedtext = "#282828"
+active = "#8ec07c"
+urgent = "#fb4934"

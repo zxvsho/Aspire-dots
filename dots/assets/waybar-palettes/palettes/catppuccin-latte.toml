@@ -1,0 +1,15 @@
+# Fuente oficial: https://github.com/catppuccin/palette/blob/main/palette.json
+# Latte es clara: foreground/base y selectedtext mantienen contraste >= 4.5:1.
+id = "catppuccin-latte"
+name = "Catppuccin Latte"
+author = "Catppuccin"
+description = "Variante clara con texto oscuro y estados de alto contraste."
+
+[colors]
+background = "#eff1f5"
+background-alt = "#ccd0da"
+foreground = "#4c4f69"
+selected = "#8839ef"
+selectedtext = "#ffffff"
+active = "#1e66f5"
+urgent = "#d20f39"

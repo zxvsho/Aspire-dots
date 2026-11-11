@@ -1,0 +1,7 @@
+name = "minimal"
+author = "Mangowm_dots"
+description = "Barra superior minimalista con espacios, reloj y controles esenciales."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "clock", "pulseaudio", "custom/power"]
+optional-dependencies = []
+allow-fixed-colors = false

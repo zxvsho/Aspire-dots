@@ -1,0 +1,14 @@
+# Fuente oficial: https://github.com/catppuccin/palette/blob/main/palette.json
+id = "catppuccin-mocha"
+name = "Catppuccin Mocha"
+author = "Catppuccin"
+description = "Variante oscura; texto claro y acentos mauve, blue y red."
+
+[colors]
+background = "#1e1e2e"
+background-alt = "#313244"
+foreground = "#cdd6f4"
+selected = "#cba6f7"
+selectedtext = "#1e1e2e"
+active = "#89b4fa"
+urgent = "#f38ba8"

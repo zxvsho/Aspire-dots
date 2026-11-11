@@ -1,0 +1,88 @@
+# ~/.config/rio/config.toml
+
+# ---- Parámetros globales (deben ir ANTES de cualquier [sección]) ----
+
+# Tema (matugen / tinty): descomenta cuando exista ~/.config/rio/themes/matugen.toml
+theme = "aspire"
+
+confirm-before-quit = false
+copy-on-select = true
+
+# Necesario para que los tabs/splits abran en el cwd actual
+use-fork = false
+
+margin = [4]
+
+# ---- Secciones ----
+
+[panel]
+border-width = 2.0
+border-radius = 8.0
+# Margen interior de cada panel (nombre actual y antiguo)
+padding = [12]
+margin = [12]
+
+[fonts]
+family = "VictorMono Nerd Font"
+size = 14
+
+[window]
+opacity = 0.98
+blur = true
+
+[cursor]
+shape = "beam"
+thickness = 0.17
+blink_internal = 500
+
+[effects]
+trail-cursor = true
+
+[navigation]
+use-split = true
+current-working-directory = true
+hide-if-single = true
+
+[title]
+content = "{{ TITLE || RELATIVE_PATH }}"
+
+[shell]
+program = "/usr/bin/zsh"
+args = []
+
+[developer]
+log-level = "WARN"
+enable-log-file = true
+
+[bindings]
+keys = [
+  # Pegar
+  { key = "v", with = "control", action = "Paste" },
+
+  # Búsqueda
+  { key = "f", with = "control", action = "SearchForward" },
+  { key = "f", with = "control | shift", action = "SearchForward" },
+
+  # Scroll
+  { key = "pageup", action = "ScrollPageUp" },
+  { key = "pagedown", action = "ScrollPageDown" },
+
+  # Zoom
+  { key = "+", with = "control", action = "IncreaseFontSize" },
+  { key = "=", with = "control", action = "IncreaseFontSize" },
+  { key = "numpadadd", with = "control", action = "IncreaseFontSize" },
+  { key = "-", with = "control", action = "DecreaseFontSize" },
+  { key = "numpadsubtract", with = "control", action = "DecreaseFontSize" },
+  { key = "0", with = "control", action = "ResetFontSize" },
+  { key = "numpad0", with = "control", action = "ResetFontSize" },
+
+  # Multiplexar con Alt + n/m
+  { key = "n", with = "alt", action = "SplitRight" },
+  { key = "m", with = "alt", action = "SplitDown" },
+
+  # Moverse entre splits con Alt + hjkl
+  { key = "h", with = "alt", action = "SelectPrevSplit" },
+  { key = "j", with = "alt", action = "SelectNextSplit" },
+  { key = "k", with = "alt", action = "SelectPrevSplit" },
+  { key = "l", with = "alt", action = "SelectNextSplit" },
+]

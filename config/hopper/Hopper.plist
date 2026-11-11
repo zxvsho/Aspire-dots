@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CurrentPreferencesVersion</key>
+    <integer>3</integer>
+    <key>FirstLaunch</key>
+    <false/>
+    <key>LastUpdateCheck</key>
+    <integer>2461348</integer>
+    <key>ListDisplayMode</key>
+    <integer>4</integer>
+    <key>MainWindowGeometry</key>
+    <data>
+AdnQywADAAAAAAAAAAAAAAAAAjoAAAKxAAAAAAAAAAAAAAI6AAACsQAAAAEAAAAABIAAAAAAAAAAAAAAAjoAAAKx</data>
+    <key>MainWindowOpenedDocuments</key>
+    <data>
+AQBOZXcgRG9jdW1lbnQAAA==</data>
+    <key>MainWindowState</key>
+    <data>
+AAAA/wAAAAD9AAAAAAAAAjsAAAJnAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAcAAAAiAG4AYQB2AGkAZwBhAHQAaQBvAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAHgB1AG4AZABvAFIAZQBkAG8AVABvAG8AbABCAGEAcgEAAABC/////wAAAAAAAAAAAAAALAB0AHIAYQBuAHMAZgBvAHIAbQBhAHQAaQBvAG4AcwBUAG8AbwBsAEIAYQByAQAAAIT/////AAAAAAAAAAAAAAAYAG0AbwBkAGUAcwBUAG8AbwBsAEIAYQByAQAAARH/////AAAAAAAAAAAAAAAYAHMAcABsAGkAdABUAG8AbwBsAEIAYQByAQAAAYX/////AAAAAAAAAAAAAAAeAGQAZQBiAHUAZwBnAGUAcgBUAG8AbwBsAEIAYQByAQAAAdz/////AAAAAAAAAAAAAAAYAHAAYQBuAGUAbABUAG8AbwBsAEIAYQByAQAAAgX/////AAAAAAAAAAA=</data>
+    <key>TryingToReadDocuments</key>
+    <false/>
+    <key>shouldMigrateGNUstep</key>
+    <false/>
+</dict>
+</plist>

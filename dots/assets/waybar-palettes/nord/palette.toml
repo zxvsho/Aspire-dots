@@ -1,0 +1,12 @@
+name = "Nord"
+author = "Mangowm_dots"
+description = "Paleta fría inspirada en los paisajes nórdicos."
+
+[colors]
+background = "#2e3440"
+background-alt = "#3b4252"
+foreground = "#eceff4"
+selected = "#88c0d0"
+selectedtext = "#2e3440"
+active = "#81a1c1"
+urgent = "#bf616a"
