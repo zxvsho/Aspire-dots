@@ -1,245 +1,89 @@
 #!/bin/bash
-# ============================================================================
-# SCRIPT DE INSTALACIÓN AUTOMÁTICA — ASPIRE DOTS
-# Reinstala todos los paquetes de pacman y AUR necesarios
-# Compila los aspire-tools desde el código fuente
-# Restaura todas las configuraciones al sistema
-# ============================================================================
+set -uo pipefail
+cd "$(dirname "$(readlink -f "$0")")"
 
-set -e
+G='\033[0;32m'; Y='\033[1;33m'; R='\033[0;31m'; N='\033[0m'
+[ "$EUID" -eq 0 ] && { echo -e "${R}No ejecutes como root.${N}"; exit 1; }
 
-echo "=========================================="
-echo "  ASPIRE DOTS — INSTALACIÓN AUTOMÁTICA"
-echo "=========================================="
-echo ""
-
-# Colores
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-# Verificar si se ejecuta como root
-if [ "$EUID" -eq 0 ]; then
-  echo -e "${RED}No ejecutes este script como root. Usa tu usuario normal.${NC}"
-  exit 1
+echo -e "${G}[1/5] Sistema base y paru${N}"
+sudo pacman -Syu --noconfirm || exit 1
+sudo pacman -S --needed --noconfirm git base-devel rust zsh fish || exit 1
+if ! command -v paru &>/dev/null; then
+  rm -rf /tmp/paru-bin
+  git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
+  (cd /tmp/paru-bin && makepkg -si --noconfirm) || exit 1
 fi
 
-# Verificar si paru está instalado
-if ! command -v paru &> /dev/null; then
-  echo -e "${YELLOW}paru no está instalado. Instalando paru...${NC}"
-  sudo pacman -S --needed --noconfirm git base-devel
-  git clone https://aur.archlinux.org/paru.git /tmp/paru
-  cd /tmp/paru
-  makepkg -si --noconfirm
-  cd -
-fi
-
-echo -e "${GREEN}=== [1/5] Instalando paquetes de repositorios oficiales (pacman) ===${NC}"
-echo ""
-
-# Paquetes explícitos de pacman
-PACMAN_PKGS=(
-  "android-tools"
-  "aria2"
-  "base"
-  "base-devel"
-  "bluetui"
-  "bluez"
-  "bluez-utils"
-  "brightnessctl"
-  "btop"
-  "btrfs-assistant"
-  "btrfs-progs"
-  "cachyos-keyring"
-  "cachyos-mirrorlist"
-  "cachyos-settings"
-  "cachyos-v3-mirrorlist"
-  "cachyos-v4-mirrorlist"
-  "cava"
-  "chromium"
-  "clipse"
-  "fastfetch"
-  "fish"
-  "foot"
-  "fuzzel"
-  "ghostty"
-  "gtk-3.0"
-  "gtk-4.0"
-  "htop"
-  "kew"
-  "kitty"
-  "libfm"
-  "mako"
-  "mango"
-  "matugen"
-  "micro"
-  "mpv"
-  "nautilus"
-  "nemo"
-  "neofetch"
-  "nvim"
-  "nwg-look"
-  "obs-studio"
-  "onlyoffice"
-  "opencode"
-  "procps-ng"
-  "pulseaudio"
-  "qalculate-gtk"
-  "rio"
-  "rofi"
-  "thunar"
-  "tubetui"
-  "vesktop"
-  "waybar"
-  "waypaper"
-  "wlogout"
-  "xfce4-terminal"
-  "yazi"
-  "zed"
-  "zim"
+echo -e "${G}[2/5] Paquetes (uno por uno, sin abortar)${N}"
+PKGS=(
+  # base gráfica / terminales / launchers
+  mesa vulkan-icd-loader xdg-terminal-exec xdg-desktop-portal xdg-desktop-portal-gtk
+  xdg-desktop-portal-wlr polkit xfce-polkit wl-clipboard grim slurp
+  foot rio kitty ghostty xfce4-terminal rofi fuzzel waybar mako wlogout
+  # fuentes
+  noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols ttf-victor-mono-nerd ttf-ms-fonts
+  # compositor / estilo
+  mango mangobar-git swww wallust matugen tinty-git waypaper nwg-look
+  gtk3 gtk4 brightnessctl
+  # apps
+  android-tools aria2 bluetui bluez bluez-utils btop btrfs-assistant btrfs-progs
+  cava chromium google-chrome clipse fastfetch htop kew libfm micro mpv nautilus nemo
+  neovim obs-studio onlyoffice-bin opencode procps-ng qalculate-gtk thunar tubetui
+  vesktop yazi zed zim visual-studio-code-bin
+  # AUR varios
+  aurelia-bin cliamp-bin fetch-git freellmapi-desktop-git fsel-bin hopper
+  hydra-launcher-bin jmtpfs lavat-git limusic-bin peaclock sherlock-launcher-bin tuios-bin
 )
+failed=()
+for p in "${PKGS[@]}"; do
+  paru -S --needed --noconfirm "$p" || failed+=("$p")
+done
 
-sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}" 2>&1 | tail -5
-echo -e "${GREEN}✓ Paquetes de pacman instalados${NC}"
-echo ""
+echo -e "${G}[3/5] Restaurando configuraciones (ANTES de compilar)${N}"
+[ -d ~/.config ] && cp -a ~/.config ~/.config.bak.$(date +%s)
+mkdir -p ~/.config ~/.dots/bin ~/.local/bin
+[ -d config ] && cp -a config/. ~/.config/ && echo "✓ config"
+[ -d dots ]   && cp -a dots/.   ~/.dots/   && echo "✓ dots"
+for f in .zshrc .bashrc .bash_profile .gitconfig; do
+  [ -f "$f" ] && cp -a "$f" ~/"$f" && echo "✓ $f"
+done
+find ~/.dots ~/.config -type f \( -path '*/bin/*' -o -name '*.sh' \) -exec chmod +x {} + 2>/dev/null
 
-echo -e "${GREEN}=== [2/5] Instalando paquetes de AUR ===${NC}"
-echo ""
+# Terminal por defecto para xdg-terminal-exec
+[ -f ~/.config/xdg-terminals.list ] || echo "rio.desktop" > ~/.config/xdg-terminals.list
 
-# Paquetes de AUR
-AUR_PKGS=(
-  "aurelia-bin"
-  "cliamp-bin"
-  "fetch-git"
-  "freellmapi-desktop-git"
-  "fsel-bin"
-  "google-chrome"
-  "hopper"
-  "hydra-launcher-bin"
-  "jmtpfs"
-  "lavat-git"
-  "limusic-bin"
-  "mangobar-git"
-  "neofetch"
-  "peaclock"
-  "sherlock-launcher-bin"
-  "tinty-git"
-  "ttf-ms-fonts"
-  "tuios-bin"
-  "visual-studio-code-bin"
-  "xfce-polkit"
-)
-
-paru -S --needed --noconfirm "${AUR_PKGS[@]}" 2>&1 | tail -5
-echo -e "${GREEN}✓ Paquetes de AUR instalados${NC}"
-echo ""
-
-echo -e "${GREEN}=== [3/5] Instalando fuentes ===${NC}"
-echo ""
-# Fuentes Nerd Fonts (si no están instaladas)
-if ! fc-list | grep -qi "VictorMono Nerd"; then
-  echo -e "${YELLOW}VictorMono Nerd Font no encontrada. Instálala manualmente desde nerd-fonts.${NC}"
+echo -e "${G}[4/5] Compilando aspire-tools${N}"
+if [ -d ~/.dots/aspire ]; then
+  for d in ~/.dots/aspire/*/; do
+    n=$(basename "$d")
+    [ -f "$d/Cargo.toml" ] || continue
+    if (cd "$d" && cargo build --release); then
+      if [ -f "$d/target/release/$n" ]; then
+        cp "$d/target/release/$n" ~/.dots/bin/
+        ln -sf ~/.dots/bin/"$n" ~/.local/bin/"$n"
+        echo "✓ $n"
+      else
+        failed+=("build:$n (sin binario)")
+      fi
+    else
+      failed+=("build:$n")
+    fi
+  done
+else
+  echo -e "${Y}No existe ~/.dots/aspire${N}"
 fi
 
-echo -e "${GREEN}=== [4/5] Compilando aspire-tools (Rust) ===${NC}"
-echo ""
-
-# Crear directorio bin si no existe
-mkdir -p "$HOME/.dots/bin"
-mkdir -p "$HOME/.local/bin"
-
-# Compilar aspire-bg (background changer)
-if [ -d "$HOME/.dots/aspire/aspire-bg" ]; then
-  cd "$HOME/.dots/aspire/aspire-bg"
-  cargo build --release 2>&1 | tail -3
-  if [ -f "target/release/aspire-bg" ]; then
-    cp target/release/aspire-bg "$HOME/.dots/bin/" 2>/dev/null
-    ln -sf "$HOME/.dots/bin/aspire-bg" "$HOME/.local/bin/aspire-bg" 2>/dev/null
-    echo -e "${GREEN}✓ aspire-bg compilado y enlazado en ~/.local/bin${NC}"
-  fi
-  cd - > /dev/null
-fi
-
-# Compilar aspire-bar (barra de estado)
-if [ -d "$HOME/.dots/aspire/aspire-bar" ]; then
-  cd "$HOME/.dots/aspire/aspire-bar"
-  cargo build --release 2>&1 | tail -3
-  if [ -f "target/release/aspire-bar" ]; then
-    cp target/release/aspire-bar "$HOME/.dots/bin/" 2>/dev/null
-    ln -sf "$HOME/.dots/bin/aspire-bar" "$HOME/.local/bin/aspire-bar" 2>/dev/null
-    echo -e "${GREEN}✓ aspire-bar compilado y enlazado en ~/.local/bin${NC}"
-  fi
-  cd - > /dev/null
-fi
-
-# Compilar aspire-menu (launcher)
-if [ -d "$HOME/.dots/aspire/aspire-menu" ]; then
-  cd "$HOME/.dots/aspire/aspire-menu"
-  cargo build --release 2>&1 | tail -3
-  if [ -f "target/release/aspire-menu" ]; then
-    cp target/release/aspire-menu "$HOME/.dots/bin/" 2>/dev/null
-    ln -sf "$HOME/.dots/bin/aspire-menu" "$HOME/.local/bin/aspire-menu" 2>/dev/null
-    echo -e "${GREEN}✓ aspire-menu compilado y enlazado en ~/.local/bin${NC}"
-  fi
-  cd - > /dev/null
-fi
-
-# Compilar aspire-clip (clipboard manager)
-if [ -d "$HOME/.dots/aspire/aspire-clip" ]; then
-  cd "$HOME/.dots/aspire/aspire-clip"
-  cargo build --release 2>&1 | tail -3
-  if [ -f "target/release/aspire-clip" ]; then
-    cp target/release/aspire-clip "$HOME/.dots/bin/" 2>/dev/null
-    ln -sf "$HOME/.dots/bin/aspire-clip" "$HOME/.local/bin/aspire-clip" 2>/dev/null
-    echo -e "${GREEN}✓ aspire-clip compilado y enlazado en ~/.local/bin${NC}"
-  fi
-  cd - > /dev/null
-fi
+echo -e "${G}[5/5] PATH${N}"
+for rc in ~/.zshrc ~/.bashrc; do
+  grep -q '\.dots/bin' "$rc" 2>/dev/null || \
+    echo 'export PATH="$HOME/.dots/bin:$HOME/.local/bin:$PATH"' >> "$rc"
+done
+fish -c 'fish_add_path ~/.dots/bin ~/.local/bin' 2>/dev/null
 
 echo ""
-
-echo -e "${GREEN}=== [5/5] Restaurando configuraciones ===${NC}"
-echo ""
-
-# Restaurar archivos de shell
-cp .zshrc ~/.zshrc 2>/dev/null && echo "✓ .zshrc restaurado"
-cp .bashrc ~/.bashrc 2>/dev/null && echo "✓ .bashrc restaurado"
-cp .bash_profile ~/.bash_profile 2>/dev/null && echo "✓ .bash_profile restaurado"
-cp .gitconfig ~/.gitconfig 2>/dev/null && echo "✓ .gitconfig restaurado"
-
-# Restaurar .config
-if [ -d "config" ]; then
-  cp -r config/* ~/.config/ 2>/dev/null
-  echo "✓ Configuraciones de ~/.config restauradas"
+if [ ${#failed[@]} -gt 0 ]; then
+  echo -e "${R}Fallaron:${N} ${failed[*]}"
+else
+  echo -e "${G}Todo instalado.${N}"
 fi
-
-# Restaurar .dots
-if [ -d "dots" ]; then
-  cp -r dots/* ~/.dots/ 2>/dev/null
-  echo "✓ Scripts y binarios de ~/.dots restaurados"
-fi
-
-# Restaurar configuraciones de terminal (Rio, Foot, etc.)
-if [ -d "config" ]; then
-  cp -r config/* ~/.config/ 2>/dev/null
-  echo "✓ Configuraciones de ~/.config restauradas (incluye Rio y Foot)"
-fi
-
-# Asegurar que ~/.dots/bin esté en PATH
-if ! grep -q '\.dots/bin' "$HOME/.zshrc" 2>/dev/null; then
-  echo 'export PATH="$HOME/.dots/bin:$PATH"' >> "$HOME/.zshrc"
-  echo "✓ PATH actualizado en .zshrc"
-fi
-
-echo ""
-echo -e "${GREEN}=========================================="
-echo "  INSTALACIÓN COMPLETADA"
-echo "==========================================${NC}"
-echo ""
-echo "Terminal principal: Rio (xdg-terminals.list -> rio.desktop)"
-echo "Shell: Zsh (/usr/bin/zsh)"
-echo "Window Manager: MangoWM / Hyprland"
-echo "Aspire Tools: aspire-bg, aspire-bar, aspire-menu, aspire-clip (en ~/.local/bin)"
-echo ""
-echo "Reinicia tu sesión para aplicar todos los cambios."
+echo "Reinicia la sesión."
