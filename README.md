@@ -146,8 +146,9 @@ El directorio `Manual/` contiene documentación detallada de cada componente:
 - `aspire-context.md` — Contexto de Aspire
 - `aspire-core-arquitectura-prompt.md` — Arquitectura core
 
-## 📦 Script de instalación automática
+## 📦 Scripts de instalación automática
 
+### Para Arch Linux (CachyOS)
 El archivo `install.sh` instala automáticamente:
 - Todos los paquetes de pacman (161 paquetes)
 - Todos los paquetes de AUR (20 paquetes) usando paru
@@ -162,6 +163,31 @@ El archivo `install.sh` instala automáticamente:
 chmod +x install.sh
 ./install.sh
 ```
+
+### Para Void Linux
+El archivo `install-void.sh` instala automáticamente:
+- Activa repositorios non-free (`void-repo-nonfree`)
+- Paquetes equivalentes de Void Linux (xbps)
+- Paquetes de AUR equivalentes disponibles en Void
+- Fuentes Nerd Fonts (verificación)
+- Compila los aspire-tools desde Rust
+- Crea symlinks en `~/.local/bin`
+- Restaura los dotfiles
+
+### Uso:
+```bash
+chmod +x install-void.sh
+./install-void.sh
+```
+
+### Diferencias entre Arch y Void:
+| Aspecto | Arch (CachyOS) | Void Linux |
+|---------|---------------|------------|
+| Gestor de paquetes | pacman / paru | xbps / xbps-install |
+| Repositorios non-free | Activados por defecto | Requiere `void-repo-nonfree` |
+| AUR | Disponible con paru/yay | No disponible, paquetes en repos oficiales |
+| Init system | systemd | runit |
+| Kernel | CachyOS kernels | Void kernels (linux, linux-lts) |
 
 ## 🛠️ Servicios de sistema (MariaDB estaba activo)
 
