@@ -1,0 +1,465 @@
+{
+  "session_id": "1793409363500-2c76af11",
+  "app_id": 391540,
+  "app_name": "Undertale",
+  "game": {
+    "install_dir": "/home/miguel/.local/share/Steam/steamapps/common/Undertale",
+    "executable_path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/runner",
+    "executable_exists": true
+  },
+  "runner": {
+    "name": "Native",
+    "root": "wine"
+  },
+  "settings": {
+    "requested_backend": "",
+    "effective_backend": "WineD3D (Baseline)",
+    "requested_d3d12_provider": "",
+    "effective_d3d12_provider": "None",
+    "requested_nvapi": false,
+    "effective_nvapi": false,
+    "requested_gpu": null,
+    "effective_gpu": null,
+    "target_architecture": "Unknown",
+    "dll_resolutions": [
+      {
+        "name": "d3d8",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d8.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d8.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/dxvk/x64/d3d8.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d8.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "d3d9",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d9.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d9.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/dxvk/x64/d3d9.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d9.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "dxgi",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/dxgi.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/dxgi.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/dxvk/x64/dxgi.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/dxvk/dxgi.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "d3d10core",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d10core.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d10core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/dxvk/x64/d3d10core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d10core.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "d3d11",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d11.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d11.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/dxvk/x64/d3d11.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d11.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "d3d12",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d12.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d12.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/vkd3d-proton/x64/d3d12.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/d3d12.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/d3d12.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib64/d3d12.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "d3d12core",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/d3d12core.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/d3d12core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/vkd3d-proton/x64/d3d12core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/d3d12core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/d3d12core.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib64/d3d12core.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "libvkd3d-1",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/libvkd3d-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/libvkd3d-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/vkd3d-proton/x64/libvkd3d-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/libvkd3d-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/libvkd3d-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib64/libvkd3d-1.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "libvkd3d-shader-1",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/libvkd3d-shader-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/libvkd3d-shader-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/vkd3d-proton/x64/libvkd3d-shader-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/libvkd3d-shader-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/libvkd3d-shader-1.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib64/libvkd3d-shader-1.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "nvapi",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/nvapi.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/nvapi.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/nvapi/x64/nvapi.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvapi.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "nvapi64",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/nvapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/nvapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/nvapi/x64/nvapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvapi64.dll",
+            "exists": false
+          }
+        ]
+      },
+      {
+        "name": "nvofapi64",
+        "chosen_provider": "None",
+        "chosen_path": null,
+        "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+        "candidates": [
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/nvofapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "GameLocal",
+            "path": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/bin/nvofapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/nvapi/x64/nvofapi64.dll",
+            "exists": false
+          },
+          {
+            "provider": "System",
+            "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvofapi64.dll",
+            "exists": false
+          }
+        ]
+      }
+    ],
+    "wine_dll_overrides": null,
+    "runtime_evidence": {
+      "dxvk": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "DXVK requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "vkd3d_proton": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "VKD3D-Proton requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "vkd3d": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "VKD3D requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "wined3d": {
+        "expected": true,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "WineD3D requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "scan_metadata": {
+        "log_path": "/home/miguel/.config/Aurelia/logs/1793409363500-2c76af11/stderr.log",
+        "file_exists": true,
+        "file_size": 0,
+        "line_count": 0,
+        "scan_duration_ms": 202,
+        "candidate_matches": 0,
+        "retries": 1,
+        "process_running_during_scan": false
+      }
+    },
+    "env_propagation": {}
+  },
+  "command": {
+    "program": "/home/miguel/.local/share/Steam/steamapps/common/Undertale/runner",
+    "args": [],
+    "cwd": "/home/miguel/.local/share/Steam/steamapps/common/Undertale",
+    "env_subset": {}
+  },
+  "fallbacks": {
+    "nvapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "nvofapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "nvapi": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d11": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d9": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d8": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "libvkd3d-1": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d12core": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "dxgi": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d12": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "libvkd3d-shader-1": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "d3d10core": "no candidate files found in GameLocal, Custom, Runner, or System paths"
+  }
+}

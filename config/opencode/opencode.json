@@ -1,0 +1,4455 @@
+{
+  "mcp": {
+    "rea": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "rea-agents@6.5.0",
+        "mcp"
+      ],
+      "enabled": true,
+      "environment": {
+        "HOPPER_LAUNCHER_PATH": "/opt/hopper/bin/Hopper"
+      }
+    }
+  },
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "omniroute": {
+      "name": "OmniRoute",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:20128/v1",
+        "apiKey": "{env:OMNIROUTE_API_KEY}"
+      },
+      "models": {
+        "auto/best-coding": {
+          "name": "Auto Best Coding",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-reasoning": {
+          "name": "Auto Best Reasoning",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-fast": {
+          "name": "Auto Best Fast",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-vision": {
+          "name": "Auto Best Vision",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/best-chat": {
+          "name": "Auto Best Chat",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-coding-fast": {
+          "name": "Auto Best Coding Fast",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/pro-coding": {
+          "name": "Auto Pro Coding",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/pro-reasoning": {
+          "name": "Auto Pro Reasoning",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/pro-chat": {
+          "name": "Auto Pro Chat",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/pro-fast": {
+          "name": "Auto Pro Fast",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/coding": {
+          "name": "Auto Coding",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/fast": {
+          "name": "Auto Fast",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/chat": {
+          "name": "Auto Chat",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/cheap": {
+          "name": "Auto Cheap",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/offline": {
+          "name": "Auto Offline",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/smart": {
+          "name": "Auto Smart",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-free": {
+          "name": "Auto Best Free",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/thrifty": {
+          "name": "Auto Thrifty",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/best-chaos": {
+          "name": "Auto Best Chaos",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/chaos": {
+          "name": "Auto Chaos",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/coding:fast": {
+          "name": "Auto Coding:fast",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/coding:cheap": {
+          "name": "Auto Coding:cheap",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/coding:free": {
+          "name": "Auto Coding:free",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/coding:reliable": {
+          "name": "Auto Coding:reliable",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/reasoning": {
+          "name": "Auto Reasoning",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192,
+            "input": 400000
+          }
+        },
+        "auto/vision": {
+          "name": "Auto Vision",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/multimodal": {
+          "name": "Auto Multimodal",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/glm": {
+          "name": "Auto Glm",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "auto/gemma": {
+          "name": "Auto Gemma",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/llama": {
+          "name": "Auto Llama",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/gemini": {
+          "name": "Auto Gemini",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "auto/kimi": {
+          "name": "Auto Kimi",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 262144,
+            "input": 1048576
+          }
+        },
+        "auto/qwen": {
+          "name": "Auto Qwen",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192,
+            "input": 128000
+          }
+        },
+        "auto/deepseek": {
+          "name": "Auto Deepseek",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "auto/gpt": {
+          "name": "Auto Gpt",
+          "attachment": true,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "auto/claude-opus": {
+          "name": "Auto Claude Opus",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "auto/claude-sonnet": {
+          "name": "Auto Claude Sonnet",
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-fable-5-1-max": {
+          "name": "Claude Fable 5.1 Max",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-fable-5-1-xhigh": {
+          "name": "Claude Fable 5.1 XHigh",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-fable-5-1-high": {
+          "name": "Claude Fable 5.1 High",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-fable-5-1-medium": {
+          "name": "Claude Fable 5.1 Medium",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-fable-5-1-low": {
+          "name": "Claude Fable 5.1 Low",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-max-fast": {
+          "name": "Claude Opus 5 Max Fast",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-max": {
+          "name": "Claude Opus 5 Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-xhigh-fast": {
+          "name": "Claude Opus 5 XHigh Fast",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-xhigh": {
+          "name": "Claude Opus 5 XHigh",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-high-fast": {
+          "name": "Claude Opus 5 High Fast",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-high": {
+          "name": "Claude Opus 5 High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-medium-fast": {
+          "name": "Claude Opus 5 Medium Fast",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-medium": {
+          "name": "Claude Opus 5 Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-low-fast": {
+          "name": "Claude Opus 5 Low Fast",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-5-low": {
+          "name": "Claude Opus 5 Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-max-fast": {
+          "name": "Claude Opus 4.8 Max Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-max": {
+          "name": "Claude Opus 4.8 Max",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-xhigh-fast": {
+          "name": "Claude Opus 4.8 XHigh Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-xhigh": {
+          "name": "Claude Opus 4.8 XHigh",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-high-fast": {
+          "name": "Claude Opus 4.8 High Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-high": {
+          "name": "Claude Opus 4.8 High",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-medium-fast": {
+          "name": "Claude Opus 4.8 Medium Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-medium": {
+          "name": "Claude Opus 4.8 Medium",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-low-fast": {
+          "name": "Claude Opus 4.8 Low Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-opus-4-8-low": {
+          "name": "Claude Opus 4.8 Low",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-5-max": {
+          "name": "Claude Sonnet 5 Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-5-xhigh": {
+          "name": "Claude Sonnet 5 XHigh",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-5-high": {
+          "name": "Claude Sonnet 5 High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-5-medium": {
+          "name": "Claude Sonnet 5 Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-5-low": {
+          "name": "Claude Sonnet 5 Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-4-6-thinking-1m": {
+          "name": "Claude Sonnet 4.6 Thinking 1M",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-4-6-1m": {
+          "name": "Claude Sonnet 4.6 1M",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/claude-sonnet-4-6-thinking": {
+          "name": "Claude Sonnet 4.6 Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 128000,
+            "input": 200000
+          }
+        },
+        "dva/claude-sonnet-4-6": {
+          "name": "Claude Sonnet 4.6",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 128000,
+            "input": 200000
+          }
+        },
+        "dva/MODEL_PRIVATE_11": {
+          "name": "dva/Claude Haiku 4.5",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 64000,
+            "input": 200000
+          }
+        },
+        "dva/gpt-5-6-sol-max-priority": {
+          "name": "GPT-5.6 Sol Max Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-max": {
+          "name": "GPT-5.6 Sol Max Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-xhigh-priority": {
+          "name": "GPT-5.6 Sol XHigh Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-xhigh": {
+          "name": "GPT-5.6 Sol XHigh Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-high-priority": {
+          "name": "GPT-5.6 Sol High Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-high": {
+          "name": "GPT-5.6 Sol High Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-medium-priority": {
+          "name": "GPT-5.6 Sol Medium Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-medium": {
+          "name": "GPT-5.6 Sol Medium Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-low-priority": {
+          "name": "GPT-5.6 Sol Low Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-low": {
+          "name": "GPT-5.6 Sol Low Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-none-priority": {
+          "name": "GPT-5.6 Sol No Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-sol-none": {
+          "name": "GPT-5.6 Sol No Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-max-priority": {
+          "name": "GPT-5.6 Terra Max Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-max": {
+          "name": "GPT-5.6 Terra Max Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-xhigh-priority": {
+          "name": "GPT-5.6 Terra XHigh Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-xhigh": {
+          "name": "GPT-5.6 Terra XHigh Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-high-priority": {
+          "name": "GPT-5.6 Terra High Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-high": {
+          "name": "GPT-5.6 Terra High Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-medium-priority": {
+          "name": "GPT-5.6 Terra Medium Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-medium": {
+          "name": "GPT-5.6 Terra Medium Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-low-priority": {
+          "name": "GPT-5.6 Terra Low Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-low": {
+          "name": "GPT-5.6 Terra Low Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-none-priority": {
+          "name": "GPT-5.6 Terra No Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-terra-none": {
+          "name": "GPT-5.6 Terra No Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-max-priority": {
+          "name": "GPT-5.6 Luna Max Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-max": {
+          "name": "GPT-5.6 Luna Max Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-xhigh-priority": {
+          "name": "GPT-5.6 Luna XHigh Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-xhigh": {
+          "name": "GPT-5.6 Luna XHigh Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-high-priority": {
+          "name": "GPT-5.6 Luna High Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-high": {
+          "name": "GPT-5.6 Luna High Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-medium-priority": {
+          "name": "GPT-5.6 Luna Medium Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-medium": {
+          "name": "GPT-5.6 Luna Medium Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-low-priority": {
+          "name": "GPT-5.6 Luna Low Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-low": {
+          "name": "GPT-5.6 Luna Low Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-none-priority": {
+          "name": "GPT-5.6 Luna No Thinking Fast",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/gpt-5-6-luna-none": {
+          "name": "GPT-5.6 Luna No Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/kimi-k3-max": {
+          "name": "Kimi K3 Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072,
+            "input": 1048576
+          }
+        },
+        "dva/kimi-k3-high": {
+          "name": "Kimi K3 High",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072,
+            "input": 1048576
+          }
+        },
+        "dva/kimi-k3-low": {
+          "name": "Kimi K3 Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072,
+            "input": 1048576
+          }
+        },
+        "dva/kimi-k2-7": {
+          "name": "Kimi K2.7",
+          "tool_call": true,
+          "limit": {
+            "context": 262144,
+            "output": 16000,
+            "input": 262144
+          }
+        },
+        "dva/glm-5-3-max": {
+          "name": "GLM-5.3 Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/glm-5-3-high": {
+          "name": "GLM-5.3 High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/glm-5-3-low": {
+          "name": "GLM-5.3 Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/glm-5-3-flash-max": {
+          "name": "GLM-5.3 Flash Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/glm-5-3-flash-high": {
+          "name": "GLM-5.3 Flash High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/glm-5-3-flash-low": {
+          "name": "GLM-5.3 Flash Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 128000,
+            "input": 1000000
+          }
+        },
+        "dva/swe-1-7": {
+          "name": "SWE-1.7 Max",
+          "tool_call": true,
+          "limit": {
+            "context": 262000,
+            "output": 128000,
+            "input": 262000
+          }
+        },
+        "dva/swe-1-7-medium": {
+          "name": "SWE-1.7 Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 262000,
+            "output": 128000,
+            "input": 262000
+          }
+        },
+        "dva/swe-1-7-lightning": {
+          "name": "SWE-1.7 Lightning Max",
+          "tool_call": true,
+          "limit": {
+            "context": 202752,
+            "output": 96000,
+            "input": 202752
+          }
+        },
+        "dva/swe-1-7-lightning-medium": {
+          "name": "SWE-1.7 Lightning Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 202752,
+            "output": 96000,
+            "input": 202752
+          }
+        },
+        "dva/adaptive": {
+          "name": "Adaptive",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "dva/grok-4-6-xhigh": {
+          "name": "Grok 4.6 XHigh",
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 100000,
+            "input": 500000
+          }
+        },
+        "dva/grok-4-6-high": {
+          "name": "Grok 4.6 High",
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 100000,
+            "input": 500000
+          }
+        },
+        "dva/grok-4-6-medium": {
+          "name": "Grok 4.6 Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 100000,
+            "input": 500000
+          }
+        },
+        "dva/grok-4-6-low": {
+          "name": "Grok 4.6 Low",
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 100000,
+            "input": 500000
+          }
+        },
+        "dva/inkling-max": {
+          "name": "Inkling Max",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/inkling-xhigh": {
+          "name": "Inkling X-High",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/inkling-high": {
+          "name": "Inkling High",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/inkling-medium": {
+          "name": "Inkling Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/inkling-low": {
+          "name": "Inkling Low",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/inkling-none": {
+          "name": "Inkling None",
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072
+          }
+        },
+        "dva/deepseek-v4-flash-max": {
+          "name": "DeepSeek V4 Flash Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "dva/deepseek-v4-flash-high": {
+          "name": "DeepSeek V4 Flash High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "dva/deepseek-v4-flash-low": {
+          "name": "DeepSeek V4 Flash Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "dva/nemotron-3-ultra-high": {
+          "name": "Nemotron 3 Ultra High",
+          "tool_call": true,
+          "limit": {
+            "context": 262144,
+            "output": 32768,
+            "input": 262144
+          }
+        },
+        "dva/nemotron-3-ultra-medium": {
+          "name": "Nemotron 3 Ultra Medium",
+          "tool_call": true,
+          "limit": {
+            "context": 262144,
+            "output": 32768,
+            "input": 262144
+          }
+        },
+        "dva/nemotron-3-ultra-none": {
+          "name": "Nemotron 3 Ultra None",
+          "tool_call": true,
+          "limit": {
+            "context": 262144,
+            "output": 32768,
+            "input": 262144
+          }
+        },
+        "dva/gemini-3-7-flash-high": {
+          "name": "Gemini 3.7 Flash High",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "dva/gemini-3-7-flash-medium": {
+          "name": "Gemini 3.7 Flash Medium",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "dva/gemini-3-7-flash-low": {
+          "name": "Gemini 3.7 Flash Low",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "dva/gemini-3-1-pro-high": {
+          "name": "Gemini 3.1 Pro High Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "dva/gemini-3-1-pro-low": {
+          "name": "Gemini 3.1 Pro Low Thinking",
+          "attachment": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 65535,
+            "input": 1048576
+          }
+        },
+        "dva/deepseek-v4-pro-max": {
+          "name": "DeepSeek V4 Pro Max",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "dva/deepseek-v4-pro-high": {
+          "name": "DeepSeek V4 Pro High",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "dva/deepseek-v4-pro-low": {
+          "name": "DeepSeek V4 Pro Low",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 384000,
+            "input": 1000000
+          }
+        },
+        "no-think/dva/claude-opus-5-max-fast": {
+          "name": "no-think/claude-opus-5-max-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-5-max": {
+          "name": "no-think/claude-opus-5-max",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-5-xhigh-fast": {
+          "name": "no-think/claude-opus-5-xhigh-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-5-high-fast": {
+          "name": "no-think/claude-opus-5-high-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-5-medium-fast": {
+          "name": "no-think/claude-opus-5-medium-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-5-low-fast": {
+          "name": "no-think/claude-opus-5-low-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-max-fast": {
+          "name": "no-think/claude-opus-4-8-max-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-max": {
+          "name": "no-think/claude-opus-4-8-max",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-xhigh-fast": {
+          "name": "no-think/claude-opus-4-8-xhigh-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-high-fast": {
+          "name": "no-think/claude-opus-4-8-high-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-medium-fast": {
+          "name": "no-think/claude-opus-4-8-medium-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-opus-4-8-low-fast": {
+          "name": "no-think/claude-opus-4-8-low-fast",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-sonnet-5-max": {
+          "name": "no-think/claude-sonnet-5-max",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-sonnet-4-6-thinking-1m": {
+          "name": "no-think/claude-sonnet-4-6-thinking-1m",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-sonnet-4-6-1m": {
+          "name": "no-think/claude-sonnet-4-6-1m",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-sonnet-4-6-thinking": {
+          "name": "no-think/claude-sonnet-4-6-thinking",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "no-think/dva/claude-sonnet-4-6": {
+          "name": "no-think/claude-sonnet-4-6",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "ddgw/gpt-5.4-mini": {
+          "name": "ddgw/GPT-5.4 Mini",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 409600,
+            "output": 131072,
+            "input": 409600
+          }
+        },
+        "ddgw/gpt-5.6-luna": {
+          "name": "ddgw/GPT-5.6 Luna",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1050000,
+            "output": 128000,
+            "input": 1050000
+          }
+        },
+        "ddgw/claude-haiku-4-5": {
+          "name": "ddgw/Claude Haiku 4.5",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "ddgw/mistral-small-2603": {
+          "name": "Mistral Small 4",
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "ddgw/tinfoil/gpt-oss-120b": {
+          "name": "gpt-oss 120B",
+          "reasoning": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "ddgw/tinfoil/gemma4-31b": {
+          "name": "Gemma 4 31B",
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/zai-org/glm-5.2": {
+          "name": "GLM 5.2 (Z.ai)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/moonshotai/kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code (Moonshot)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/moonshotai/kimi-k2.6": {
+          "name": "Kimi K2.6 (Moonshot)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/deepseek-ai/deepseek-v4-pro-0813": {
+          "name": "DeepSeek V4 Pro (DeepSeek)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/deepseek-ai/deepseek-v4-flash-0731": {
+          "name": "DeepSeek V4 Flash (DeepSeek)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/zai-org/glm-4.7-flash": {
+          "name": "GLM 4.7 Flash (Z.ai)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/openai/gpt-oss-120b": {
+          "name": "GPT-OSS 120B (OpenAI)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "cfp/openai/gpt-oss-20b": {
+          "name": "GPT-OSS 20B (OpenAI)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 8192
+          }
+        },
+        "cfp/meta-llama/llama-3.3-70b-instruct-fp8-fast": {
+          "name": "Llama 3.3 70B Instruct (Meta)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/meta/llama-3.1-8b-instruct-fp8": {
+          "name": "Llama 3.1 8B Instruct (Meta)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/meta/llama-4-scout-17b-16e-instruct": {
+          "name": "Llama 4 Scout 17B (Meta)",
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/nvidia/nemotron-3-120b-a12b": {
+          "name": "Nemotron 3 120B (NVIDIA)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/qwen/qwen2.5-coder-32b-instruct": {
+          "name": "Qwen2.5 Coder 32B (Qwen)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/qwen/qwen3-30b-a3b-fp8": {
+          "name": "Qwen3 30B A3B (Qwen)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/qwen/qwq-32b": {
+          "name": "QwQ 32B (Qwen)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/deepseek-ai/deepseek-r1-distill-qwen-32b": {
+          "name": "DeepSeek R1 Distill Qwen 32B",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/google/gemma-4-26b-a4b-it": {
+          "name": "Gemma 4 26B A4B (Google)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/mistralai/mistral-small-3.1-24b-instruct": {
+          "name": "Mistral Small 3.1 24B",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/ibm-granite/granite-4.0-h-micro": {
+          "name": "Granite 4.0 H Micro (IBM)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "cfp/aisingapore/gemma-sea-lion-v4-27b-it": {
+          "name": "Gemma SEA-LION V4 27B (AI Singapore)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "veoaifree-web/veo": {
+          "name": "VEO 3.1",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "veoaifree-web/seedance": {
+          "name": "Seedance",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "veo-free/veo": {
+          "name": "veo-free/VEO 3.1",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "veo-free/seedance": {
+          "name": "veo-free/Seedance",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aug/sonnet4.6": {
+          "name": "Sonnet 4.6",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/fable-5": {
+          "name": "Claude Fable 5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/haiku4.5": {
+          "name": "Haiku 4.5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/sonnet4.5": {
+          "name": "Sonnet 4.5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/sonnet4.6-500k": {
+          "name": "Sonnet 4.6 (500K)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 8192,
+            "input": 500000
+          }
+        },
+        "aug/sonnet5-high": {
+          "name": "Claude Sonnet 5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/sonnet5-500k": {
+          "name": "Claude Sonnet 5 (500K)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 8192,
+            "input": 500000
+          }
+        },
+        "aug/opus4.5": {
+          "name": "Opus 4.5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/opus4.6": {
+          "name": "Opus 4.6",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/opus4.6-500k": {
+          "name": "Opus 4.6 (500K)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 8192,
+            "input": 500000
+          }
+        },
+        "aug/opus4.7": {
+          "name": "Opus 4.7",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/opus4.7-500k": {
+          "name": "Opus 4.7 (500K)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 500000,
+            "output": 8192,
+            "input": 500000
+          }
+        },
+        "aug/opus4.8": {
+          "name": "Opus 4.8",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gemini-3.1-pro-preview": {
+          "name": "Gemini 3.1 Pro",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65535,
+            "input": 1000000
+          }
+        },
+        "aug/gpt5": {
+          "name": "GPT-5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.1": {
+          "name": "GPT-5.1",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.2": {
+          "name": "GPT-5.2",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.4": {
+          "name": "GPT-5.4",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.4-mini": {
+          "name": "aug/GPT-5.4 Mini",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.5": {
+          "name": "GPT-5.5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.6-luna": {
+          "name": "aug/GPT-5.6 Luna",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.6-sol": {
+          "name": "GPT-5.6 Sol",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/gpt5.6-terra": {
+          "name": "GPT-5.6 Terra",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/glm-5.2": {
+          "name": "aug/GLM 5.2",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "aug/kimi-k2.6": {
+          "name": "Kimi K2.6",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 131000,
+            "output": 262144,
+            "input": 131000
+          }
+        },
+        "aug/kimi-k2.7": {
+          "name": "Kimi K2.7 Code",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 131000,
+            "output": 262144,
+            "input": 131000
+          }
+        },
+        "aug/prism-a": {
+          "name": "Prism (Claude + Gemini)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "aug/prism-b": {
+          "name": "Prism (GPT + Kimi)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192,
+            "input": 200000
+          }
+        },
+        "zc/glm-5.3-flash": {
+          "name": "GLM 5.3 Flash",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "zc/glm-5.3": {
+          "name": "GLM 5.3",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "zc/glm-5.3-max": {
+          "name": "GLM 5.3 Max",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "zc/glm-5.2": {
+          "name": "zc/GLM 5.2",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 131072,
+            "input": 1000000
+          }
+        },
+        "zc/glm-5.1": {
+          "name": "GLM 5.1",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 204800,
+            "output": 131072,
+            "input": 204800
+          }
+        },
+        "zc/glm-5": {
+          "name": "GLM 5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072,
+            "input": 200000
+          }
+        },
+        "zc/glm-5-turbo": {
+          "name": "GLM 5 Turbo",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072,
+            "input": 200000
+          }
+        },
+        "zc/glm-4.7-flash": {
+          "name": "GLM 4.7 Flash",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072,
+            "input": 200000
+          }
+        },
+        "zc/glm-4.7": {
+          "name": "GLM 4.7",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 131072,
+            "input": 200000
+          }
+        },
+        "zc/glm-4.6v": {
+          "name": "GLM 4.6V (Vision)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 32768,
+            "input": 128000
+          }
+        },
+        "zc/glm-4.6": {
+          "name": "GLM 4.6",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 200000,
+            "output": 32768,
+            "input": 200000
+          }
+        },
+        "zc/glm-4.5v": {
+          "name": "GLM 4.5V (Vision)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 16000,
+            "output": 32768,
+            "input": 16000
+          }
+        },
+        "zc/glm-4.5": {
+          "name": "GLM 4.5",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 32768,
+            "input": 128000
+          }
+        },
+        "zc/glm-4.5-air": {
+          "name": "GLM 4.5 Air",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 128000,
+            "output": 32768,
+            "input": 128000
+          }
+        },
+        "cxa/gpt-6-astra": {
+          "name": "GPT 6 Astra",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-ultra": {
+          "name": "GPT 6 Astra (Ultra)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-max": {
+          "name": "GPT 6 Astra (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-xhigh": {
+          "name": "GPT 6 Astra (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-high": {
+          "name": "GPT 6 Astra (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-medium": {
+          "name": "GPT 6 Astra (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-astra-low": {
+          "name": "GPT 6 Astra (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol": {
+          "name": "GPT 6 Sol",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-ultra": {
+          "name": "GPT 6 Sol (Ultra)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-max": {
+          "name": "GPT 6 Sol (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-xhigh": {
+          "name": "GPT 6 Sol (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-high": {
+          "name": "GPT 6 Sol (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-medium": {
+          "name": "GPT 6 Sol (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-sol-low": {
+          "name": "GPT 6 Sol (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol": {
+          "name": "GPT 6.1 Sol",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-ultra": {
+          "name": "GPT 6.1 Sol (Ultra)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-max": {
+          "name": "GPT 6.1 Sol (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-xhigh": {
+          "name": "GPT 6.1 Sol (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-high": {
+          "name": "GPT 6.1 Sol (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-medium": {
+          "name": "GPT 6.1 Sol (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6.1-sol-low": {
+          "name": "GPT 6.1 Sol (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna": {
+          "name": "GPT 6 Luna",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna-max": {
+          "name": "GPT 6 Luna (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna-xhigh": {
+          "name": "GPT 6 Luna (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna-high": {
+          "name": "GPT 6 Luna (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna-medium": {
+          "name": "GPT 6 Luna (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-6-luna-low": {
+          "name": "GPT 6 Luna (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol": {
+          "name": "GPT 5.6 Sol",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-ultra": {
+          "name": "GPT 5.6 Sol (Ultra)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-max": {
+          "name": "GPT 5.6 Sol (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-xhigh": {
+          "name": "GPT 5.6 Sol (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-high": {
+          "name": "GPT 5.6 Sol (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-medium": {
+          "name": "GPT 5.6 Sol (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-sol-low": {
+          "name": "GPT 5.6 Sol (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra": {
+          "name": "GPT 5.6 Terra",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-ultra": {
+          "name": "GPT 5.6 Terra (Ultra)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-max": {
+          "name": "GPT 5.6 Terra (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-xhigh": {
+          "name": "GPT 5.6 Terra (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-high": {
+          "name": "GPT 5.6 Terra (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-medium": {
+          "name": "GPT 5.6 Terra (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-terra-low": {
+          "name": "GPT 5.6 Terra (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna": {
+          "name": "GPT 5.6 Luna",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna-max": {
+          "name": "GPT 5.6 Luna (Max)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna-xhigh": {
+          "name": "GPT 5.6 Luna (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna-high": {
+          "name": "GPT 5.6 Luna (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna-medium": {
+          "name": "GPT 5.6 Luna (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.6-luna-low": {
+          "name": "GPT 5.6 Luna (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 872000,
+            "output": 128000,
+            "input": 872000
+          }
+        },
+        "cxa/gpt-5.5": {
+          "name": "GPT 5.5",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 128000,
+            "input": 272000
+          }
+        },
+        "cxa/gpt-5.5-xhigh": {
+          "name": "GPT 5.5 (xHigh)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 128000,
+            "input": 272000
+          }
+        },
+        "cxa/gpt-5.5-high": {
+          "name": "GPT 5.5 (High)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 128000,
+            "input": 272000
+          }
+        },
+        "cxa/gpt-5.5-medium": {
+          "name": "GPT 5.5 (Medium)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 128000,
+            "input": 272000
+          }
+        },
+        "cxa/gpt-5.5-low": {
+          "name": "GPT 5.5 (Low)",
+          "attachment": true,
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 400000,
+            "output": 128000,
+            "input": 272000
+          }
+        },
+        "unc/turboderp/Qwen3.8-27B-exl3": {
+          "name": "Qwen3.8 27B exl3 (\ud83c\udd93 Free)",
+          "reasoning": true,
+          "tool_call": true,
+          "limit": {
+            "context": 65536,
+            "output": 8192,
+            "input": 65536
+          }
+        },
+        "aihorde/2DN": {
+          "name": "2DN",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/526Mix-Animated": {
+          "name": "526Mix-Animated",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/A-Zovya RPG Inpainting": {
+          "name": "A-Zovya RPG Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AAM XL": {
+          "name": "AAM XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AbsoluteReality": {
+          "name": "AbsoluteReality",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Abyss OrangeMix": {
+          "name": "Abyss OrangeMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AbyssOrangeMix-AfterDark": {
+          "name": "AbyssOrangeMix-AfterDark",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ACertainThing": {
+          "name": "ACertainThing",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AIO Pixel Art": {
+          "name": "AIO Pixel Art",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AlbedoBase XL (SDXL)": {
+          "name": "AlbedoBase XL (SDXL)",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AlbedoBase XL 3.1": {
+          "name": "AlbedoBase XL 3.1",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AMPonyXL": {
+          "name": "AMPonyXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Analog Diffusion": {
+          "name": "Analog Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Analog Madness": {
+          "name": "Analog Madness",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anima-Turbo-v1.1": {
+          "name": "Anima-Turbo-v1.1",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Animagine XL": {
+          "name": "Animagine XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anime Pencil Diffusion": {
+          "name": "Anime Pencil Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anygen": {
+          "name": "Anygen",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/AnyLoRA": {
+          "name": "AnyLoRA",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anything Diffusion": {
+          "name": "Anything Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anything Diffusion Inpainting": {
+          "name": "Anything Diffusion Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anything v3": {
+          "name": "Anything v3",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Anything v5": {
+          "name": "Anything v5",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/App Icon Diffusion": {
+          "name": "App Icon Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Art Of Mtg": {
+          "name": "Art Of Mtg",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Aurora": {
+          "name": "Aurora",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Babes": {
+          "name": "Babes",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/BB95 Furry Mix": {
+          "name": "BB95 Furry Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/BB95 Furry Mix v14": {
+          "name": "BB95 Furry Mix v14",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/BigASP": {
+          "name": "BigASP",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Blank Canvas XL": {
+          "name": "Blank Canvas XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/BlenderMix Pony": {
+          "name": "BlenderMix Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/BweshMix": {
+          "name": "BweshMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/CamelliaMix 2.5D": {
+          "name": "CamelliaMix 2.5D",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Cetus-Mix": {
+          "name": "Cetus-Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Cheese Daddys Landscape Mix": {
+          "name": "Cheese Daddys Landscape Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Cheyenne": {
+          "name": "Cheyenne",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Comic-Diffusion": {
+          "name": "Comic-Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Counterfeit": {
+          "name": "Counterfeit",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/CyberRealistic Pony": {
+          "name": "CyberRealistic Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/CyriousMix": {
+          "name": "CyriousMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Dan Mumford Style": {
+          "name": "Dan Mumford Style",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Deliberate": {
+          "name": "Deliberate",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Deliberate 3.0": {
+          "name": "Deliberate 3.0",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Deliberate Inpainting": {
+          "name": "Deliberate Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Double Exposure Diffusion": {
+          "name": "Double Exposure Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Dreamlike Diffusion": {
+          "name": "Dreamlike Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DreamLikeSamKuvshinov": {
+          "name": "DreamLikeSamKuvshinov",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Dreamshaper": {
+          "name": "Dreamshaper",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DreamShaper Inpainting": {
+          "name": "DreamShaper Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DreamShaper XL": {
+          "name": "DreamShaper XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DucHaiten": {
+          "name": "DucHaiten",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DucHaiten Classic Anime": {
+          "name": "DucHaiten Classic Anime",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/DucHaiten GameArt (Unreal) Pony": {
+          "name": "DucHaiten GameArt (Unreal) Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Dungeons and Diffusion": {
+          "name": "Dungeons and Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Dungeons n Waifus": {
+          "name": "Dungeons n Waifus",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Edge Of Realism": {
+          "name": "Edge Of Realism",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Eimis Anime Diffusion": {
+          "name": "Eimis Anime Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Elysium Anime": {
+          "name": "Elysium Anime",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Epic Diffusion": {
+          "name": "Epic Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Epic Diffusion Inpainting": {
+          "name": "Epic Diffusion Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Ether Real Mix": {
+          "name": "Ether Real Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Experience": {
+          "name": "Experience",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ExpMix Line": {
+          "name": "ExpMix Line",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/FaeTastic": {
+          "name": "FaeTastic",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Fantasy Card Diffusion": {
+          "name": "Fantasy Card Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Flat-2D Animerge": {
+          "name": "Flat-2D Animerge",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Flux.1-Schnell fp8 (Compact)": {
+          "name": "Flux.1-Schnell fp8 (Compact)",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Fustercluck": {
+          "name": "Fustercluck",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Galena Redux": {
+          "name": "Galena Redux",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Ghibli Diffusion": {
+          "name": "Ghibli Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/GhostMix": {
+          "name": "GhostMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Grapefruit Hentai": {
+          "name": "Grapefruit Hentai",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/GTA5 Artwork Diffusion": {
+          "name": "GTA5 Artwork Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/HASDX": {
+          "name": "HASDX",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Hassaku XL": {
+          "name": "Hassaku XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Healy's Anime Blend": {
+          "name": "Healy's Anime Blend",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Hentai Diffusion": {
+          "name": "Hentai Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Hidden Canvas": {
+          "name": "Hidden Canvas",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/HolyMix ILXL": {
+          "name": "HolyMix ILXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/HRL": {
+          "name": "HRL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ICBINP - I Can't Believe It's Not Photography": {
+          "name": "ICBINP - I Can't Believe It's Not Photography",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ICBINP XL": {
+          "name": "ICBINP XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/iCoMix": {
+          "name": "iCoMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/iCoMix Inpainting": {
+          "name": "iCoMix Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Illuminati Diffusion": {
+          "name": "Illuminati Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Inkpunk Diffusion": {
+          "name": "Inkpunk Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Jim Eidomode": {
+          "name": "Jim Eidomode",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Juggernaut XL": {
+          "name": "Juggernaut XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/KaynegIllustriousXL": {
+          "name": "KaynegIllustriousXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Krea2-Turbo_fp8": {
+          "name": "Krea2-Turbo_fp8",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Lawlas's yiff mix": {
+          "name": "Lawlas's yiff mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Liberty": {
+          "name": "Liberty",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Lyriel": {
+          "name": "Lyriel",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/majicMIX realistic": {
+          "name": "majicMIX realistic",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/MeinaMix": {
+          "name": "MeinaMix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/MHXL - Aventis Horizon": {
+          "name": "MHXL - Aventis Horizon",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Midjourney PaintArt": {
+          "name": "Midjourney PaintArt",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Mistoon Anime": {
+          "name": "Mistoon Anime",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ModernArt Diffusion": {
+          "name": "ModernArt Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/MoonMix Fantasy": {
+          "name": "MoonMix Fantasy",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Moss-Image-Base": {
+          "name": "Moss-Image-Base",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/MOSS-Image-SFT": {
+          "name": "MOSS-Image-SFT",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Movie Diffusion": {
+          "name": "Movie Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/NatViS": {
+          "name": "NatViS",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Neurogen": {
+          "name": "Neurogen",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/NeverEnding Dream": {
+          "name": "NeverEnding Dream",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/NEW ERA": {
+          "name": "NEW ERA",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/noob_v_pencil XL": {
+          "name": "noob_v_pencil XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/noobEvo": {
+          "name": "noobEvo",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Nova Anime XL": {
+          "name": "Nova Anime XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Nova Flat XL": {
+          "name": "Nova Flat XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Nova Furry Pony": {
+          "name": "Nova Furry Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Nova Furry XL": {
+          "name": "Nova Furry XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/NTR MIX IL-Noob XL": {
+          "name": "NTR MIX IL-Noob XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Pastel Mix": {
+          "name": "Pastel Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Perfect World": {
+          "name": "Perfect World",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/PerfectDeliberate": {
+          "name": "PerfectDeliberate",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Photon": {
+          "name": "Photon",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Pixel Illustrious": {
+          "name": "Pixel Illustrious",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Poison": {
+          "name": "Poison",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Pony Diffusion XL": {
+          "name": "Pony Diffusion XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Pony Realism": {
+          "name": "Pony Realism",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/PPP": {
+          "name": "PPP",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Prefect Pony": {
+          "name": "Prefect Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Pretty 2.5D": {
+          "name": "Pretty 2.5D",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Project Unreal Engine 5": {
+          "name": "Project Unreal Engine 5",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Quiet Goodnight XL": {
+          "name": "Quiet Goodnight XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Qwen-Image_fp8": {
+          "name": "Qwen-Image_fp8",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Rag Illustrious Mix": {
+          "name": "Rag Illustrious Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Real Dos Mix": {
+          "name": "Real Dos Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/RealBiter": {
+          "name": "RealBiter",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Realism Engine": {
+          "name": "Realism Engine",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Realistic Vision": {
+          "name": "Realistic Vision",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Realistic Vision Inpainting": {
+          "name": "Realistic Vision Inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Reliberate": {
+          "name": "Reliberate",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Rev Animated": {
+          "name": "Rev Animated",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Ri-Mix": {
+          "name": "Ri-Mix",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/RPG": {
+          "name": "RPG",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Sci-Fi Diffusion": {
+          "name": "Sci-Fi Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/SD-Silicon": {
+          "name": "SD-Silicon",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/SDXL 1.0": {
+          "name": "SDXL 1.0",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Something": {
+          "name": "Something",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Stable Cascade 1.0": {
+          "name": "Stable Cascade 1.0",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/stable_diffusion": {
+          "name": "stable_diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/stable_diffusion_2.1": {
+          "name": "stable_diffusion_2.1",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/stable_diffusion_inpainting": {
+          "name": "stable_diffusion_inpainting",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/SwamPonyXL": {
+          "name": "SwamPonyXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ToonYou": {
+          "name": "ToonYou",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/TUNIX Pony": {
+          "name": "TUNIX Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Uhmami": {
+          "name": "Uhmami",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Ultraspice": {
+          "name": "Ultraspice",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Unstable Diffusers XL": {
+          "name": "Unstable Diffusers XL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Unstable Ink Dream": {
+          "name": "Unstable Ink Dream",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/URPM": {
+          "name": "URPM",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Vector Art": {
+          "name": "Vector Art",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/WAI-ANI-NSFW-PONYXL": {
+          "name": "WAI-ANI-NSFW-PONYXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/WAI-CUTE Pony": {
+          "name": "WAI-CUTE Pony",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/WAI-NSFW-illustrious-SDXL": {
+          "name": "WAI-NSFW-illustrious-SDXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/waifu_diffusion": {
+          "name": "waifu_diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Western Animation Diffusion": {
+          "name": "Western Animation Diffusion",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/White Pony Diffusion 4": {
+          "name": "White Pony Diffusion 4",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Woop-Woop Photo": {
+          "name": "Woop-Woop Photo",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Yiffy": {
+          "name": "Yiffy",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Z-Image-Turbo": {
+          "name": "Z-Image-Turbo",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/ZavyChromaXL": {
+          "name": "ZavyChromaXL",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "aihorde/Zeipher Female Model": {
+          "name": "Zeipher Female Model",
+          "attachment": true,
+          "reasoning": true,
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "model": "omniroute/auto/coding:free"
+}

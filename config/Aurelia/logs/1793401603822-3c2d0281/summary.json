@@ -1,0 +1,150 @@
+{
+  "session_id": "1793401603822-3c2d0281",
+  "app_id": 391540,
+  "app_name": "Undertale",
+  "runner_name": "Native",
+  "result": "Failure",
+  "failing_stage": null,
+  "total_duration_ms": 2226,
+  "stage_durations_ms": {
+    "ResolveProfile": 0,
+    "ResolveGameFixups": 0,
+    "ResolveGame": 0,
+    "ResolveDllProviders": 7,
+    "Preflight": 0,
+    "SpawnProcess": 8,
+    "Finalize": 0,
+    "BuildCommand": 4,
+    "PreparePrefix": 0,
+    "ResolveComponents": 0,
+    "BuildEnvironment": 0,
+    "ApplyLaunchScript": 0
+  },
+  "timestamp": 1793401606,
+  "warnings": [
+    {
+      "code": "LAUNCH_EARLY_EXIT",
+      "message": "The game process exited immediately after spawn (exit code: None, lifetime: 2002ms).",
+      "context": {}
+    }
+  ],
+  "graphics_stack": {
+    "graphics_stack_expected": "WineD3D (Baseline)",
+    "graphics_stack_evidence": [],
+    "graphics_stack_confidence": "low",
+    "override_policy": "Builtin-only",
+    "dll_providers": {
+      "d3d8": "None",
+      "libvkd3d-shader-1": "None",
+      "nvapi": "None",
+      "nvofapi64": "None",
+      "d3d12core": "None",
+      "d3d10core": "None",
+      "libvkd3d-1": "None",
+      "d3d12": "None",
+      "dxgi": "None",
+      "d3d9": "None",
+      "nvapi64": "None",
+      "d3d11": "None"
+    },
+    "requested_backend": "",
+    "effective_backend": "WineD3D (Baseline)",
+    "requested_d3d12_provider": "",
+    "effective_d3d12_provider": "None",
+    "requested_nvapi": false,
+    "effective_nvapi": false,
+    "requested_gpu": null,
+    "effective_gpu": null,
+    "target_architecture": "Unknown",
+    "fallback_reasons": {
+      "d3d12core": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "libvkd3d-1": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "d3d9": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "dxgi": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "d3d8": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "nvapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "d3d11": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "d3d10core": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "d3d12": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "libvkd3d-shader-1": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "nvapi": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "nvofapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths"
+    },
+    "runtime_evidence": {
+      "dxvk": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "DXVK requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "vkd3d_proton": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "VKD3D-Proton requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "vkd3d": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "VKD3D requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "wined3d": {
+        "expected": true,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "WineD3D requested; Wine log empty",
+        "diagnostics_note": "Log file exists but contains no lines after 1 retries. Process has exited. Logging may be disabled or failed to initialize."
+      },
+      "scan_metadata": {
+        "log_path": "/home/miguel/.config/Aurelia/logs/1793401603822-3c2d0281/stderr.log",
+        "file_exists": true,
+        "file_size": 0,
+        "line_count": 0,
+        "scan_duration_ms": 201,
+        "candidate_matches": 0,
+        "retries": 1,
+        "process_running_during_scan": false
+      }
+    },
+    "env_propagation": {}
+  },
+  "verification": {
+    "status": "failed_after_spawn",
+    "detailed_status": "game_failed_after_spawn",
+    "process_lifetime_ms": 2002,
+    "exit_code": null,
+    "log_growth_observed": false,
+    "windows_username": null,
+    "windows_user_path": null,
+    "key_paths_detected": {},
+    "steam_client_exposed": false,
+    "last_successful_startup_milestone": "",
+    "dependency_families_detected": [],
+    "steam_runtime_exe": null,
+    "steam_runtime_args": [],
+    "steam_runtime_exit_code": null,
+    "steam_runtime_lifetime_ms": null,
+    "steam_runtime_milestone": "",
+    "steam_running_before_launch": false,
+    "steam_auto_start_attempted": false,
+    "steam_auto_start_failed": false,
+    "steam_api_initialized": null,
+    "steam_ownership_confirmed": null,
+    "steam_client_artifact": null,
+    "effective_game_wineprefix": null,
+    "effective_steam_wineprefix": null,
+    "steam_client_install_path_exposed_to_game": null,
+    "steam_client_install_path_source": null,
+    "per_game_prefix_requested": false,
+    "per_game_prefix_honored": false,
+    "steam_runtime_policy": "",
+    "steam_runtime_source": "",
+    "windows_steam_discovery_enabled": false,
+    "log_head": [],
+    "log_tail": []
+  }
+}

@@ -1,0 +1,17 @@
+[[rule.monitor_rule]]
+name = "^eDP-1$"
+width = 1920
+height = 1080
+refresh = 60
+x = 1680
+y = 0
+scale = 1
+
+[[rule.monitor_rule]]
+name = "^HDMI-A-1$"
+width = 1680
+height = 1050
+refresh = 59.954
+x = 0
+y = 0
+scale = 1

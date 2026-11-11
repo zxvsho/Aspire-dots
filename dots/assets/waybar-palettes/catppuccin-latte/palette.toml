@@ -1,0 +1,12 @@
+name = "Catppuccin Latte"
+author = "Mangowm_dots"
+description = "Catppuccin claro, con acentos vivos."
+
+[colors]
+background = "#eff1f5"
+background-alt = "#ccd0da"
+foreground = "#4c4f69"
+selected = "#8839ef"
+selectedtext = "#eff1f5"
+active = "#1e66f5"
+urgent = "#d20f39"

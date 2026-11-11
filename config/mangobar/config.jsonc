@@ -1,0 +1,44 @@
+{
+  "height": 26,
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "modules-left": ["mango/tags", "mango/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "network", "tray"],
+  "mango/tags": {
+    "format": "{name}",
+    "show-empty": false
+  },
+  "mango/window": {
+    "max-length": 50
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 3000,
+    "on-click": "rio --title btop-float -e btop"
+  },
+  "memory": {
+    "format": "mem {percentage}%",
+    "interval": 3000,
+    "on-click": "rio --title btop-float -e btop"
+  },
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "vol mute",
+    "on-click": "rio --title wiremix-float -e wiremix"
+  },
+  "network": {
+    "format-wifi": "wifi {signalStrength}%",
+    "format-ethernet": "eth {ipaddr}",
+    "format-disconnected": "wifi --",
+    "on-click": "rio --title impala-float -e impala"
+  },
+  "tray": {
+    "spacing": 8
+  }
+}

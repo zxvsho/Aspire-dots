@@ -1,0 +1,7 @@
+name = "dynamic-island"
+author = "Mangowm_dots"
+description = "Isla central flotante con un drawer compacto para espacios, medios y reloj."
+version = "1.0.0"
+required-modules = ["group/island"]
+optional-dependencies = ["ext/workspaces", "mpris", "clock"]
+allow-fixed-colors = false

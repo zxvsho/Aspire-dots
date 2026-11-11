@@ -1,0 +1,82 @@
+# Presets de solo lectura. Las variantes comparten plantilla; solo cambian
+# paleta y geometría. Editar este archivo para ajustar radius/gap/padding.
+
+[[theme]]
+name = "catppuccin-mocha"
+display-name = "Catppuccin Mocha"
+description = "Cápsulas suaves con la variante oscura de Catppuccin."
+palette = "catppuccin-mocha"
+template = "capsule"
+radius = 12
+gap = 4
+padding = 10
+
+[[theme]]
+name = "catppuccin-latte"
+display-name = "Catppuccin Latte"
+description = "La misma estructura, con colores claros y alto contraste."
+palette = "catppuccin-latte"
+template = "capsule"
+radius = 12
+gap = 4
+padding = 10
+
+[[theme]]
+name = "tokyo-night"
+display-name = "Tokyo Night"
+description = "Barra compacta de acento azul y magenta."
+palette = "tokyo-night"
+template = "minimal"
+radius = 8
+gap = 4
+padding = 8
+
+[[theme]]
+name = "gruvbox-dark"
+display-name = "Gruvbox Dark"
+description = "Barra cálida de estilo retro."
+palette = "gruvbox-dark"
+template = "gaming"
+radius = 6
+gap = 2
+padding = 8
+
+[[theme]]
+name = "dracula"
+display-name = "Dracula"
+description = "Cápsulas violetas con acentos cyan."
+palette = "dracula"
+template = "capsule"
+radius = 10
+gap = 4
+padding = 10
+
+[[theme]]
+name = "nord"
+display-name = "Nord"
+description = "Diseño limpio con acentos azul hielo."
+palette = "nord"
+template = "minimal"
+radius = 8
+gap = 4
+padding = 8
+
+[[theme]]
+name = "rose-pine"
+display-name = "Rosé Pine"
+description = "Islas redondeadas con acentos suaves."
+palette = "rose-pine"
+template = "capsule"
+radius = 14
+gap = 6
+padding = 12
+
+[[theme]]
+name = "everforest"
+display-name = "Everforest"
+description = "Barra inspirada en los verdes del bosque."
+palette = "everforest"
+template = "minimal"
+radius = 10
+gap = 4
+padding = 10

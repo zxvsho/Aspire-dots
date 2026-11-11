@@ -1,0 +1,169 @@
+{
+  "files": {
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/shell_shared.dat_lvl.verify": {
+      "hash": "70972428da7cb7b59a8bbb46b6e52747f4d96bc1",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_alt.dat.verify": {
+      "hash": "91af43b1d703d85ce719db4280911a525a85e1de",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_mapstart.dat": {
+      "hash": "a3fd34c8387c855bca6f9c27492fb3d515119f4e",
+      "timestamp": 1791986982,
+      "size": 3269
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration.dat": {
+      "hash": "ac0d9c4e1aecc838be330c07049c2c1b1869d22d",
+      "timestamp": 1791987317,
+      "size": 11989
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/migrated.bin": {
+      "hash": "269321bedaa746f50fac9c7b48c4065bd7d8590a",
+      "timestamp": 1791244685,
+      "size": 72
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/shell_shared.dat": {
+      "hash": "9c48ebaab297eaba8196d1a777dc9191befb4946",
+      "timestamp": 1791987317,
+      "size": 18387
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/shell_shared.dat.verify": {
+      "hash": "7cdfcbb6322660576337ae39a40a4e4924b088db",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/player_inventory.dat": {
+      "hash": "ea967bbb1b5534a8caebbcd8804948c2cd921209",
+      "timestamp": 1791987317,
+      "size": 823
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game_duration.dat_lvl.verify": {
+      "hash": "fd8309d6df8736257dafd9421b45f9b0c020cbaf",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game_duration.dat_lvl": {
+      "hash": "5f2b16e10b576cea70f462d3f3c21e60e02786e2",
+      "timestamp": 1791986935,
+      "size": 15756
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_mapstart.dat_lvl.verify": {
+      "hash": "a8e52658ad56c9af4ea4835d7b56bae68f8babef",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint.dat_lvl.verify": {
+      "hash": "5b1189f6152055e3de5e4dfe1e4528f238bd8aca",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game.details": {
+      "hash": "c3f0821b8281c95c15af2056e58490726d5ed30d",
+      "timestamp": 1791987317,
+      "size": 171
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration_alt.dat": {
+      "hash": "fb5cba461c2422de3c0eef796e21b3b83ce2e6ec",
+      "timestamp": 1791987317,
+      "size": 4
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game_duration.dat": {
+      "hash": "10861c2a10443b5514e282222cdb08aa6c54cb22",
+      "timestamp": 1791987317,
+      "size": 16094
+    },
+    "%WinSavedGames%id Software/DOOM/base/DOOMConfig.cfg": {
+      "hash": "3c4cd94a63c15edb5441689ce87cce758d01f537",
+      "timestamp": 1791474452,
+      "size": 12598
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/shell_shared.dat_lvl": {
+      "hash": "11887af0929362a32aaf8c9ad2bc4b0985e4f54d",
+      "timestamp": 1791986935,
+      "size": 17915
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint.dat": {
+      "hash": "63b100eb6c4860e2bb9a4a8dbe0f7df8a5b5cea0",
+      "timestamp": 1791986982,
+      "size": 12264
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/PROFILE/profile.bin": {
+      "hash": "307ee349e4be3a54b0c7fa8bd22bccb736f4e6be",
+      "timestamp": 1792778332,
+      "size": 210200
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game.details.verify": {
+      "hash": "e1c9353d8aff443d0613330b6783ba39c173575c",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration.dat_lvl.verify": {
+      "hash": "5690b038d0dc4a9a5c86ffa2869b2915985f1be4",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_mapstart.dat.verify": {
+      "hash": "f7495d1b1746d8ab70967449ea5c86b20f8ce4ed",
+      "timestamp": 1791986982,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration.dat.verify": {
+      "hash": "7ad2501f2764e2ecde2d4a32b95a7810bd79be4a",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/player_inventory.dat_lvl": {
+      "hash": "d69101ccb872af8605287cda65462c3cb3338873",
+      "timestamp": 1791986935,
+      "size": 685
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration_alt.dat.verify": {
+      "hash": "3ccf6e63e210b952a2d65795c7349c115232149b",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/game_duration.dat.verify": {
+      "hash": "1a5058590a19f0a5c83f14dfe06d5f44d15fdf2d",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/level_duration.dat_lvl": {
+      "hash": "8c6d917dbf4c7149ffa17d250d7dc9e3348c798f",
+      "timestamp": 1791986935,
+      "size": 11397
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_mapstart.dat_lvl": {
+      "hash": "57692d06c5d7f14d3f6963777b289d0b77722359",
+      "timestamp": 1791986935,
+      "size": 3175
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint_alt.dat": {
+      "hash": "fb5cba461c2422de3c0eef796e21b3b83ce2e6ec",
+      "timestamp": 1791987317,
+      "size": 4
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint.dat.verify": {
+      "hash": "df6b4b12faa20814c17ae5f2485534ef53aa539a",
+      "timestamp": 1791986982,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/player_inventory.dat.verify": {
+      "hash": "7b21c6e7c2887038d679e8b27c1788a2bfe66fdd",
+      "timestamp": 1791987317,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/player_inventory.dat_lvl.verify": {
+      "hash": "9c279138f37f4151d6fb8295d107f5f800b3b357",
+      "timestamp": 1791986935,
+      "size": 40
+    },
+    "%WinSavedGames%id Software/DOOM/base/savegame.user/76561198644430462/GAME-AUTOSAVE0/checkpoint.dat_lvl": {
+      "hash": "bfcb622848a468f12e2d6edc76ae7f6b161de4b8",
+      "timestamp": 1791986935,
+      "size": 10189
+    }
+  }
+}

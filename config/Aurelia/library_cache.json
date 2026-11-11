@@ -1,0 +1,44 @@
+[
+  {
+    "app_id": 47780,
+    "name": "Dead Space 2",
+    "playtime_forever_minutes": 114,
+    "local_manifest_ids": {},
+    "update_available": false
+  },
+  {
+    "app_id": 221040,
+    "name": "Resident Evil 6",
+    "playtime_forever_minutes": 188,
+    "local_manifest_ids": {},
+    "update_available": false
+  },
+  {
+    "app_id": 379720,
+    "name": "DOOM",
+    "playtime_forever_minutes": 123,
+    "local_manifest_ids": {},
+    "update_available": false
+  },
+  {
+    "app_id": 391540,
+    "name": "Undertale",
+    "playtime_forever_minutes": 109,
+    "local_manifest_ids": {},
+    "update_available": false
+  },
+  {
+    "app_id": 405640,
+    "name": "Pony Island",
+    "playtime_forever_minutes": 0,
+    "local_manifest_ids": {},
+    "update_available": false
+  },
+  {
+    "app_id": 2990600,
+    "name": "Fireside Feelings",
+    "playtime_forever_minutes": 0,
+    "local_manifest_ids": {},
+    "update_available": false
+  }
+]

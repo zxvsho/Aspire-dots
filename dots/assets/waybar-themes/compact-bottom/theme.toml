@@ -1,0 +1,7 @@
+name = "compact-bottom"
+author = "Mangowm_dots"
+description = "Barra compacta inferior con reloj, estado de red, audio y batería."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "clock", "network", "pulseaudio", "battery", "custom/power"]
+optional-dependencies = []
+allow-fixed-colors = false

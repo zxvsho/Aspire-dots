@@ -1,0 +1,181 @@
+[
+  {
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "states": {
+        "critical": 10,
+        "warning": 20
+      }
+    },
+    "clock": {
+      "format": "{:%I:%M %p}",
+      "interval": 58,
+      "tooltip-format": "{:%A %d %B %Y}"
+    },
+    "cpu": {
+      "format": "{usage}% 󰻠",
+      "interval": 2,
+      "on-click": ""
+    },
+    "custom/power": {
+      "format": "󰐥",
+      "on-click": "wlogout",
+      "tooltip": false
+    },
+    "ext/workspaces": {
+      "format": "{icon}",
+      "ignore-hidden": true,
+      "on-click": "mmsg dispatch workspace {index}",
+      "on-scroll-down": "mmsg dispatch workspace -1",
+      "on-scroll-up": "mmsg dispatch workspace +1"
+    },
+    "group/island": {
+      "drawer": {
+        "children-class": "island-child",
+        "transition-duration": 250,
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/island-trigger",
+        "ext/workspaces",
+        "mpris",
+        "clock"
+      ],
+      "orientation": "horizontal"
+    },
+    "mpris": {
+      "format": "{artist} - {title}",
+      "interval": 1,
+      "max-length": 40,
+      "on-click": ""
+    },
+    "network": {
+      "format-disconnected": "󰤭",
+      "format-ethernet": "󰈀",
+      "format-wifi": "󰤨 "
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-icons": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ],
+      "format-muted": "󰝟"
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 8
+    },
+    "name": "capsule-islands",
+    "position": "top",
+    "layer": "top",
+    "height": 28,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": null,
+    "modules-left": [
+      "ext/workspaces"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "custom/power"
+    ]
+  },
+  {
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "states": {
+        "critical": 10,
+        "warning": 20
+      }
+    },
+    "clock": {
+      "format": "{:%I:%M %p}",
+      "interval": 52
+    },
+    "custom/power": {
+      "format": "󰐥",
+      "on-click": "wlogout",
+      "tooltip": false
+    },
+    "ext/workspaces": {
+      "format": "{icon}",
+      "ignore-hidden": true,
+      "on-click": "mmsg dispatch workspace {index}",
+      "on-scroll-down": "mmsg dispatch workspace -1",
+      "on-scroll-up": "mmsg dispatch workspace +1"
+    },
+    "network": {
+      "format-disconnected": "󰤭",
+      "format-ethernet": "󰈀",
+      "format-wifi": "󰤨 {essid}"
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-icons": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ],
+      "format-muted": "󰝟"
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 8
+    },
+    "name": null,
+    "position": "top",
+    "layer": null,
+    "height": 38,
+    "spacing": 0,
+    "margin-top": null,
+    "margin-left": null,
+    "margin-right": null,
+    "margin-bottom": null,
+    "modules-left": [
+      "ext/workspaces"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "network",
+      "pulseaudio",
+      "battery",
+      "tray",
+      "custom/power"
+    ]
+  }
+]

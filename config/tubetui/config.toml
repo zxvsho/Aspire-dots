@@ -1,0 +1,7 @@
+[session]
+asked = true
+browser = "chromium:Default"
+cookies_file = ""
+
+[search]
+topics = []

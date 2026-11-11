@@ -1,0 +1,262 @@
+# aspire-menu - Declarative menu definition matching rofi-menu.sh
+# Structure: level_id = { prompt, parent, items = [{type, label, action, ...}] }
+# Types: "submenu", "action", "toggle"
+
+[metadata]
+version = "1.0"
+default_level = "root"
+
+[levels.root]
+prompt = "Go"
+data = "root"
+parent = ""
+items = [
+  { type = "action", label = "Apps", icon = "󰀻", action = "apps_launcher" },
+  { type = "submenu", label = "Settings", icon = "󰒓", target = "settings" },
+  { type = "submenu", label = "Style", icon = "󰏘", target = "style" },
+  { type = "submenu", label = "Utils", icon = "󰖷", target = "utils" },
+  { type = "submenu", label = "Install", icon = "󰇚", target = "install" },
+  { type = "submenu", label = "Remove", icon = "󰆴", target = "remove" },
+  { type = "submenu", label = "Update", icon = "󰑐", target = "update" },
+  { type = "submenu", label = "Extras", icon = "󰩦", target = "extras" },
+  { type = "submenu", label = "System", icon = "󰪫", target = "system" },
+]
+
+# ==================== SETTINGS ====================
+[levels.settings]
+prompt = "Settings"
+data = "settings"
+parent = "root"
+items = [
+  { type = "action", label = "Monitors", icon = "󰍹", action = "settings_monitors" },
+  { type = "action", label = "Keyboard", icon = "󰌌", action = "settings_keyboard" },
+  { type = "action", label = "Bluetooth", icon = "󰂯", action = "settings_bluetooth" },
+  { type = "action", label = "Network", icon = "󰈀", action = "settings_network" },
+]
+
+# ==================== STYLE ====================
+[levels.style]
+prompt = "Style"
+data = "style"
+parent = "root"
+items = [
+  { type = "submenu", label = "Background", icon = "󰋩", target = "background" },
+  { type = "submenu", label = "Engine", icon = "󰈊", target = "engine" },
+  { type = "submenu", label = "Theme", icon = "󰢵", target = "theme" },
+  { type = "submenu", label = "Launcher", icon = "󰑣", target = "launcher" },
+  { type = "submenu", label = "Powermenu", icon = "󰐥", target = "powermenu" },
+  { type = "submenu", label = "Menu Bar", icon = "󰕰", target = "menubar" },
+  { type = "submenu", label = "Font", icon = "󰛖", target = "font" },
+  { type = "submenu", label = "Custom", icon = "󰘮", target = "custom" },
+]
+
+[levels.background]
+prompt = "Background"
+data = "background"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰉏", action = "bg_selector" },
+  { type = "action", label = "Waypaper", icon = "󰸉", action = "bg_waypaper" },
+  { type = "action", label = "Matugen", icon = "󰸋", action = "bg_matugen" },
+  { type = "action", label = "Tinty", icon = "󰓡", action = "bg_tinty" },
+]
+
+[levels.engine]
+prompt = "Engine"
+data = "engine"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰓡", action = "engine_selector" },
+  { type = "toggle", label = "Dynamic Color", icon = "󰃣", action = "engine_matugen", state_key = "color_engine", state_on = "matugen" },
+  { type = "toggle", label = "Theme Managers", icon = "󰓡", action = "engine_tinty", state_key = "color_engine", state_on = "tinty" },
+]
+
+[levels.theme]
+prompt = "Theme"
+data = "theme"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰓡", action = "theme_selector" },
+  { type = "action", label = "Apply", icon = "󰗼", action = "theme_apply" },
+  { type = "submenu", label = "Custom Themes", icon = "󰏘", target = "theme_custom" },
+]
+
+[levels.theme_custom]
+prompt = "Custom Themes"
+data = "theme-custom"
+parent = "theme"
+items = [
+  { type = "action", label = "Create New…", icon = "󰏘", action = "theme_create" },
+]
+
+[levels.launcher]
+prompt = "Launcher"
+data = "launcher"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰀻", action = "launcher_selector" },
+  { type = "action", label = "Apply", icon = "󰗼", action = "launcher_apply" },
+]
+
+[levels.powermenu]
+prompt = "Powermenu"
+data = "powermenu"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰏘", action = "powermenu_selector" },
+  { type = "action", label = "Apply", icon = "󰗼", action = "powermenu_apply" },
+]
+
+[levels.menubar]
+prompt = "Menu Bar"
+data = "menubar"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰕮", action = "menubar_selector" },
+  { type = "action", label = "Apply", icon = "󰗼", action = "menubar_apply" },
+]
+
+[levels.font]
+prompt = "Font"
+data = "font"
+parent = "style"
+items = [
+  { type = "action", label = "Selector", icon = "󰛖", action = "font_selector" },
+  { type = "action", label = "Preview", icon = "󰽡", action = "font_preview" },
+]
+
+[levels.custom]
+prompt = "Custom"
+data = "custom"
+parent = "style"
+items = [
+  { type = "action", label = "Colors", icon = "󰏘", action = "custom_colors" },
+  { type = "action", label = "CSS", icon = "󰏘", action = "custom_css" },
+  { type = "action", label = "Create Theme", icon = "󰏘", action = "custom_create_theme" },
+]
+
+# ==================== UTILS ====================
+[levels.utils]
+prompt = "Utils"
+data = "utils"
+parent = "root"
+items = [
+  { type = "action", label = "Screenshot", icon = "󰄄", action = "utils_screenshot" },
+  { type = "action", label = "Clipboard", icon = "󰅇", action = "utils_clipboard" },
+  { type = "action", label = "Color Picker", icon = "󰏘", action = "utils_color_picker" },
+  { type = "action", label = "Calculator", icon = "󰃬", action = "utils_calculator" },
+  { type = "action", label = "Emoji", icon = "󰏘", action = "utils_emoji" },
+]
+
+# ==================== INSTALL ====================
+[levels.install]
+prompt = "Install"
+data = "install"
+parent = "root"
+items = [
+  { type = "action", label = "Packages", icon = "󰏓", action = "install_packages" },
+  { type = "action", label = "Fonts", icon = "󰛖", action = "install_fonts" },
+  { type = "action", label = "Themes", icon = "󰏘", action = "install_themes" },
+  { type = "action", label = "Store", icon = "󰏓", action = "install_store" },
+]
+
+# ==================== REMOVE ====================
+[levels.remove]
+prompt = "Remove"
+data = "remove"
+parent = "root"
+items = [
+  { type = "action", label = "Packages", icon = "󰹑", action = "remove_packages" },
+  { type = "action", label = "Orphans", icon = "󰏘", action = "remove_orphans" },
+  { type = "action", label = "Cache", icon = "󰏘", action = "remove_cache" },
+]
+
+# ==================== UPDATE ====================
+[levels.update]
+prompt = "Update"
+data = "update"
+parent = "root"
+items = [
+  { type = "action", label = "System", icon = "󰏘", action = "update_system" },
+  { type = "action", label = "Dotfiles", icon = "󰏘", action = "update_dotfiles" },
+  { type = "action", label = "Themes", icon = "󰏘", action = "update_themes" },
+]
+
+# ==================== EXTRAS ====================
+[levels.extras]
+prompt = "Extras"
+data = "extras"
+parent = "root"
+items = [
+  { type = "action", label = "Games", icon = "󰈹", action = "extras_games" },
+  { type = "action", label = "Media", icon = "󰈹", action = "extras_media" },
+  { type = "action", label = "Tools", icon = "󰏘", action = "extras_tools" },
+]
+
+# ==================== SYSTEM ====================
+[levels.system]
+prompt = "System"
+data = "system"
+parent = "root"
+items = [
+  { type = "action", label = "Powermenu", icon = "󰐥", action = "system_powermenu" },
+  { type = "action", label = "Lock", icon = "󰌾", action = "system_lock" },
+  { type = "action", label = "Logout", icon = "󰍃", action = "system_logout" },
+  { type = "action", label = "Reboot", icon = "󰑓", action = "system_reboot" },
+  { type = "action", label = "Shutdown", icon = "󰐥", action = "system_shutdown" },
+]
+
+# ==================== ACTIONS MAP ====================
+[actions]
+apps_launcher = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Apps/launcher.sh" }
+settings_monitors = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Settings/monitors.sh" }
+settings_keyboard = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Settings/keyboard.sh" }
+settings_bluetooth = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Settings/bluetooth.sh" }
+settings_network = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Settings/network.sh" }
+bg_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Background/selector.sh" }
+bg_waypaper = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Background/waypaper.sh" }
+bg_matugen = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Background/matugen.sh" }
+bg_tinty = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Background/tinty.sh" }
+engine_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Engine/selector.sh" }
+engine_matugen = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Engine/matugen.sh" }
+engine_tinty = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Engine/tinty.sh" }
+theme_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Theme/selector.sh" }
+theme_apply = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Theme/apply.sh" }
+theme_create = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Custom/create-theme.sh" }
+launcher_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Launcher/selector.sh" }
+launcher_apply = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Launcher/apply.sh" }
+powermenu_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Powermenu/selector.sh" }
+powermenu_apply = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Powermenu/apply.sh" }
+menubar_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/MenuBar/selector.sh" }
+menubar_apply = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/MenuBar/apply.sh" }
+font_selector = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Font/selector.sh" }
+font_preview = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Font/preview.sh" }
+custom_colors = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Custom/colors.sh" }
+custom_css = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Custom/css.sh" }
+custom_create_theme = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Style/Custom/create-theme.sh" }
+utils_screenshot = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Utils/screenshot.sh" }
+utils_clipboard = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Utils/clipboard.sh" }
+utils_color_picker = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Utils/color-picker.sh" }
+utils_calculator = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Utils/calculator.sh" }
+utils_emoji = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Utils/emoji.sh" }
+install_packages = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Install/packages.sh" }
+install_fonts = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Install/fonts.sh" }
+install_themes = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Install/themes.sh" }
+install_store = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Install/store.sh" }
+remove_packages = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Remove/packages.sh" }
+remove_orphans = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Remove/orphans.sh" }
+remove_cache = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Remove/cache.sh" }
+update_system = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Update/system.sh" }
+update_dotfiles = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Update/dotfiles.sh" }
+update_themes = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Update/themes.sh" }
+extras_games = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Extras/games.sh" }
+extras_media = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Extras/media.sh" }
+extras_tools = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/Extras/tools.sh" }
+system_powermenu = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/System/powermenu.sh" }
+system_lock = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/System/lock.sh" }
+system_logout = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/System/logout.sh" }
+system_reboot = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/System/reboot.sh" }
+system_shutdown = { type = "spawn", cmd = "~/.dots/scripts/aspire-menu/actions/System/shutdown.sh" }
+
+internal_quit = { type = "internal", cmd = "quit" }
+internal_reload = { type = "internal", cmd = "reload" }

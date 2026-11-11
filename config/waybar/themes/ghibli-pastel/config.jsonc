@@ -1,0 +1,132 @@
+// =============================================================================
+// Waybar - Tema Ghibli Pastel para MangoWM
+// Adaptado de mangowm-waybar-ghibli-theme
+// - Workspaces con ext/workspaces (mmsg) en lugar de wlr/hyprland
+// - Acciones apuntando a programas instalados en este equipo
+// =============================================================================
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+  "margin-top": 6,
+  "margin-left": 8,
+  "margin-right": 8,
+  "spacing": 6,
+
+  // Organización modular de la barra (Izquierda - Centro - Derecha)
+  "modules-left": [
+    "custom/distro",
+    "ext/workspaces"
+  ],
+  "modules-center": [
+    "clock#time"
+  ],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "battery",
+    "clock#date",
+    "custom/power"
+  ],
+
+  // ---------------------------------------------------------------------------
+  // Módulos Izquierda
+  // ---------------------------------------------------------------------------
+  "custom/distro": {
+    "format": "󰣇 ",
+    "tooltip": true,
+    "tooltip-format": "MangoWM - Wayland Tiling Window Manager",
+    "on-click": "rofi -show drun"
+  },
+
+  "ext/workspaces": {
+    "format": "{name}",
+    "ignore-hidden": true,
+    "on-click": "mmsg dispatch workspace {index}",
+    "on-click-right": "mmsg dispatch workspace {index}",
+    "on-scroll-up": "mmsg dispatch workspace +1",
+    "on-scroll-down": "mmsg dispatch workspace -1"
+  },
+
+  // ---------------------------------------------------------------------------
+  // Módulo Centro: Reloj Minimalista
+  // ---------------------------------------------------------------------------
+  "clock#time": {
+    "format": " {:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 60
+  },
+
+  // ---------------------------------------------------------------------------
+  // Módulos Derecha: Cápsulas Pastel
+  // ---------------------------------------------------------------------------
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "⚙ {usage}%",
+    "tooltip": true,
+    "tooltip-format": "Uso de CPU: {usage}%",
+    "on-click": "alacritty --app-id=alacritty-btop -e btop"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Mute",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "alacritty --app-id=alacritty-wiremix -e wiremix",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱 {device_alias}",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "alacritty --app-id=alacritty-bluetui -e bluetui"
+  },
+
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-linked": "󰈀 {ifname} (Sin IP)",
+    "format-disconnected": "󰤭 Desconectado",
+    "tooltip-format": "󰈀 {ifname} vía {gwaddr}\nIP: {ipaddr}/{cidr}\nSeñal: {signalStrength}%",
+    "on-click": "alacritty --app-id=alacritty-impala -e impala"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "clock#date": {
+    "format": " {:%a %d %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 3600
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": true,
+    "tooltip-format": "Menú de apagado y sesión",
+    "on-click": "wlogout"
+  }
+}

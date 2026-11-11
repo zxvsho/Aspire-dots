@@ -1,0 +1,7 @@
+name = "retro-terminal"
+author = "Mangowm_dots"
+description = "Terminal retro monoespaciada, esquinas rectas y acentos de la paleta actual."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "clock", "mpris", "cpu", "memory", "custom/power"]
+optional-dependencies = ["playerctl"]
+allow-fixed-colors = false

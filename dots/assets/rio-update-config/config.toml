@@ -1,0 +1,8 @@
+theme = "matugen"
+confirm-before-quit = false
+copy-on-select = true
+margin = [4]
+
+[fonts]
+family = "VictorMono Nerd Font"
+size = 22

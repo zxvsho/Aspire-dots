@@ -1,0 +1,43 @@
+[
+  {
+    "name": "retro-terminal",
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 5,
+    "margin-top": 4,
+    "margin-left": 6,
+    "margin-right": 6,
+    "modules-left": ["ext/workspaces", "mpris"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "custom/power"],
+    "ext/workspaces": {
+      "format": "[{icon}]",
+      "ignore-hidden": true,
+      "on-click": "mmsg dispatch workspace {index}",
+      "on-scroll-up": "mmsg dispatch workspace +1",
+      "on-scroll-down": "mmsg dispatch workspace -1"
+    },
+    "mpris": {
+      "format": "{player_icon} {artist} - {title}",
+      "format-paused": "[{status_icon} {title}]",
+      "player-icons": {"default": "♫", "spotify": "♫"},
+      "status-icons": {" playing": "▶", "paused": "⏸"},
+      "max-length": 32,
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next"
+    },
+    "clock": {
+      "format": "[ %Y-%m-%d | %H:%M:%S ]",
+      "interval": 1,
+      "tooltip": false
+    },
+    "cpu": {"format": "CPU:{usage}%", "interval": 2},
+    "memory": {"format": "MEM:{used:0.1f}G", "interval": 5},
+    "custom/power": {
+      "format": "[ EXIT ]",
+      "on-click": "wlogout",
+      "tooltip": false
+    }
+  }
+]

@@ -1,0 +1,137 @@
+/* aspire-bar:import:start */
+@import url("file:///home/miguel/.config/theme-engine/current/colors.css");
+/* aspire-bar:import:end */
+/* aspire-bar:settings:start
+{
+  "use_aspire_palette": true,
+  "palette_name": "Tokyo Night",
+  "palette_id": "tokyo-night",
+  "border_radius": 8,
+  "module_padding_vertical": 0,
+  "module_padding_horizontal": 8
+}
+aspire-bar:settings:end */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @foreground;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 10px;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 5px;
+}
+
+#workspaces button.active {
+  color: @selectedtext;
+  background-color: @selected;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#custom-power {
+  color: @urgent;
+  padding-left: 8px;
+}
+
+/* aspire-bar:rules:start */
+* {
+    color: @foreground;
+}
+
+window#waybar {
+    background-color: @background;
+}
+
+#clock,
+#custom-power,
+#ext-workspaces,
+#pulseaudio {
+    color: @foreground;
+    background-color: transparent;
+}
+
+#clock:hover,
+#custom-power:hover,
+#ext-workspaces:hover,
+#pulseaudio:hover {
+    color: @foreground;
+    background-color: @background-alt;
+}
+
+#clock.warning,
+#custom-power.warning,
+#ext-workspaces.warning,
+#pulseaudio.warning {
+    color: @selected;
+}
+
+#clock.critical,
+#custom-power.critical,
+#ext-workspaces.critical,
+#pulseaudio.critical,
+#clock.urgent,
+#custom-power.urgent,
+#ext-workspaces.urgent,
+#pulseaudio.urgent,
+#clock.disconnected,
+#custom-power.disconnected,
+#ext-workspaces.disconnected,
+#pulseaudio.disconnected {
+    color: @foreground;
+    background-color: @background;
+    border: 1px solid @urgent;
+}
+
+#clock.active,
+#custom-power.active,
+#ext-workspaces.active,
+#pulseaudio.active {
+    color: @selectedtext;
+    background-color: @active;
+}
+
+#clock.muted,
+#custom-power.muted,
+#ext-workspaces.muted,
+#pulseaudio.muted,
+#clock.disabled,
+#custom-power.disabled,
+#ext-workspaces.disabled,
+#pulseaudio.disabled {
+    color: @background-alt;
+}
+
+#workspaces button { color: @foreground; }
+#workspaces button:hover { color: @foreground; background-color: @background-alt; }
+#workspaces button.active { color: @selectedtext; background-color: @selected; animation: none; }
+#workspaces button.urgent { color: @foreground; background-color: @background; border: 1px solid @urgent; }
+
+window#waybar {
+    border-radius: 8px;
+}
+
+#clock,
+#custom-power,
+#ext-workspaces,
+#pulseaudio {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+}/* aspire-bar:rules:end */

@@ -1,0 +1,12 @@
+{
+  "runner_name": "Native",
+  "profile_id": "2",
+  "profile_name": "runner",
+  "wine_dll_overrides": null,
+  "env_vars": {
+    "SteamAppId": "391540",
+    "AURELIA_STDERR_LOG": "/home/miguel/.config/Aurelia/logs/1793401772477-f97dee3c/stderr.log",
+    "AURELIA_STDOUT_LOG": "/home/miguel/.config/Aurelia/logs/1793401772477-f97dee3c/stdout.log",
+    "LD_LIBRARY_PATH": "/home/miguel/.local/share/Steam/ubuntu12_32/steam-runtime/lib/i386-linux-gnu:/home/miguel/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/i386-linux-gnu:/home/miguel/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu:/home/miguel/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/x86_64-linux-gnu"
+  }
+}

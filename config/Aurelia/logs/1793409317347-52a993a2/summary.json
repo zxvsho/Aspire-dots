@@ -1,0 +1,157 @@
+{
+  "session_id": "1793409317347-52a993a2",
+  "app_id": 391540,
+  "app_name": "Undertale",
+  "runner_name": "Wine-TKG",
+  "result": "Success",
+  "failing_stage": null,
+  "total_duration_ms": 2036,
+  "stage_durations_ms": {
+    "Finalize": 0,
+    "BuildEnvironment": 0,
+    "ResolveProfile": 1,
+    "Preflight": 0,
+    "ResolveGame": 0,
+    "PreparePrefix": 5,
+    "ApplyLaunchScript": 0,
+    "BuildCommand": 4,
+    "ResolveGameFixups": 0,
+    "ResolveComponents": 0,
+    "ResolveDllProviders": 14,
+    "SpawnProcess": 8
+  },
+  "timestamp": 1793409319,
+  "warnings": [],
+  "graphics_stack": {
+    "graphics_stack_expected": "WineD3D (Baseline)",
+    "graphics_stack_evidence": [
+      "DLL Load Failure: 00a8:warn:module:load_dll Failed to load module L\"C:\\\\windows\\\\system32\\\\drivers\\\\winebth.sys\"; status=c0000135"
+    ],
+    "graphics_stack_confidence": "high",
+    "override_policy": "Builtin-only",
+    "dll_providers": {
+      "d3d10core": "Runner",
+      "nvofapi64": "None",
+      "d3d11": "Runner",
+      "nvapi": "Runner",
+      "d3d9": "Runner",
+      "d3d12": "Runner",
+      "nvapi64": "None",
+      "d3d8": "Runner",
+      "libvkd3d-1": "None",
+      "dxgi": "Runner",
+      "d3d12core": "Runner",
+      "libvkd3d-shader-1": "None"
+    },
+    "requested_backend": "",
+    "effective_backend": "WineD3D (Baseline)",
+    "requested_d3d12_provider": "",
+    "effective_d3d12_provider": "None",
+    "requested_nvapi": false,
+    "effective_nvapi": true,
+    "requested_gpu": null,
+    "effective_gpu": null,
+    "target_architecture": "X86",
+    "fallback_reasons": {
+      "nvapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "nvofapi64": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "libvkd3d-1": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+      "libvkd3d-shader-1": "no candidate files found in GameLocal, Custom, Runner, or System paths"
+    },
+    "runtime_evidence": {
+      "dxvk": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "neutral: inconclusive",
+        "diagnostics_note": ""
+      },
+      "vkd3d_proton": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "neutral: inconclusive",
+        "diagnostics_note": ""
+      },
+      "vkd3d": {
+        "expected": false,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "neutral: inconclusive",
+        "diagnostics_note": ""
+      },
+      "wined3d": {
+        "expected": true,
+        "evidence_found": false,
+        "evidence": [],
+        "diagnosis": "inconclusive: WineD3D requested but no runtime evidence found",
+        "diagnostics_note": "Scanned 6 lines, found 1 matches for graphics patterns, but none confirmed WineD3D usage."
+      },
+      "scan_metadata": {
+        "log_path": "/home/miguel/.config/Aurelia/logs/wine_391540.log",
+        "file_exists": true,
+        "file_size": 583,
+        "line_count": 6,
+        "scan_duration_ms": 0,
+        "candidate_matches": 1,
+        "retries": 0,
+        "process_running_during_scan": false
+      }
+    },
+    "env_propagation": {}
+  },
+  "verification": {
+    "status": "verified",
+    "detailed_status": "game_executable_not_found",
+    "process_lifetime_ms": 2001,
+    "exit_code": null,
+    "log_growth_observed": false,
+    "windows_username": null,
+    "windows_user_path": null,
+    "key_paths_detected": {
+      "drive_c/users/steamuser/AppData/Local": false,
+      "drive_c/windows/system32/steam_api.dll": false,
+      "drive_c/Program Files (x86)/Steam/tier0_s.dll": false,
+      "drive_c/windows/syswow64/steam_api.dll": false,
+      "drive_c/windows/system32/steam_api64.dll": false,
+      "drive_c/Program Files (x86)/Steam/steamclient.dll": false,
+      "drive_c/users/steamuser/AppData/Roaming": false,
+      "drive_c/Program Files (x86)/Steam/steam.exe": false,
+      "drive_c/windows/system32/PhysXLoader.dll": false,
+      "drive_c/users/steamuser/Documents": false,
+      "drive_c/windows/syswow64/PhysXLoader.dll": false
+    },
+    "steam_client_exposed": true,
+    "last_successful_startup_milestone": "none",
+    "dependency_families_detected": [],
+    "steam_runtime_exe": null,
+    "steam_runtime_args": [],
+    "steam_runtime_exit_code": null,
+    "steam_runtime_lifetime_ms": null,
+    "steam_runtime_milestone": "",
+    "steam_running_before_launch": false,
+    "steam_auto_start_attempted": false,
+    "steam_auto_start_failed": false,
+    "steam_api_initialized": null,
+    "steam_ownership_confirmed": null,
+    "steam_client_artifact": null,
+    "effective_game_wineprefix": null,
+    "effective_steam_wineprefix": null,
+    "steam_client_install_path_exposed_to_game": "/home/miguel/.config/Aurelia/fake_env",
+    "steam_client_install_path_source": "fake_trap",
+    "per_game_prefix_requested": false,
+    "per_game_prefix_honored": false,
+    "steam_runtime_policy": "",
+    "steam_runtime_source": "",
+    "windows_steam_discovery_enabled": false,
+    "log_head": [
+      "ntsync: up and running.",
+      "0084:warn:module:LdrGetProcedureAddress \"SvchostPushServiceGlobals\" (ordinal 0) not found in L\"C:\\\\windows\\\\system32\\\\wevtsvc.dll\"",
+      "00a8:warn:module:load_dll Failed to load module L\"C:\\\\windows\\\\system32\\\\drivers\\\\winebth.sys\"; status=c0000135",
+      "00a8:err:ntoskrnl:ZwLoadDriver failed to create driver L\"\\\\Registry\\\\Machine\\\\System\\\\CurrentControlSet\\\\Services\\\\winebth\": c0000142",
+      "0034:fixme:service:scmdatabase_autostart_services Auto-start service L\"winebth\" failed to start: 1114",
+      "00e0:warn:module:load_dll Failed to load module L\"winemac.drv\"; status=c0000135"
+    ],
+    "log_tail": []
+  }
+}

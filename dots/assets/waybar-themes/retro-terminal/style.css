@@ -1,0 +1,41 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+}
+
+window#waybar {
+  color: @foreground;
+  background-color: @background;
+  border: 1px solid @active;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 7px;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 4px;
+}
+
+#workspaces button.active {
+  color: @selectedtext;
+  background-color: @selected;
+}
+
+#clock {
+  color: @active;
+}
+
+#mpris {
+  color: @background-alt;
+}
+
+#custom-power {
+  color: @urgent;
+}

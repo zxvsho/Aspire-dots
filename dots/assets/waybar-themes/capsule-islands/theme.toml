@@ -1,0 +1,7 @@
+name = "capsule-islands"
+author = "Mangowm_dots"
+description = "Islas flotantes redondeadas con módulos separados y paleta dinámica."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "clock", "network", "pulseaudio", "battery", "tray"]
+optional-dependencies = []
+allow-fixed-colors = false

@@ -1,0 +1,7 @@
+name = "full-edge"
+author = "Mangowm_dots"
+description = "Barra completa a ras del borde con título de ventana y estado del sistema."
+version = "1.0.0"
+required-modules = ["ext/workspaces", "window", "clock", "cpu", "memory", "network", "pulseaudio", "battery", "tray"]
+optional-dependencies = []
+allow-fixed-colors = false

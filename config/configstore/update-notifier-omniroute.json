@@ -1,0 +1,10 @@
+{
+	"optOut": false,
+	"lastUpdateCheck": 1794006701115,
+	"update": {
+		"latest": "3.8.53",
+		"current": "3.8.52",
+		"type": "patch",
+		"name": "omniroute"
+	}
+}

@@ -1,0 +1,23 @@
+{
+  "steam_library_path": "/home/miguel/.steam/steam",
+  "proton_version": "experimental",
+  "chat_presence": "offline",
+  "steam_runtime_runner": "",
+  "steam_prefix_mode": "Shared",
+  "enable_cloud_sync": true,
+  "use_shared_compat_data": false,
+  "windows_steam_discovery_enabled": true,
+  "preferred_launch_options": {},
+  "game_configs": {},
+  "luxtorpeda_enabled": false,
+  "luxtorpeda_path": null,
+  "umu_enabled": false,
+  "umu_path": null,
+  "language": null,
+  "country": null,
+  "proxy": {},
+  "steam_runtime_policy": "Auto",
+  "install_resume": "manual",
+  "experimental": false,
+  "encrypt_session": true
+}

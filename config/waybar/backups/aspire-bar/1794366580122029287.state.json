@@ -1,0 +1,10 @@
+{
+  "config": {
+    "exists": true,
+    "symlink_target": "themes/capsule-bar/config.jsonc"
+  },
+  "style": {
+    "exists": true,
+    "symlink_target": "themes/capsule-bar/style.css"
+  }
+}

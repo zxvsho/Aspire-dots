@@ -1,0 +1,418 @@
+[
+  {
+    "name": "d3d8",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d8.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d8.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d8.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d8.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/dxvk/x64/d3d8.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d8.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "d3d9",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d9.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d9.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d9.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d9.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/dxvk/x64/d3d9.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d9.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "dxgi",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/dxgi.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/dxgi.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/dxgi.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/dxgi.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/dxvk/x64/dxgi.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/dxvk/dxgi.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "d3d10core",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d10core.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d10core.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d10core.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d10core.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/dxvk/x64/d3d10core.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d10core.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "d3d11",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d11.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d11.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d11.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/dxvk/i386-windows/d3d11.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/dxvk/x64/d3d11.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/dxvk/d3d11.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "d3d12",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/vkd3d-proton/i386-windows/d3d12.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d12.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d12.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/vkd3d-proton/i386-windows/d3d12.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/vkd3d-proton/x64/d3d12.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/d3d12.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/d3d12.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib64/d3d12.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "d3d12core",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/vkd3d-proton/i386-windows/d3d12core.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/d3d12core.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/d3d12core.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/vkd3d-proton/i386-windows/d3d12core.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/vkd3d-proton/x64/d3d12core.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/d3d12core.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/d3d12core.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib64/d3d12core.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "libvkd3d-1",
+    "chosen_provider": "None",
+    "chosen_path": null,
+    "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/libvkd3d-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/libvkd3d-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/vkd3d-proton/x64/libvkd3d-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/libvkd3d-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/libvkd3d-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib64/libvkd3d-1.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "libvkd3d-shader-1",
+    "chosen_provider": "None",
+    "chosen_path": null,
+    "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/libvkd3d-shader-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/libvkd3d-shader-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/vkd3d-proton/x64/libvkd3d-shader-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/vkd3d-proton/libvkd3d-shader-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/libvkd3d-shader-1.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib64/libvkd3d-shader-1.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "nvapi",
+    "chosen_provider": "Runner",
+    "chosen_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows/nvapi.dll",
+    "fallback_reason": null,
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/nvapi.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/nvapi.dll",
+        "exists": false
+      },
+      {
+        "provider": "Runner",
+        "path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows/nvapi.dll",
+        "exists": true
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/nvapi/x64/nvapi.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvapi.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "nvapi64",
+    "chosen_provider": "None",
+    "chosen_path": null,
+    "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/nvapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/nvapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/nvapi/x64/nvapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvapi64.dll",
+        "exists": false
+      }
+    ]
+  },
+  {
+    "name": "nvofapi64",
+    "chosen_provider": "None",
+    "chosen_path": null,
+    "fallback_reason": "no candidate files found in GameLocal, Custom, Runner, or System paths",
+    "candidates": [
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/nvofapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "GameLocal",
+        "path": "/home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/bin/nvofapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/nvapi/x64/nvofapi64.dll",
+        "exists": false
+      },
+      {
+        "provider": "System",
+        "path": "/usr/lib/x86_64-linux-gnu/nvapi/nvofapi64.dll",
+        "exists": false
+      }
+    ]
+  }
+]

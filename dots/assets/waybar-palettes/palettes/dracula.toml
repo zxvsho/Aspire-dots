@@ -1,0 +1,14 @@
+# Fuente oficial: https://draculatheme.com/contribute#color-palette
+id = "dracula"
+name = "Dracula"
+author = "Dracula"
+description = "Fondo oscuro con acentos purple, cyan y red."
+
+[colors]
+background = "#282a36"
+background-alt = "#44475a"
+foreground = "#f8f8f2"
+selected = "#bd93f9"
+selectedtext = "#282a36"
+active = "#8be9fd"
+urgent = "#ff5555"

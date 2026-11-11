@@ -1,0 +1,24 @@
+{
+  "runner_name": "Wine-TKG",
+  "profile_id": "0",
+  "profile_name": "Launch",
+  "wine_dll_overrides": "vstdlib_s=n;tier0_s=n;steamclient=n;steamclient64=n;steam_api=n;steam_api64=n;lsteamclient=;GameOverlayRenderer=n;GameOverlayRenderer64=n;nvapi=n",
+  "env_vars": {
+    "SteamAppId": "391540",
+    "WINEDEBUG": "err+all,warn+module,warn+loaddll",
+    "STEAM_COMPAT_CLIENT_INSTALL_PATH": "/home/miguel/.config/Aurelia/fake_env",
+    "WINE_LOG_OUTPUT": "/home/miguel/.config/Aurelia/logs/wine_391540.log",
+    "STEAM_COMPAT_APP_ID": "391540",
+    "WINEPATH": "C:\\Program Files (x86)\\Steam;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/x86_64-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-unix;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-unix;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "WINEDLLOVERRIDES": "vstdlib_s=n;tier0_s=n;steamclient=n;steamclient64=n;steam_api=n;steam_api64=n;lsteamclient=;GameOverlayRenderer=n;GameOverlayRenderer64=n;nvapi=n",
+    "SteamAppUser": "residente_08",
+    "DISPLAY": ":0",
+    "WAYLAND_DISPLAY": "wayland-0",
+    "WINEPREFIX": "/home/miguel/.config/Aurelia/master_steam_prefix/pfx",
+    "STEAM_COMPAT_DATA_PATH": "/home/miguel/.steam/steam/steamapps/compatdata/391540",
+    "SteamGameId": "391540",
+    "WINEDLLPATH": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/x86_64-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-unix:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-unix:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib",
+    "SteamUser": "76561198644430462"
+  }
+}

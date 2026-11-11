@@ -1,0 +1,420 @@
+[[rule.window_rule]]
+is_floating = 1
+app_id = "xdg-desktop-portal-gtk"
+title = "打开本地仓库"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "xdg-desktop-portal-gtk"
+title = "打开文件"
+
+[[rule.window_rule]]
+is_floating = 1
+no_size_hint = 1
+title = "迅雷"
+
+[[rule.window_rule]]
+width = 800
+height = 900
+title = "迅雷"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "Translate"
+
+[[rule.window_rule]]
+width = 800
+height = 900
+title = "Translate"
+
+[[rule.window_rule]]
+global_key_binding = "ctrl+alt-o"
+app_id = "com.obsproject.Studio"
+
+[[rule.window_rule]]
+global_key_binding = "ctrl+alt-n"
+app_id = "com.obsproject.Studio"
+
+[[rule.window_rule]]
+no_swallow = 1
+app_id = "flameshot"
+
+[[rule.window_rule]]
+is_fullscreen = 1
+app_id = "flameshot"
+
+[[rule.window_rule]]
+animation_type_open = "none"
+app_id = "flameshot"
+
+[[rule.window_rule]]
+animation_type_close = "none"
+app_id = "flameshot"
+
+[[rule.window_rule]]
+no_swallow = 1
+title = "Event Tester"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 1500
+height = 900
+app_id = "yesplaymusic"
+
+[[rule.window_rule]]
+animation_type_open = "slide"
+app_id = "yesplaymusic"
+
+[[rule.window_rule]]
+animation_type_close = "slide"
+app_id = "yesplaymusic"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "clash-verge"
+
+[[rule.window_rule]]
+width = 1500
+height = 900
+app_id = "clash-verge"
+
+[[rule.window_rule]]
+animation_type_open = "slide"
+animation_type_close = "slide"
+app_id = "clash-verge"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 1500
+height = 900
+app_id = "pot"
+title = "Recognize"
+
+[[rule.window_rule]]
+animation_type_open = "none"
+animation_type_close = "none"
+no_shadow = 1
+no_radius = 1
+no_border = 1
+app_id = "^wps$"
+title = "^wps$"
+
+[[rule.window_rule]]
+force_fake_maximize = 1
+app_id = "^wpsoffice$"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "bluetui"
+
+[[rule.window_rule]]
+width = 1500
+height = 900
+app_id = "bluetui"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "图片查看器"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "预览"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "图片查看"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "选择文件"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "打开文件"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "python3"
+title = "qxdrag"
+
+[[rule.window_rule]]
+is_floating = 1
+title = "rofi - Networks"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+title = "图片查看器"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+title = "图片查看"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+title = "选择文件"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+title = "打开文件"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+app_id = "python3"
+title = "qxdrag"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+title = "rofi - Networks"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "Rofi"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "qxdrag.py"
+
+[[rule.window_rule]]
+is_floating = 1
+app_id = "xfce-polkit"
+
+[[rule.window_rule]]
+no_border = 1
+app_id = "Rofi"
+
+[[rule.window_rule]]
+animation_type_open = "slide"
+app_id = "Rofi"
+
+[[rule.window_rule]]
+animation_type_close = "zoom"
+app_id = "Rofi"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+app_id = "qxdrag.py"
+
+[[rule.window_rule]]
+animation_type_open = "zoom"
+app_id = "python3"
+title = "qxdrag"
+
+[[rule.window_rule]]
+animation_type_close = "zoom"
+app_id = "qxdrag.py"
+
+[[rule.window_rule]]
+animation_type_close = "zoom"
+app_id = "python3"
+title = "qxdrag"
+
+[[rule.window_rule]]
+animation_type_close = "zoom"
+app_id = "^com.gabm.satty$"
+
+[[rule.window_rule]]
+is_term = 1
+app_id = "St"
+
+[[rule.window_rule]]
+force_fake_maximize = 1
+app_id = "org.gnome.SystemMonitor"
+
+[[rule.window_rule]]
+force_fake_maximize = 1
+app_id = "org.gnome.gThumb"
+
+[[rule.window_rule]]
+force_fake_maximize = 1
+app_id = "firefox"
+
+[[rule.window_rule]]
+force_fake_maximize = 1
+app_id = "org.telegram.desktop"
+
+[[rule.window_rule]]
+is_tag_silent = 1
+app_id = "org.telegram.desktop"
+
+[[rule.window_rule]]
+tags = 6
+app_id = "obs"
+
+[[rule.window_rule]]
+animation_type_open = "none"
+no_fade_in = 1
+title = "wechat"
+
+[[rule.window_rule]]
+animation_type_close = "none"
+no_fade_out = 1
+title = "wechat"
+
+[[rule.window_rule]]
+is_floating = 1
+is_overlay = 1
+no_border = 1
+width = 400
+height = 400
+offset_x = 9999
+offset_y = 9999
+app_id = "bongo-cat"
+title = "BongoCat"
+
+[[rule.window_rule]]
+is_floating = 1
+is_overlay = 1
+no_border = 1
+width = 280
+height = 200
+offset_x = 9999
+offset_y = 9999
+app_id = "mpv"
+title = "video0 - mpv"
+
+[[rule.window_rule]]
+is_floating = 1
+no_size_hint = 1
+width = 1500
+height = 900
+app_id = "baidunetdisk"
+title = "百度网盘"
+
+[[rule.window_rule]]
+is_overlay = 1
+app_id = "^com.gabm.satty$"
+
+[[rule.window_rule]]
+unfocused_opacity = 1.0
+focused_opacity = 1.0
+app_id = "^mpv$"
+
+[[rule.window_rule]]
+unfocused_opacity = 1.0
+focused_opacity = 1.0
+app_id = "^St$"
+
+[[rule.window_rule]]
+unfocused_opacity = 1.0
+focused_opacity = 1.0
+app_id = "^obsidian$"
+
+[[rule.window_rule]]
+unfocused_opacity = 1.0
+focused_opacity = 1.0
+app_id = "^Google-chrome$"
+
+[[rule.layer_rule]]
+no_blur = 1
+no_animation = 1
+layer_name = "dimland_layer"
+
+[[rule.layer_rule]]
+animation_type_open = "zoom"
+layer_name = "launcher"
+
+[[rule.layer_rule]]
+animation_type_close = "zoom"
+layer_name = "launcher"
+
+[[rule.layer_rule]]
+animation_type_open = "zoom"
+layer_name = "rofi"
+
+[[rule.layer_rule]]
+animation_type_close = "zoom"
+layer_name = "rofi"
+
+[[rule.layer_rule]]
+no_animation = 1
+no_blur = 1
+no_shadow = 1
+layer_name = "hyprpicker"
+
+[[rule.layer_rule]]
+no_animation = 1
+layer_name = "showkeys"
+
+[[rule.layer_rule]]
+no_animation = 1
+layer_name = "aspire-menu"
+
+[[rule.layer_rule]]
+no_blur = 1
+layer_name = "aspire-clip"
+
+[[rule.layer_rule]]
+no_animation = 1
+layer_name = "aspire-themes"
+
+[[rule.layer_rule]]
+no_blur = 1
+layer_name = "walker"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 950
+height = 650
+app_id = "alacritty-impala"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 1000
+height = 650
+app_id = "alacritty-wiremix"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 900
+height = 600
+app_id = "alacritty-bluetui"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 800
+height = 500
+app_id = "alacritty-peaclock"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 320
+no_blur = 1
+no_shadow = 1
+no_border = 1
+no_radius = 1
+animation_type_open = "none"
+animation_type_close = "none"
+focused_opacity = 1.0
+unfocused_opacity = 1.0
+title = "^Aspire Menu$"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 320
+height = 480
+no_border = 1
+no_shadow = 1
+no_radius = 1
+focused_opacity = 1.0
+unfocused_opacity = 1.0
+app_id = "^aspire-menu$"
+
+[[rule.window_rule]]
+no_blur = 1
+app_id = "^aspire-menu$"
+
+[[rule.window_rule]]
+no_animation = 1
+app_id = "^aspire-menu$"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 750
+height = 450
+app_id = "^aspire-update$"
+
+[[rule.window_rule]]
+is_floating = 1
+width = 540
+height = 585
+app_id = "^aspire-update-sm$"

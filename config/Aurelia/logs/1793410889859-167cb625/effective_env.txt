@@ -1,0 +1,16 @@
+DISPLAY=:0
+STEAM_COMPAT_APP_ID=221040
+STEAM_COMPAT_CLIENT_INSTALL_PATH=/home/miguel/.config/Aurelia/fake_env
+STEAM_COMPAT_DATA_PATH=/home/miguel/.steam/steam/steamapps/compatdata/221040
+SteamAppId=221040
+SteamAppUser=residente_08
+SteamGameId=221040
+SteamUser=76561198644430462
+WAYLAND_DISPLAY=wayland-0
+WINEDEBUG=err+all,warn+module,warn+loaddll
+WINEDLLOVERRIDES=vstdlib_s=n;tier0_s=n;steamclient=n;steamclient64=n;steam_api=n;steam_api64=n;lsteamclient=;GameOverlayRenderer=n;GameOverlayRenderer64=n;nvapi=n
+WINEDLLPATH=/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/x86_64-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-windows:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-unix:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-unix:/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib
+WINEPATH=C:\Program Files (x86)\Steam;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/i386-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/nvapi/x86_64-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-windows;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/x86_64-unix;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib/wine/i386-unix;/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/files/lib
+WINEPREFIX=/home/miguel/.config/Aurelia/master_steam_prefix/pfx
+WINE_LOG_OUTPUT=/home/miguel/.config/Aurelia/logs/wine_221040.log
+XDG_RUNTIME_DIR=/run/user/1000

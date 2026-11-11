@@ -1,0 +1,14 @@
+# Fuente oficial: https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/night.lua
+id = "tokyo-night"
+name = "Tokyo Night"
+author = "Tokyo Night"
+description = "Azul noche con acentos blue y magenta."
+
+[colors]
+background = "#1a1b26"
+background-alt = "#16161e"
+foreground = "#c0caf5"
+selected = "#7aa2f7"
+selectedtext = "#1a1b26"
+active = "#bb9af7"
+urgent = "#f7768e"

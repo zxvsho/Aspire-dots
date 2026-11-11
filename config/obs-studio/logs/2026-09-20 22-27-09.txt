@@ -1,0 +1,565 @@
+22:27:09.891: Platform: Wayland
+22:27:09.891: CPU Name: 12th Gen Intel(R) Core(TM) i5-12450H
+22:27:09.891: CPU Speed: 1164.266MHz
+22:27:09.892: Physical Cores: 8, Logical Cores: 12
+22:27:09.892: Physical Memory: 7636MB Total, 4080MB Free
+22:27:09.892: Kernel Version: Linux 7.2.6-1-cachyos-bore-lto
+22:27:09.892: Distribution: "Arch Linux" Unknown
+22:27:09.892: Desktop Environment: mango (mango:wlroots)
+22:27:09.892: Session Type: wayland
+22:27:09.894: Current Date/Time: 2026-09-20, 22:27:09
+22:27:09.894: Browser Hardware Acceleration: true
+22:27:09.894: Qt Version: 6.11.2 (runtime), 6.11.1 (compiled)
+22:27:09.894: Portable mode: false
+22:27:09.948: OBS 32.2.2 (linux)
+22:27:09.948: ---------------------------------
+22:27:09.950: ---------------------------------
+22:27:09.950: audio settings reset:
+22:27:09.950: 	samples per sec: 48000
+22:27:09.950: 	speakers:        2
+22:27:09.950: 	max buffering:   960 milliseconds
+22:27:09.950: 	buffering type:  dynamically increasing
+22:27:09.954: ---------------------------------
+22:27:09.955: Initializing OpenGL...
+22:27:09.955: Using EGL/Wayland
+22:27:10.002: Initialized EGL 1.5
+22:27:10.020: Loading up OpenGL on adapter Intel Mesa Intel(R) Graphics (ADL GT2)
+22:27:10.020: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 26.3.0-devel (git-0b1b8798d8), shading language 4.60
+22:27:10.064: ---------------------------------
+22:27:10.064: video settings reset:
+22:27:10.064: 	base resolution:   1920x1080
+22:27:10.064: 	output resolution: 1920x1080
+22:27:10.064: 	downscale filter:  Bicubic
+22:27:10.064: 	fps:               60/1
+22:27:10.064: 	format:            NV12
+22:27:10.064: 	YUV mode:          Rec. 709/Partial
+22:27:10.065: NV12 texture support enabled
+22:27:10.065: P010 texture support not available
+22:27:10.072: Audio monitoring device:
+22:27:10.072: 	name: Por defecto
+22:27:10.072: 	id: default
+22:27:10.075: ---------------------------------
+22:27:10.077: Failed to load 'en-US' text for module: 'decklink-captions.so'
+22:27:10.080: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+22:27:10.082: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+22:27:10.082: Failed to initialize module 'decklink.so'
+22:27:10.267: [pipewire] Available capture sources:
+22:27:10.267: [pipewire]     - Monitor source
+22:27:10.267: [pipewire]     - Window source
+22:27:10.363: VAAPI: Failed to initialize display in vaapi_device_h264_supported
+22:27:10.364: FFmpeg VAAPI H264 encoding not supported
+22:27:10.364: VAAPI: Failed to initialize display in vaapi_device_av1_supported
+22:27:10.364: FFmpeg VAAPI AV1 encoding not supported
+22:27:10.364: VAAPI: Failed to initialize display in vaapi_device_hevc_supported
+22:27:10.364: FFmpeg VAAPI HEVC encoding not supported
+22:27:10.381: os_dlopen(libnvidia-encode.so.1->libnvidia-encode.so.1): libnvidia-encode.so.1: no se puede abrir el fichero del objeto compartido: No existe el fichero o el directorio
+22:27:10.381: 
+22:27:10.382: NVENC not supported
+22:27:10.382: Failed to initialize module 'obs-nvenc.so'
+22:27:10.433: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.7.4 | RPC Version: 1)
+22:27:10.433: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.11.1 | Qt version (run-time): 6.11.2
+22:27:10.433: [obs-websocket] [obs_module_load] Linked ASIO Version: 103802
+22:27:10.439: [obs-websocket] [obs_module_load] Module loaded.
+22:27:10.451: ---------------------------------
+22:27:10.451:   Loaded Modules:
+22:27:10.451:     text-freetype2.so
+22:27:10.451:     rtmp-services.so
+22:27:10.451:     obs-x264.so
+22:27:10.451:     obs-websocket.so
+22:27:10.451:     obs-webrtc.so
+22:27:10.451:     obs-vst.so
+22:27:10.451:     obs-transitions.so
+22:27:10.451:     obs-qsv11.so
+22:27:10.451:     obs-outputs.so
+22:27:10.451:     obs-libfdk.so
+22:27:10.451:     obs-filters.so
+22:27:10.451:     obs-ffmpeg.so
+22:27:10.451:     linux-v4l2.so
+22:27:10.451:     linux-pulseaudio.so
+22:27:10.451:     linux-pipewire.so
+22:27:10.451:     linux-jack.so
+22:27:10.451:     linux-capture.so
+22:27:10.452:     linux-alsa.so
+22:27:10.452:     image-source.so
+22:27:10.452:     frontend-tools.so
+22:27:10.452:     decklink-output-ui.so
+22:27:10.452:     decklink-captions.so
+22:27:10.452: ---------------------------------
+22:27:10.452: ---------------------------------
+22:27:10.452: Available Encoders:
+22:27:10.452:   Video Encoders:
+22:27:10.452: 	- ffmpeg_svt_av1 (SVT-AV1)
+22:27:10.452: 	- ffmpeg_aom_av1 (AOM AV1)
+22:27:10.452: 	- obs_x264 (x264)
+22:27:10.452:   Audio Encoders:
+22:27:10.452: 	- ffmpeg_aac (FFmpeg AAC)
+22:27:10.452: 	- ffmpeg_opus (FFmpeg Opus)
+22:27:10.452: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+22:27:10.452: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+22:27:10.452: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit flotante))
+22:27:10.452: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+22:27:10.452: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+22:27:10.452: 	- libfdk_aac (libfdk AAC)
+22:27:10.452: ==== Startup complete ===============================================
+22:27:10.490: Failed to register with host portal QDBusError("org.freedesktop.portal.Error.Failed", "Could not register app ID: Connection already associated with an application ID")
+22:27:10.490: All scene data cleared
+22:27:10.490: ------------------------------------------------
+22:27:10.500: Device for 'Audio Output Capture' source Audio del escritorio is also used for audio monitoring.
+22:27:10.500: Deduplication logic is being applied to all monitored sources.
+22:27:10.500: pulse-input: Server name: 'PulseAudio (on PipeWire 1.6.8) 15.0.0'
+22:27:10.500: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+22:27:10.501: pulse-input: Started recording from 'alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Speaker__sink.monitor' (default)
+22:27:10.501: [Loaded global audio device]: 'Audio del escritorio'
+22:27:10.502: pulse-input: Server name: 'PulseAudio (on PipeWire 1.6.8) 15.0.0'
+22:27:10.502: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+22:27:10.502: pulse-input: Started recording from 'alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Mic1__source' (default)
+22:27:10.502: [Loaded global audio device]: 'Mic/Aux'
+22:27:10.502: PipeWire initialized
+22:27:10.505: Switched to scene 'Escena'
+22:27:10.505: ------------------------------------------------
+22:27:10.505: Loaded scenes:
+22:27:10.505: - scene 'Escena':
+22:27:10.505:     - source: 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source)
+22:27:10.505: ------------------------------------------------
+22:27:10.516: Device for 'Audio Output Capture' source Audio del escritorio is also used for audio monitoring.
+22:27:10.516: Deduplication logic is being applied to all monitored sources.
+22:27:10.580: [pipewire] Screencast session created
+22:27:10.633: [pipewire] Asking for monitor and window
+22:27:10.688: [pipewire] source selected, setting up screencast
+22:27:10.696: [pipewire] Server version: 1.6.8
+22:27:10.696: [pipewire] Library version: 1.6.8
+22:27:10.696: [pipewire] Header version: 1.6.8
+22:27:10.696: [pipewire] Created stream 0x5622730420e0
+22:27:10.696: [pipewire] Stream 0x5622730420e0 state: "connecting" (error: none)
+22:27:10.697: [pipewire] Playing stream 0x5622730420e0
+22:27:10.697: [pipewire] Stream 0x5622730420e0 state: "paused" (error: none)
+22:27:10.706: [pipewire] Negotiated format:
+22:27:10.707: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:10.707: [pipewire]     Modifier: 0x0
+22:27:10.707: [pipewire]     Size: 1920x1080
+22:27:10.707: [pipewire]     Framerate: 0/1
+22:27:10.709: [pipewire] Negotiated format:
+22:27:10.709: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:10.709: [pipewire]     Modifier: 0x100000000000008
+22:27:10.709: [pipewire]     Size: 1920x1080
+22:27:10.709: [pipewire]     Framerate: 0/1
+22:27:10.721: [pipewire] Stream 0x5622730420e0 state: "streaming" (error: none)
+22:27:11.167: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Audio del escritorio)
+22:27:11.167: 
+22:27:11.210: adding 21 milliseconds of audio buffering, total audio buffering is now 42 milliseconds (source: Mic/Aux)
+22:27:11.210: 
+22:27:23.518: [pipewire] Stream 0x5622730420e0 state: "paused" (error: none)
+22:27:23.518: [pipewire] Stream 0x5622730420e0 state: "unconnected" (error: none)
+22:27:23.524: PipeWire initialized
+22:27:23.531: [pipewire] Screencast session created
+22:27:31.890: [pipewire] Asking for monitor and window
+22:27:31.909: [pipewire] source selected, setting up screencast
+22:27:31.920: [pipewire] Server version: 1.6.8
+22:27:31.920: [pipewire] Library version: 1.6.8
+22:27:31.920: [pipewire] Header version: 1.6.8
+22:27:31.920: [pipewire] Created stream 0x562273851d00
+22:27:31.921: [pipewire] Stream 0x562273851d00 state: "connecting" (error: none)
+22:27:31.921: [pipewire] Playing stream 0x562273851d00
+22:27:31.922: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:27:31.953: [pipewire] Negotiated format:
+22:27:31.953: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:31.953: [pipewire]     Modifier: 0x0
+22:27:31.953: [pipewire]     Size: 1050x846
+22:27:31.953: [pipewire]     Framerate: 0/1
+22:27:31.954: [pipewire] Negotiated format:
+22:27:31.954: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:31.954: [pipewire]     Modifier: 0x100000000000008
+22:27:31.954: [pipewire]     Size: 1050x846
+22:27:31.954: [pipewire]     Framerate: 0/1
+22:27:31.959: [pipewire] Stream 0x562273851d00 state: "streaming" (error: none)
+22:27:34.879: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:27:34.879: [pipewire] Stream 0x562273851d00 state: "unconnected" (error: none)
+22:27:34.882: PipeWire initialized
+22:27:34.885: [pipewire] Screencast session created
+22:27:39.925: [pipewire] Asking for monitor and window
+22:27:39.935: [pipewire] source selected, setting up screencast
+22:27:39.947: [pipewire] Server version: 1.6.8
+22:27:39.947: [pipewire] Library version: 1.6.8
+22:27:39.947: [pipewire] Header version: 1.6.8
+22:27:39.948: [pipewire] Created stream 0x562273851d00
+22:27:39.948: [pipewire] Stream 0x562273851d00 state: "connecting" (error: none)
+22:27:39.948: [pipewire] Playing stream 0x562273851d00
+22:27:39.949: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:27:39.968: [pipewire] Negotiated format:
+22:27:39.968: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:39.968: [pipewire]     Modifier: 0x0
+22:27:39.968: [pipewire]     Size: 1050x846
+22:27:39.968: [pipewire]     Framerate: 0/1
+22:27:39.969: [pipewire] Negotiated format:
+22:27:39.970: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:39.970: [pipewire]     Modifier: 0x100000000000008
+22:27:39.970: [pipewire]     Size: 1050x846
+22:27:39.970: [pipewire]     Framerate: 0/1
+22:27:39.973: [pipewire] Stream 0x562273851d00 state: "streaming" (error: none)
+22:27:42.130: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:27:42.270: [pipewire] Stream 0x562273851d00 state: "error" (error: no more input formats)
+22:27:42.270: [pipewire] Error id:2 seq:47 res:-32 (Tubería rota): no more input formats
+22:27:49.847: [pipewire] Stream 0x562273851d00 state: "unconnected" (error: none)
+22:27:49.850: PipeWire initialized
+22:27:49.854: [pipewire] Screencast session created
+22:27:52.543: [pipewire] Asking for monitor and window
+22:27:52.577: [pipewire] source selected, setting up screencast
+22:27:52.588: [pipewire] Server version: 1.6.8
+22:27:52.588: [pipewire] Library version: 1.6.8
+22:27:52.588: [pipewire] Header version: 1.6.8
+22:27:52.588: [pipewire] Created stream 0x562273851d00
+22:27:52.588: [pipewire] Stream 0x562273851d00 state: "connecting" (error: none)
+22:27:52.589: [pipewire] Playing stream 0x562273851d00
+22:27:52.590: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:27:52.619: [pipewire] Negotiated format:
+22:27:52.619: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:52.619: [pipewire]     Modifier: 0x0
+22:27:52.619: [pipewire]     Size: 1932x1056
+22:27:52.619: [pipewire]     Framerate: 0/1
+22:27:52.624: [pipewire] Negotiated format:
+22:27:52.624: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:27:52.624: [pipewire]     Modifier: 0x100000000000008
+22:27:52.624: [pipewire]     Size: 1932x1056
+22:27:52.624: [pipewire]     Framerate: 0/1
+22:27:52.633: [pipewire] Stream 0x562273851d00 state: "streaming" (error: none)
+22:28:27.102: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:28:30.671: PipeWire initialized
+22:28:30.675: User added source 'Captura de pantalla (PipeWire) 2' (pipewire-screen-capture-source) to scene 'Escena'
+22:28:30.709: [pipewire] Screencast session created
+22:28:40.061: [pipewire] Asking for monitor and window
+22:28:40.073: [pipewire] source selected, setting up screencast
+22:28:40.087: [pipewire] Server version: 1.6.8
+22:28:40.087: [pipewire] Library version: 1.6.8
+22:28:40.087: [pipewire] Header version: 1.6.8
+22:28:40.087: [pipewire] Created stream 0x562273044f20
+22:28:40.087: [pipewire] Stream 0x562273044f20 state: "connecting" (error: none)
+22:28:40.088: [pipewire] Playing stream 0x562273044f20
+22:28:40.089: [pipewire] Stream 0x562273044f20 state: "paused" (error: none)
+22:28:40.141: [pipewire] Negotiated format:
+22:28:40.141: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:28:40.142: [pipewire]     Modifier: 0x0
+22:28:40.142: [pipewire]     Size: 1932x1056
+22:28:40.142: [pipewire]     Framerate: 0/1
+22:28:40.146: [pipewire] Negotiated format:
+22:28:40.146: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:28:40.146: [pipewire]     Modifier: 0x100000000000008
+22:28:40.146: [pipewire]     Size: 1932x1056
+22:28:40.146: [pipewire]     Framerate: 0/1
+22:28:40.158: [pipewire] Stream 0x562273044f20 state: "streaming" (error: none)
+22:28:48.256: [pipewire] Stream 0x562273044f20 state: "paused" (error: none)
+22:28:51.096: User Removed source 'Captura de pantalla (PipeWire) 2' (pipewire-screen-capture-source) from scene 'Escena'
+22:28:51.097: [pipewire] Stream 0x562273044f20 state: "unconnected" (error: none)
+22:28:53.995: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:28:54.006: [pipewire] Negotiated format:
+22:28:54.006: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:28:54.006: [pipewire]     Modifier: 0x100000000000008
+22:28:54.006: [pipewire]     Size: 972x1056
+22:28:54.006: [pipewire]     Framerate: 0/1
+22:28:54.008: [pipewire] Negotiated format:
+22:28:54.008: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:28:54.008: [pipewire]     Modifier: 0x100000000000008
+22:28:54.008: [pipewire]     Size: 972x1056
+22:28:54.008: [pipewire]     Framerate: 0/1
+22:28:54.015: [pipewire] Stream 0x562273851d00 state: "streaming" (error: none)
+22:33:50.030: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:33:50.030: [pipewire] Negotiated format:
+22:33:50.030: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:33:50.030: [pipewire]     Modifier: 0x100000000000008
+22:33:50.030: [pipewire]     Size: 1932x1056
+22:33:50.030: [pipewire]     Framerate: 0/1
+22:33:50.033: [pipewire] Negotiated format:
+22:33:50.033: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:33:50.033: [pipewire]     Modifier: 0x100000000000008
+22:33:50.033: [pipewire]     Size: 1932x1056
+22:33:50.033: [pipewire]     Framerate: 0/1
+22:33:50.038: [pipewire] Stream 0x562273851d00 state: "streaming" (error: none)
+22:40:56.111: User Removed source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) from scene 'Escena'
+22:40:56.112: [pipewire] Stream 0x562273851d00 state: "paused" (error: none)
+22:40:56.112: [pipewire] Stream 0x562273851d00 state: "unconnected" (error: none)
+22:40:58.943: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:40:59.734: PipeWire initialized
+22:40:59.739: User added source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) to scene 'Escena'
+22:40:59.768: [pipewire] Screencast session created
+22:41:04.552: [pipewire] Asking for monitor and window
+22:41:04.567: [pipewire] source selected, setting up screencast
+22:41:04.595: [pipewire] Server version: 1.6.8
+22:41:04.596: [pipewire] Library version: 1.6.8
+22:41:04.596: [pipewire] Header version: 1.6.8
+22:41:04.596: [pipewire] Created stream 0x56227387c350
+22:41:04.596: [pipewire] Stream 0x56227387c350 state: "connecting" (error: none)
+22:41:04.597: [pipewire] Playing stream 0x56227387c350
+22:41:04.599: [pipewire] Stream 0x56227387c350 state: "paused" (error: none)
+22:41:04.623: [pipewire] Negotiated format:
+22:41:04.623: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:41:04.623: [pipewire]     Modifier: 0x0
+22:41:04.623: [pipewire]     Size: 1912x1036
+22:41:04.623: [pipewire]     Framerate: 0/1
+22:41:04.626: [pipewire] Negotiated format:
+22:41:04.626: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:41:04.626: [pipewire]     Modifier: 0x100000000000008
+22:41:04.626: [pipewire]     Size: 1912x1036
+22:41:04.626: [pipewire]     Framerate: 0/1
+22:41:04.633: [pipewire] Stream 0x56227387c350 state: "streaming" (error: none)
+22:42:49.714: User Removed source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) from scene 'Escena'
+22:42:49.715: [pipewire] Stream 0x56227387c350 state: "paused" (error: none)
+22:42:49.716: [pipewire] Stream 0x56227387c350 state: "unconnected" (error: none)
+22:42:51.942: QString::arg: Argument missing: "Crear nueva fuente", "Captura de entrada de audio (PulseAudio)"
+22:42:52.886: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:42:53.551: PipeWire initialized
+22:42:53.556: User added source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) to scene 'Escena'
+22:42:53.592: [pipewire] Screencast session created
+22:42:55.775: [pipewire] Asking for monitor and window
+22:42:55.787: [pipewire] source selected, setting up screencast
+22:42:55.812: [pipewire] Server version: 1.6.8
+22:42:55.812: [pipewire] Library version: 1.6.8
+22:42:55.812: [pipewire] Header version: 1.6.8
+22:42:55.813: [pipewire] Created stream 0x562273829640
+22:42:55.813: [pipewire] Stream 0x562273829640 state: "connecting" (error: none)
+22:42:55.814: [pipewire] Playing stream 0x562273829640
+22:42:55.817: [pipewire] Stream 0x562273829640 state: "paused" (error: none)
+22:42:55.856: [pipewire] Negotiated format:
+22:42:55.857: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:42:55.857: [pipewire]     Modifier: 0x0
+22:42:55.857: [pipewire]     Size: 1912x1036
+22:42:55.857: [pipewire]     Framerate: 0/1
+22:42:55.860: [pipewire] Negotiated format:
+22:42:55.861: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:42:55.861: [pipewire]     Modifier: 0x100000000000008
+22:42:55.861: [pipewire]     Size: 1912x1036
+22:42:55.861: [pipewire]     Framerate: 0/1
+22:42:55.868: [pipewire] Stream 0x562273829640 state: "streaming" (error: none)
+22:43:05.655: [pipewire] Stream 0x562273829640 state: "paused" (error: none)
+22:43:05.688: [pipewire] Stream 0x562273829640 state: "error" (error: no more input formats)
+22:43:05.688: [pipewire] Error id:2 seq:47 res:-32 (Tubería rota): no more input formats
+22:46:03.623: User Removed source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) from scene 'Escena'
+22:46:03.624: [pipewire] Stream 0x562273829640 state: "unconnected" (error: none)
+22:46:05.542: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:46:06.832: PipeWire initialized
+22:46:06.841: User added source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) to scene 'Escena'
+22:46:06.870: [pipewire] Screencast session created
+22:46:15.685: [pipewire] Asking for monitor and window
+22:46:15.719: [pipewire] source selected, setting up screencast
+22:46:15.729: [pipewire] Server version: 1.6.8
+22:46:15.729: [pipewire] Library version: 1.6.8
+22:46:15.729: [pipewire] Header version: 1.6.8
+22:46:15.730: [pipewire] Created stream 0x5622731611c0
+22:46:15.730: [pipewire] Stream 0x5622731611c0 state: "connecting" (error: none)
+22:46:15.731: [pipewire] Playing stream 0x5622731611c0
+22:46:15.732: [pipewire] Stream 0x5622731611c0 state: "paused" (error: none)
+22:46:15.763: [pipewire] Negotiated format:
+22:46:15.763: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:46:15.763: [pipewire]     Modifier: 0x0
+22:46:15.763: [pipewire]     Size: 1932x1056
+22:46:15.763: [pipewire]     Framerate: 0/1
+22:46:15.766: [pipewire] Negotiated format:
+22:46:15.767: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:46:15.767: [pipewire]     Modifier: 0x100000000000008
+22:46:15.767: [pipewire]     Size: 1932x1056
+22:46:15.767: [pipewire]     Framerate: 0/1
+22:46:15.773: [pipewire] Stream 0x5622731611c0 state: "streaming" (error: none)
+22:49:12.252: [pipewire] Stream 0x5622731611c0 state: "paused" (error: none)
+22:49:12.253: [pipewire] Negotiated format:
+22:49:12.253: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:49:12.253: [pipewire]     Modifier: 0x100000000000008
+22:49:12.253: [pipewire]     Size: 972x1056
+22:49:12.253: [pipewire]     Framerate: 0/1
+22:49:12.255: [pipewire] Negotiated format:
+22:49:12.255: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:49:12.255: [pipewire]     Modifier: 0x100000000000008
+22:49:12.255: [pipewire]     Size: 972x1056
+22:49:12.255: [pipewire]     Framerate: 0/1
+22:49:12.260: [pipewire] Stream 0x5622731611c0 state: "streaming" (error: none)
+22:49:18.367: [pipewire] Stream 0x5622731611c0 state: "paused" (error: none)
+22:49:18.367: [pipewire] Negotiated format:
+22:49:18.367: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:49:18.367: [pipewire]     Modifier: 0x100000000000008
+22:49:18.367: [pipewire]     Size: 1932x1056
+22:49:18.367: [pipewire]     Framerate: 0/1
+22:49:18.371: [pipewire] Negotiated format:
+22:49:18.371: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:49:18.371: [pipewire]     Modifier: 0x100000000000008
+22:49:18.371: [pipewire]     Size: 1932x1056
+22:49:18.371: [pipewire]     Framerate: 0/1
+22:49:18.380: [pipewire] Stream 0x5622731611c0 state: "streaming" (error: none)
+22:50:14.127: User Removed source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) from scene 'Escena'
+22:50:14.128: [pipewire] Stream 0x5622731611c0 state: "paused" (error: none)
+22:50:14.128: [pipewire] Stream 0x5622731611c0 state: "unconnected" (error: none)
+22:50:16.270: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:50:17.159: PipeWire initialized
+22:50:17.164: User added source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) to scene 'Escena'
+22:50:17.179: [pipewire] Screencast session created
+22:50:22.941: [pipewire] Asking for monitor and window
+22:50:22.957: [pipewire] source selected, setting up screencast
+22:50:22.968: [pipewire] Server version: 1.6.8
+22:50:22.968: [pipewire] Library version: 1.6.8
+22:50:22.968: [pipewire] Header version: 1.6.8
+22:50:22.968: [pipewire] Created stream 0x5622739954e0
+22:50:22.968: [pipewire] Stream 0x5622739954e0 state: "connecting" (error: none)
+22:50:22.969: [pipewire] Playing stream 0x5622739954e0
+22:50:22.970: [pipewire] Stream 0x5622739954e0 state: "paused" (error: none)
+22:50:23.003: [pipewire] Negotiated format:
+22:50:23.003: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:50:23.003: [pipewire]     Modifier: 0x0
+22:50:23.003: [pipewire]     Size: 1920x1080
+22:50:23.003: [pipewire]     Framerate: 0/1
+22:50:23.008: [pipewire] Negotiated format:
+22:50:23.008: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:50:23.008: [pipewire]     Modifier: 0x100000000000008
+22:50:23.008: [pipewire]     Size: 1920x1080
+22:50:23.008: [pipewire]     Framerate: 0/1
+22:50:23.017: [pipewire] Stream 0x5622739954e0 state: "streaming" (error: none)
+22:53:19.527: pulse-am: Server name: 'PulseAudio (on PipeWire 1.6.8) 15.0.0'
+22:53:19.528: pulse-am: Audio format: s32le, 48000 Hz, 2 channels
+22:53:19.528: pulse-am: Started Monitoring in 'alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Headphones__sink'
+22:53:21.312: pulse-am: Stopped Monitoring in 'alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Headphones__sink'
+22:53:21.312: pulse-am: Got 72 packets with 86400 frames
+22:53:44.278: QString::arg: Argument missing: "Crear nueva fuente", "Cliente de entrada de JACK"
+22:53:45.382: User added source 'Cliente de entrada de JACK' (jack_output_capture) to scene 'Escena'
+22:54:08.607: User Removed source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) from scene 'Escena'
+22:54:08.608: [pipewire] Stream 0x5622739954e0 state: "paused" (error: none)
+22:54:08.608: [pipewire] Stream 0x5622739954e0 state: "unconnected" (error: none)
+22:54:12.321: User Removed source 'Cliente de entrada de JACK' (jack_output_capture) from scene 'Escena'
+22:54:14.902: QString::arg: Argument missing: "Crear nueva fuente", "Captura de pantalla (PipeWire)"
+22:54:15.552: PipeWire initialized
+22:54:15.560: User added source 'Captura de pantalla (PipeWire)' (pipewire-screen-capture-source) to scene 'Escena'
+22:54:15.591: [pipewire] Screencast session created
+22:54:17.239: [pipewire] Asking for monitor and window
+22:54:17.249: [pipewire] source selected, setting up screencast
+22:54:17.258: [pipewire] Server version: 1.6.8
+22:54:17.259: [pipewire] Library version: 1.6.8
+22:54:17.259: [pipewire] Header version: 1.6.8
+22:54:17.259: [pipewire] Created stream 0x5622739954e0
+22:54:17.259: [pipewire] Stream 0x5622739954e0 state: "connecting" (error: none)
+22:54:17.260: [pipewire] Playing stream 0x5622739954e0
+22:54:17.261: [pipewire] Stream 0x5622739954e0 state: "paused" (error: none)
+22:54:17.290: [pipewire] Negotiated format:
+22:54:17.290: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:54:17.290: [pipewire]     Modifier: 0x0
+22:54:17.290: [pipewire]     Size: 1920x1080
+22:54:17.290: [pipewire]     Framerate: 0/1
+22:54:17.294: [pipewire] Negotiated format:
+22:54:17.294: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+22:54:17.294: [pipewire]     Modifier: 0x100000000000008
+22:54:17.294: [pipewire]     Size: 1920x1080
+22:54:17.294: [pipewire]     Framerate: 0/1
+22:54:17.302: [pipewire] Stream 0x5622739954e0 state: "streaming" (error: none)
+22:55:54.573: ---------------------------------
+22:55:54.573: [x264 encoder: 'simple_video_recording'] preset: veryfast
+22:55:54.573: [x264 encoder: 'simple_video_recording'] profile: high
+22:55:54.573: [x264 encoder: 'simple_video_recording'] settings:
+22:55:54.573: 	rate_control: CRF
+22:55:54.573: 	bitrate:      0
+22:55:54.573: 	buffer size:  0
+22:55:54.573: 	crf:          23
+22:55:54.573: 	fps_num:      60
+22:55:54.573: 	fps_den:      1
+22:55:54.573: 	width:        1920
+22:55:54.573: 	height:       1080
+22:55:54.573: 	keyint:       250
+22:55:54.573: 
+22:55:54.597: libfdk_aac encoder created
+22:55:54.598: libfdk_aac bitrate: 192, channels: 2
+22:55:54.600: ==== Recording Start ===============================================
+22:55:54.600: [mp4 output: 'simple_file_output'] Writing Hybrid MP4/MOV file '/home/miguel/Vídeos/2026-09-20_22-55-54.mp4'...
+22:59:43.859: [mp4 muxer: 'simple_file_output'] Flushing final fragment...
+22:59:43.859: [mp4 muxer: 'simple_file_output'] Number of fragments: 57
+22:59:43.866: [mp4 muxer: 'simple_file_output'] Full moov size: 203 KiB
+22:59:43.866: [mp4 muxer: 'simple_file_output'] Final mdat size: 13495 KiB
+22:59:43.866: Output 'simple_file_output': stopping
+22:59:43.866: Output 'simple_file_output': Total frames output: 13723
+22:59:43.866: Output 'simple_file_output': Total drawn frames: 13756
+22:59:43.866: [mp4 output: 'simple_file_output'] Waiting for file writer to finish...
+22:59:43.866: [mp4 output: 'simple_file_output'] File output complete. Finalization took 7 ms.
+22:59:43.867: ==== Recording Stop ================================================
+22:59:43.884: libfdk_aac encoder destroyed
+23:06:53.351: ==== Shutting down ==================================================
+23:06:53.357: pulse-input: Stopped recording from 'alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Speaker__sink.monitor'
+23:06:53.357: pulse-input: Got 95291 packets with 114349200 frames
+23:06:53.357: Deduplication logic stopped.
+23:06:53.357: pulse-input: Stopped recording from 'alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Mic1__source'
+23:06:53.357: pulse-input: Got 95301 packets with 114361200 frames
+23:06:53.357: [pipewire] Stream 0x5622739954e0 state: "paused" (error: none)
+23:06:53.358: [pipewire] Stream 0x5622739954e0 state: "unconnected" (error: none)
+23:06:53.388: All scene data cleared
+23:06:53.388: ------------------------------------------------
+23:06:53.402: Tried to call obs_frontend_remove_event_callback with no callbacks!
+23:06:53.462: [obs-websocket] [obs_module_unload] Shutting down...
+23:06:53.462: Tried to call obs_frontend_remove_event_callback with no callbacks!
+23:06:53.462: [obs-websocket] [obs_module_unload] Finished shutting down.
+23:06:53.476: [Scripting] Total detached callbacks: 0
+23:06:53.476: Freeing OBS context data
+23:06:53.491: == Profiler Results =============================
+23:06:53.491: run_program_init: 771.433 ms
+23:06:53.491:  ┣OBSApp::AppInit: 50.589 ms
+23:06:53.491:  ┃ ┗OBSApp::InitLocale: 6.995 ms
+23:06:53.491:  ┗OBSApp::OBSInit: 681.45 ms
+23:06:53.491:    ┣obs_startup: 3.001 ms
+23:06:53.491:    ┗OBSBasic::OBSInit: 624.485 ms
+23:06:53.491:      ┣OBSBasic::InitBasicConfig: 2.369 ms
+23:06:53.491:      ┣OBSBasic::ResetAudio: 0.416 ms
+23:06:53.491:      ┣OBSBasic::ResetVideo: 121.582 ms
+23:06:53.491:      ┃ ┗obs_init_graphics: 113.735 ms
+23:06:53.491:      ┃   ┗shader compilation: 44.056 ms
+23:06:53.491:      ┣OBSBasic::InitOBSCallbacks: 0.003 ms
+23:06:53.491:      ┣OBSBasic::InitHotkeys: 0.028 ms
+23:06:53.491:      ┣obs_load_all_modules2: 376.519 ms
+23:06:53.491:      ┃ ┣obs_init_module(decklink-captions.so): 0 ms
+23:06:53.491:      ┃ ┣obs_init_module(decklink-output-ui.so): 0 ms
+23:06:53.491:      ┃ ┣obs_init_module(decklink.so): 0.066 ms
+23:06:53.491:      ┃ ┣obs_init_module(frontend-tools.so): 133.191 ms
+23:06:53.491:      ┃ ┣obs_init_module(image-source.so): 0.007 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-alsa.so): 0.002 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-capture.so): 0.001 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-jack.so): 0.002 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-pipewire.so): 20.887 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-pulseaudio.so): 0.003 ms
+23:06:53.491:      ┃ ┣obs_init_module(linux-v4l2.so): 7.988 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-ffmpeg.so): 0.777 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-filters.so): 0.035 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-libfdk.so): 0.001 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-nvenc.so): 0.179 ms
+23:06:53.491:      ┃ ┃ ┗nvenc_check: 0.156 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-outputs.so): 0.007 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-qsv11.so): 1.003 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-transitions.so): 0.01 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-vst.so): 0.003 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-webrtc.so): 0.005 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-websocket.so): 6.128 ms
+23:06:53.491:      ┃ ┣obs_init_module(obs-x264.so): 0.001 ms
+23:06:53.491:      ┃ ┣obs_init_module(rtmp-services.so): 1.514 ms
+23:06:53.492:      ┃ ┗obs_init_module(text-freetype2.so): 0.014 ms
+23:06:53.492:      ┣OBSBasic::InitService: 2.758 ms
+23:06:53.492:      ┣OBSBasic::ResetOutputs: 0.247 ms
+23:06:53.492:      ┣OBSBasic::CreateHotkeys: 0.035 ms
+23:06:53.492:      ┣OBSBasic::InitPrimitives: 0.141 ms
+23:06:53.492:      ┗OBSBasic::Load: 53.133 ms
+23:06:53.492: obs_hotkey_thread(25 ms): min=0 ms, median=0.001 ms, max=1.42 ms, 99th percentile=0.002 ms, 100% below 25 ms
+23:06:53.492: audio_thread(Audio): min=0.019 ms, median=0.166 ms, max=6.962 ms, 99th percentile=1.674 ms
+23:06:53.492:  ┗receive_audio: min=0.008 ms, median=0.881 ms, max=5.59 ms, 99th percentile=1.882 ms, 0.0961988 calls per parent call
+23:06:53.492:    ┣buffer_audio: min=0.001 ms, median=0.002 ms, max=0.107 ms, 99th percentile=0.007 ms
+23:06:53.492:    ┗do_encode: min=0.269 ms, median=0.875 ms, max=5.583 ms, 99th percentile=1.876 ms
+23:06:53.492:      ┣encode(simple_aac_recording0): min=0.255 ms, median=0.859 ms, max=5.557 ms, 99th percentile=1.83 ms
+23:06:53.492:      ┗send_packet: min=0.003 ms, median=0.012 ms, max=1.221 ms, 99th percentile=0.045 ms
+23:06:53.492: obs_graphics_thread(16.6667 ms): min=0.089 ms, median=0.743 ms, max=39.137 ms, 99th percentile=2.521 ms, 99.9986% below 16.667 ms
+23:06:53.492:  ┣tick_sources: min=0 ms, median=0.021 ms, max=38.474 ms, 99th percentile=0.051 ms
+23:06:53.492:  ┣output_frame: min=0.066 ms, median=0.364 ms, max=7.377 ms, 99th percentile=1.894 ms
+23:06:53.492:  ┃ ┣gs_context(video->graphics): min=0.066 ms, median=0.362 ms, max=2.841 ms, 99th percentile=0.787 ms
+23:06:53.492:  ┃ ┃ ┣render_video: min=0.02 ms, median=0.146 ms, max=2.377 ms, 99th percentile=0.353 ms
+23:06:53.492:  ┃ ┃ ┃ ┣render_main_texture: min=0.015 ms, median=0.129 ms, max=2.286 ms, 99th percentile=0.272 ms
+23:06:53.492:  ┃ ┃ ┃ ┣render_convert_texture: min=0.027 ms, median=0.053 ms, max=1.737 ms, 99th percentile=0.176 ms, 0.0961945 calls per parent call
+23:06:53.492:  ┃ ┃ ┃ ┗stage_output_texture: min=0.016 ms, median=0.032 ms, max=0.996 ms, 99th percentile=0.086 ms, 0.0961945 calls per parent call
+23:06:53.492:  ┃ ┃ ┣gs_flush: min=0.034 ms, median=0.18 ms, max=2.483 ms, 99th percentile=0.405 ms
+23:06:53.492:  ┃ ┃ ┗download_frame: min=0 ms, median=0.139 ms, max=1.168 ms, 99th percentile=0.339 ms, 0.0961945 calls per parent call
+23:06:53.492:  ┃ ┗output_video_data: min=0.38 ms, median=0.77 ms, max=6.571 ms, 99th percentile=1.696 ms, 0.0961875 calls per parent call
+23:06:53.492:  ┗render_displays: min=0.002 ms, median=0.264 ms, max=18.366 ms, 99th percentile=0.915 ms
+23:06:53.492: video_thread(video): min=1.278 ms, median=2.528 ms, max=24.314 ms, 99th percentile=6.804 ms
+23:06:53.492:  ┗receive_video: min=1.274 ms, median=2.523 ms, max=24.311 ms, 99th percentile=6.789 ms
+23:06:53.492:    ┗do_encode: min=1.271 ms, median=2.521 ms, max=24.31 ms, 99th percentile=6.787 ms
+23:06:53.492:      ┣encode(simple_video_recording): min=1.251 ms, median=2.492 ms, max=24.295 ms, 99th percentile=6.743 ms
+23:06:53.492:      ┗send_packet: min=0.003 ms, median=0.017 ms, max=7.629 ms, 99th percentile=0.093 ms
+23:06:53.492: =================================================
+23:06:53.492: == Profiler Time Between Calls ==================
+23:06:53.492: obs_hotkey_thread(25 ms): min=25.011 ms, median=25.082 ms, max=28.955 ms, 99.7609% within ±2% of 25 ms (0% lower, 0.239126% higher)
+23:06:53.492: obs_graphics_thread(16.6667 ms): min=10.719 ms, median=16.666 ms, max=39.143 ms, 99.8825% within ±2% of 16.667 ms (0.0608387% lower, 0.056643% higher)
+23:06:53.492: =================================================
+23:06:53.529: Number of memory leaks: 0

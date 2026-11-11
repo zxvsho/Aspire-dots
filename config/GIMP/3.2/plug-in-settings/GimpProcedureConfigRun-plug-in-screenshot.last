@@ -1,0 +1,15 @@
+# settings
+
+(run-mode interactive)
+(shoot-type "screen")
+(x1 0)
+(y1 0)
+(x2 0)
+(y2 0)
+(include-pointer no)
+(color-profile "monitor")
+(include-decoration yes)
+(selection-delay 0)
+(screenshot-delay 0)
+
+# end of settings

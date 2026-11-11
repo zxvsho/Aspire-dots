@@ -1,0 +1,138 @@
+# Window Rules
+
+window_rule=isfloating:1,appid:xdg-desktop-portal-gtk,title:打开本地仓库
+window_rule=isfloating:1,appid:xdg-desktop-portal-gtk,title:打开文件
+
+window_rule=isfloating:1,isnosizehint:1,title:迅雷
+window_rule=width:800,height:900,title:迅雷
+
+window_rule=isfloating:1,title:Translate
+window_rule=width:800,height:900,title:Translate
+
+window_rule=globalkeybinding:ctrl+alt-o,appid:com.obsproject.Studio
+window_rule=globalkeybinding:ctrl+alt-n,appid:com.obsproject.Studio
+# windowrule=isopensilent:1,appid:com.obsproject.Studio
+
+window_rule=noswallow:1,appid:flameshot
+window_rule=isfullscreen:1,appid:flameshot
+window_rule=animation_type_open:none,appid:flameshot
+window_rule=animation_type_close:none,appid:flameshot
+# windowrule=animation_type_close:none,appid:Sxiv
+
+window_rule=noswallow:1,title:Event Tester
+
+window_rule=isfloating:1,width:1500,height:900,appid:yesplaymusic
+window_rule=animation_type_open:slide,appid:yesplaymusic
+window_rule=animation_type_close:slide,appid:yesplaymusic
+
+window_rule=isfloating:1,appid:clash-verge
+window_rule=width:1500,height:900,appid:clash-verge
+window_rule=animation_type_open:slide,animation_type_close:slide,appid:clash-verge
+
+window_rule=isfloating:1,width:1500,height:900,appid:pot,title:Recognize
+window_rule=animation_type_open:none,animation_type_close:none,isnoshadow:1,isnoradius:1,isnoborder:1,appid:^wps$,title:^wps$
+window_rule=force_fakemaximize:1,appid:^wpsoffice$
+
+window_rule=isfloating:1,appid:bluetui
+window_rule=width:1500,height:900,appid:bluetui
+
+window_rule=isfloating:1,title:图片查看器
+window_rule=isfloating:1,title:预览
+window_rule=isfloating:1,title:图片查看
+window_rule=isfloating:1,title:选择文件
+window_rule=isfloating:1,title:打开文件
+window_rule=isfloating:1,appid:python3,title:qxdrag
+window_rule=isfloating:1,title:rofi - Networks
+
+window_rule=animation_type_open:zoom,title:图片查看器
+window_rule=animation_type_open:zoom,title:图片查看
+window_rule=animation_type_open:zoom,title:选择文件
+window_rule=animation_type_open:zoom,title:打开文件
+window_rule=animation_type_open:zoom,appid:python3,title:qxdrag
+window_rule=animation_type_open:zoom,title:rofi - Networks
+
+
+window_rule=isfloating:1,appid:Rofi
+window_rule=isfloating:1,appid:qxdrag.py
+window_rule=isfloating:1,appid:xfce-polkit
+
+window_rule=isnoborder:1,appid:Rofi
+window_rule=animation_type_open:slide,appid:Rofi
+window_rule=animation_type_close:zoom,appid:Rofi
+window_rule=animation_type_open:zoom,appid:qxdrag.py
+window_rule=animation_type_open:zoom,appid:python3,title:qxdrag
+window_rule=animation_type_close:zoom,appid:qxdrag.py
+window_rule=animation_type_close:zoom,appid:python3,title:qxdrag
+window_rule=animation_type_close:zoom,appid:^com.gabm.satty$
+
+# AspireMenu (reemplazo de Rofi)
+
+window_rule=isterm:1,appid:St
+# These applications can only strictly adhere to the tiling size when maximized
+window_rule=force_fakemaximize:1,appid:org.gnome.SystemMonitor
+window_rule=force_fakemaximize:1,appid:org.gnome.gThumb
+window_rule=force_fakemaximize:1,appid:firefox
+window_rule=force_fakemaximize:1,appid:org.telegram.desktop
+window_rule=istagsilent:1,appid:org.telegram.desktop
+
+# Configuración de tags personal
+window_rule=tags:6,appid:obs
+
+window_rule=animation_type_open:none,nofadein:1,title:wechat
+window_rule=animation_type_close:none,nofadeout:1,title:wechat
+window_rule=isfloating:1,isoverlay:1,isnoborder:1,isunglobal:1,width:400,height:400,offsetx:9999,offsety:9999,appid:bongo-cat,title:BongoCat
+window_rule=isfloating:1,isoverlay:1,isnoborder:1,isunglobal:1,width:280,height:200,offsetx:9999,offsety:9999,appid:mpv,title:video0 - mpv
+window_rule=isfloating:1,isnosizehint:1,width:1500,height:900,appid:baidunetdisk,title:百度网盘
+window_rule=isoverlay:1,appid:^com.gabm.satty$
+
+
+window_rule=unfocused_opacity:1.0,focused_opacity:1.0,appid:^mpv$
+window_rule=unfocused_opacity:1.0,focused_opacity:1.0,appid:^St$
+#windowrule=unfocused_opacity:1.0,focused_opacity:1.0,appid:^foot$
+window_rule=unfocused_opacity:1.0,focused_opacity:1.0,appid:^obsidian$
+window_rule=unfocused_opacity:1.0,focused_opacity:1.0,appid:^Google-chrome$
+
+# layer rule
+layer_rule=noblur:1,noanim:1,layer_name:dimland_layer
+layer_rule=animation_type_open:zoom,layer_name:launcher
+layer_rule=animation_type_close:zoom,layer_name:launcher
+layer_rule=animation_type_open:zoom,layer_name:rofi
+layer_rule=animation_type_close:zoom,layer_name:rofi
+layer_rule=noanim:1,noblur:1,noshadow:1,layer_name:hyprpicker
+layer_rule=noanim:1,layer_name:showkeys
+layer_rule=noanim:1,layer_name:aspire-menu
+# layerrule=noshadow:1,layer_name:waybar
+# layerrule=animation_type_open:fade,layer_name:logout_dialog
+# layerrule=animation_type_close:fade,layer_name:logout_dialog
+# windowrule=isfloating:1,appid:.*
+
+#bind=alt,h,toggle_named_scratchpad,st-yazi,none,1280,800,st -c st-yazi -e yazi
+# windowrule=isnamedscratchpad:1,width:1280,height:800,appid:st-yazi
+# windowrule=isfloating:1,appid:.*
+#layerrule=noblur:1,layer_name:^(?!rofi$).*$
+#windowrule=noblur:1,appid:^(?!foot$).*$
+layer_rule=noblur:1,layer_name:walker
+
+#-----REGLAS PARA PROGRAMAS------
+
+# Waypaper
+window_rule=isfloating:1,width:950,height:650,appid:waypaper
+
+# Impala (wifi) en alacritty flotante
+window_rule=isfloating:1,width:950,height:650,appid:alacritty-impala
+
+# Wiremix (volumen) en alacritty flotante
+window_rule=isfloating:1,width:1000,height:650,appid:alacritty-wiremix
+
+# Bluetui (bluetooth) en alacritty flotante
+window_rule=isfloating:1,width:900,height:600,appid:alacritty-bluetui
+
+# Peaclock
+window_rule=isfloating:1,width:800,height:500,appid:alacritty-peaclock
+
+window_rule=isfloating:1,width:320,noblur:1,isnoshadow:1,isnoborder:1,isnoradius:1,animation_type_open:none,animation_type_close:none,focused_opacity:1.0,unfocused_opacity:1.0,title:^Aspire Menu$
+
+# aspire-menu (ventana Slint normal con altura dinámica)
+window_rule=isfloating:1,width:320,height:480,isnoborder:1,isnoshadow:1,isnoradius:1,focused_opacity:1.0,unfocused_opacity:1.0,appid:^aspire-menu$
+window_rule=noblur:1,appid:^aspire-menu$
+window_rule=isnoanimation:1,appid:^aspire-menu$

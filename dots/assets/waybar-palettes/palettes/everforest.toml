@@ -1,0 +1,14 @@
+# Fuente oficial: https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim
+id = "everforest"
+name = "Everforest"
+author = "Everforest"
+description = "Variante dark medium con acentos verdes y aqua."
+
+[colors]
+background = "#2d353b"
+background-alt = "#343f44"
+foreground = "#d3c6aa"
+selected = "#a7c080"
+selectedtext = "#2d353b"
+active = "#83c092"
+urgent = "#e67e80"

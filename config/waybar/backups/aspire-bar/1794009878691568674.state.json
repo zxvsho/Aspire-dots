@@ -1,0 +1,10 @@
+{
+  "config": {
+    "exists": true,
+    "symlink_target": "/home/miguel/.config/aspire-bar/applied/predeterminado-1793913622321736042/config.jsonc"
+  },
+  "style": {
+    "exists": true,
+    "symlink_target": "/home/miguel/.config/aspire-bar/applied/predeterminado-1793913622321736042/style.css"
+  }
+}

@@ -1,0 +1,10 @@
+[general]
+# Ajusta el número de barras según el espacio que quieras ocupar (ej. 8 a 12 barras)
+bars = 10
+framerate = 60
+
+[output]
+# Cambia la salida a formato crudo "raw" para que el script la pueda leer
+method = raw
+data_format = ascii
+ascii_max_range = 7

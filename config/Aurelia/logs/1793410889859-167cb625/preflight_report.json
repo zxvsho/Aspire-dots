@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "name": "Runner Existence",
+      "status": true,
+      "details": "OK"
+    },
+    {
+      "name": "Game Executable Existence",
+      "status": true,
+      "details": "OK"
+    },
+    {
+      "name": "Working Directory",
+      "status": true,
+      "details": "OK"
+    },
+    {
+      "name": "WINEPREFIX Existence",
+      "status": true,
+      "details": "OK"
+    },
+    {
+      "name": "Runner Executability",
+      "status": true,
+      "details": "OK"
+    }
+  ],
+  "target_architecture": "X86",
+  "runner_path": "/home/miguel/.steam/steam/steamapps/common/Proton - Experimental/proton"
+}

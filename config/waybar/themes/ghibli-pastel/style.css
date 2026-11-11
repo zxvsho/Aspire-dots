@@ -1,0 +1,245 @@
+/* =============================================================================
+ * Waybar Style - Tema Ghibli Pastel (adaptado para MangoWM)
+ * Cápsulas individuales con colores pastel sobre barra transparente
+ * ============================================================================= */
+
+/* Paleta */
+@define-color bg_base #181825;
+@define-color bg_border #313244;
+@define-color text_main #cdd6f4;
+
+@define-color ws_bg #1e1e2e;
+@define-color ws_active_bg #45475a;
+@define-color ws_active_fg #ffffff;
+
+@define-color clock_bg #1e1e2e;
+@define-color clock_fg #cdd6f4;
+
+@define-color cpu_bg #fae3b0;
+@define-color cpu_fg #181825;
+
+@define-color audio_bg #89dceb;
+@define-color audio_fg #181825;
+
+@define-color bt_bg #89b4fa;
+@define-color bt_fg #181825;
+
+@define-color net_bg #f5c2e7;
+@define-color net_fg #181825;
+
+@define-color bat_bg #f9e2af;
+@define-color bat_fg #181825;
+
+@define-color date_bg #a6e3a1;
+@define-color date_fg #181825;
+
+@define-color power_bg #f38ba8;
+@define-color power_fg #181825;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font Propo", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* Tooltips */
+tooltip {
+    background: @bg_base;
+    border: 1px solid @bg_border;
+    border-radius: 10px;
+    color: @text_main;
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: @text_main;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+}
+
+/* =============================================================================
+ * IZQUIERDA: Distribución y Espacios de Trabajo
+ * ============================================================================= */
+.modules-left {
+    background: @bg_base;
+    border: 1px solid @bg_border;
+    border-radius: 8px;
+    padding: 2px 4px;
+    margin-right: 6px;
+}
+
+#custom-distro {
+    color: #4fd1c5;
+    background: rgba(79, 209, 197, 0.15);
+    border-radius: 6px;
+    padding: 2px 10px;
+    margin: 2px 4px 2px 2px;
+    font-size: 15px;
+}
+
+#custom-distro:hover {
+    background: rgba(79, 209, 197, 0.3);
+}
+
+#workspaces {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+#workspaces button {
+    background: @ws_bg;
+    color: #7f849c;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 2px 3px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#workspaces button:hover {
+    background: #313244;
+    color: @text_main;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background: @ws_active_bg;
+    color: @ws_active_fg;
+    font-weight: 800;
+}
+
+#workspaces button.urgent {
+    background: #f38ba8;
+    color: #11111b;
+}
+
+/* =============================================================================
+ * CENTRO: Reloj Píldora
+ * ============================================================================= */
+.modules-center {
+    background: @clock_bg;
+    border: 1px solid @bg_border;
+    border-radius: 8px;
+    padding: 2px 14px;
+}
+
+#clock.time {
+    color: @clock_fg;
+    font-weight: 700;
+}
+
+/* =============================================================================
+ * DERECHA: Cápsulas Pastel
+ * ============================================================================= */
+.modules-right {
+    background: transparent;
+}
+
+#tray {
+    background: #232634;
+    border: 1px solid @bg_border;
+    border-radius: 8px;
+    padding: 2px 10px;
+    margin-right: 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: #f38ba8;
+}
+
+#cpu {
+    background: @cpu_bg;
+    color: @cpu_fg;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-right: 4px;
+}
+
+#pulseaudio {
+    background: @audio_bg;
+    color: @audio_fg;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-right: 4px;
+}
+
+#bluetooth {
+    background: @bt_bg;
+    color: @bt_fg;
+    border-radius: 8px;
+    padding: 2px 10px;
+    margin-right: 4px;
+}
+
+#network {
+    background: @net_bg;
+    color: @net_fg;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-right: 4px;
+}
+
+#network.disconnected {
+    background: #f38ba8;
+    color: #11111b;
+}
+
+#battery {
+    background: @bat_bg;
+    color: @bat_fg;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-right: 4px;
+}
+
+#battery.warning:not(.charging) {
+    background: #fab387;
+    color: #11111b;
+}
+
+#battery.critical:not(.charging) {
+    background: #f38ba8;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #fab387;
+    }
+}
+
+#clock.date {
+    background: @date_bg;
+    color: @date_fg;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-right: 4px;
+}
+
+#custom-power {
+    background: @power_bg;
+    color: @power_fg;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 14px;
+}
+
+#custom-power:hover {
+    background: #f5a3bb;
+}

@@ -1,0 +1,8 @@
+name     = "Dracula"
+system   = "base24"
+tinty_id = "dracula"
+
+# Opcionales: descomenta y rellena cuando decidas.
+# font  = { family = "NOMBRE DE LA FAMILIA", source = "global" }   # bundled | global | system
+# icons = { name = "NOMBRE DEL PACK", source = "bundled" }         # bundled | global | system
+# default_wallpaper = "archivo.png"                                # dentro de wallpapers/

@@ -1,0 +1,25 @@
+[package]
+name = "aspire-bg"
+version = "0.1.0"
+edition = "2021"
+description = "MangoWM wallpaper picker - Relm4/GTK4 layer-shell grid, swaybg backend, system theme colors"
+
+[features]
+wallhaven = ["dep:ureq", "dep:serde_json"]
+
+[dependencies]
+aspire-core = { path = "../core" }
+relm4 = "0.11"
+gtk = { package = "gtk4", version = "0.11", features = ["v4_12"] }
+gtk4-layer-shell = "0.8"
+gdk-pixbuf = "0.22"
+dirs = "5.0"
+ureq = { version = "3.4", default-features = false, features = ["rustls"], optional = true }
+serde_json = { version = "1.0", optional = true }
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"

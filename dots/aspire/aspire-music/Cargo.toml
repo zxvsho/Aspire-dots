@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# aspire-music — Reproductor de música para la terminal
+#       · Motor TUI : Ratatui + Crossterm (render a ~60 FPS)
+#       · Runtime   : Tokio (multinúcleo, async)
+#       · Audio     : MPV (IPC JSON) → soporta YouTube/SoundCloud con yt-dlp
+#                     Espacio reservado para librespot (Spotify premium)
+# ─────────────────────────────────────────────────────────────────────────────
+
+[package]
+name = "aspire-music"
+version = "0.1.0"
+edition = "2021"
+description = "Reproductor de música retro-moderno (LazyVim style) para la terminal"
+
+[dependencies]
+# ── Interfaz TUI ──────────────────────────────────────────────────────────────
+ratatui     = "0.29"
+crossterm   = "0.28"
+
+# ── Runtime asíncrono / canales ───────────────────────────────────────────────
+tokio       = { version = "1.41", features = ["full"] }
+
+# ── Serialización / configuración ─────────────────────────────────────────────
+serde       = { version = "1.0", features = ["derive"] }
+serde_json  = "1.0"        # protocolo IPC de MPV (JSON)
+toml        = "0.8"        # lectura de config.toml
+
+# ── Utilidades ────────────────────────────────────────────────────────────────
+anyhow      = "1.0"
+dirs        = "5.0"
+
+# ── HTTP (stub de la API de Spotify / futuras integraciones) ──────────────────
+reqwest     = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+
+# ── Streaming nativo de Spotify Premium (descomenta para activar) ─────────────
+# La inicialización real queda preparada en la SECCIÓN 6B del código.
+# librespot = { version = "0.6", default-features = false, features = ["with-tremor"] }
+
+[profile.release]
+opt-level = 3
+lto       = "thin"
+strip     = true

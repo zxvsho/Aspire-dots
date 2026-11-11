@@ -1,0 +1,12 @@
+name = "Dracula"
+author = "Mangowm_dots"
+description = "Oscuro con acentos violeta, rosa y cian."
+
+[colors]
+background = "#282a36"
+background-alt = "#44475a"
+foreground = "#f8f8f2"
+selected = "#bd93f9"
+selectedtext = "#282a36"
+active = "#8be9fd"
+urgent = "#ff5555"

@@ -1,0 +1,3 @@
+Program: /home/miguel/.steam/steam/steamapps/common/Proton - Experimental/proton
+Args   : run /home/miguel/.local/share/Steam/steamapps/common/Dead Space 2/deadspace2.exe
+CWD    : /home/miguel/.local/share/Steam/steamapps/common/Dead Space 2

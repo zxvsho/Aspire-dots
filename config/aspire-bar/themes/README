@@ -1,0 +1,14 @@
+# Temas de aspire-bar
+
+Cada tema vive en su propia carpeta: `themes/<slug>/` con estos archivos:
+
+- `theme.toml`   — metadatos (name, display-name, author, description, version, palette).
+- `config.jsonc` — configuración de Waybar.
+- `style.css`    — hoja de estilos de Waybar.
+- `preview.png`  — opcional, miniatura.
+
+`name` debe usar minúsculas, números y guiones, y coincidir con el nombre de la carpeta.
+`palette` puede ser `dynamic` (wallpaper) o el id de una paleta incluida.
+
+Para importar: usa los botones de la sección Temas (carpeta, `.tar.zst`, `.zip`
+o dos archivos sueltos). Los temas copiados a mano aparecen automáticamente.
