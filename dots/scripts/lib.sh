@@ -20,6 +20,13 @@ aspire_err()  { printf '%b  x %s%b\n' "$C_R" "$*" "$C_N" >&2; }
 aspire_die()  { aspire_err "$*"; exit 1; }
 aspire_have() { command -v "$1" >/dev/null 2>&1; }
 
+# Registro de fallos recuperables: el instalador sigue y los resume al final.
+ASPIRE_FAILURES=()
+aspire_fail() {
+  ASPIRE_FAILURES+=("$*")
+  aspire_warn "$*"
+}
+
 DRY_RUN="${DRY_RUN:-0}"
 
 aspire_run() {
@@ -53,7 +60,15 @@ aspire_read_list() {
 # ---------------------------------------------------------------------------
 aspire_sync_repo() {
   aspire_step "Actualizando índices y sistema (pacman -Syu)"
-  aspire_run sudo pacman -Syu --noconfirm || aspire_warn "pacman -Syu devolvió un error; se continúa."
+  if aspire_run sudo pacman -Syu --noconfirm; then
+    return 0
+  fi
+
+  aspire_fail "pacman -Syu falló; intentando refrescar el llavero y continuar."
+  aspire_run sudo pacman -Sy --noconfirm archlinux-keyring 2>/dev/null || true
+  aspire_run sudo pacman -Syu --noconfirm || \
+    aspire_fail "pacman -Syu sigue fallando; se intentarán los paquetes uno a uno."
+  return 0
 }
 
 aspire_install_repo_packages() {
@@ -74,7 +89,7 @@ aspire_install_repo_packages() {
     aspire_run sudo pacman -S --needed --noconfirm "$p" || failed+=("$p")
   done
   if ((${#failed[@]})); then
-    aspire_warn "No se pudieron instalar: ${failed[*]}"
+    aspire_fail "No se pudieron instalar paquetes oficiales: ${failed[*]}"
     return 1
   fi
 }
@@ -100,8 +115,8 @@ aspire_build_paru() {
     printf 'paru\n'
     return 0
   fi
-  aspire_have makepkg || aspire_die "makepkg no está disponible (instala base-devel)."
-  aspire_have git || aspire_die "git no está disponible."
+  aspire_have makepkg || { aspire_fail "makepkg no está disponible (instala base-devel); se omiten los paquetes AUR."; return 1; }
+  aspire_have git || { aspire_fail "git no está disponible; se omiten los paquetes AUR."; return 1; }
 
   local tmp
   tmp="$(mktemp -d)"
@@ -157,9 +172,34 @@ aspire_install_aur_packages() {
     aspire_run "$helper" -S --needed --noconfirm "$p" || failed+=("$p")
   done
   if ((${#failed[@]})); then
-    aspire_warn "No se pudieron instalar: ${failed[*]}"
+    aspire_fail "No se pudieron instalar paquetes AUR: ${failed[*]}"
     return 1
   fi
+}
+
+# ---------------------------------------------------------------------------
+# Verificación de paquetes críticos
+# ---------------------------------------------------------------------------
+aspire_verify_packages() {
+  local p
+  local -a missing=()
+  if [[ "$DRY_RUN" == 1 ]]; then
+    aspire_info "[dry-run] verificaría paquetes críticos"
+    return 0
+  fi
+  local -a critical=(
+    mangowm waybar matugen swaybg neovim rofi fuzzel mako foot rio yazi imv
+    gtk4 gtk4-layer-shell gdk-pixbuf2 pkgconf rust poppler ffmpegthumbnailer
+    cliphist tinty-git wlogout xfce-polkit ttf-ms-fonts oh-my-posh-bin
+  )
+  for p in "${critical[@]}"; do
+    pacman -Q "$p" >/dev/null 2>&1 || missing+=("$p")
+  done
+  if ((${#missing[@]})); then
+    aspire_fail "Faltan paquetes críticos: ${missing[*]}"
+    return 1
+  fi
+  aspire_info "Paquetes críticos verificados."
 }
 
 # ---------------------------------------------------------------------------
@@ -176,11 +216,15 @@ aspire_backup() {
     return 0
   fi
 
-  mkdir -p "$dest" || aspire_die "No se pudo crear $dest"
+  if ! mkdir -p "$dest"; then
+    ASPIRE_BACKUP_DIR=""
+    aspire_fail "No se pudo crear $dest; se continúa sin copia de seguridad."
+    return 1
+  fi
   local item
   for item in .config .dots .zshrc .bashrc .bash_profile .gitconfig; do
     [[ -e "$HOME/$item" ]] || continue
-    cp -a "$HOME/$item" "$dest/" || aspire_warn "No se pudo copiar ~/$item"
+    cp -a "$HOME/$item" "$dest/" || aspire_fail "No se pudo copiar ~/$item al respaldo."
   done
   aspire_info "Respaldo listo: $dest"
 }
@@ -190,26 +234,43 @@ aspire_backup() {
 # ---------------------------------------------------------------------------
 aspire_restore_configs() {
   local repo=$1
+  local rc=0
   aspire_step "Restaurando configuraciones"
 
-  aspire_run mkdir -p "$HOME/.config" "$HOME/.dots"
+  aspire_run mkdir -p "$HOME/.config" "$HOME/.dots" || {
+    aspire_fail "No se pudieron crear ~/.config o ~/.dots."
+    return 1
+  }
 
   if [[ -d "$repo/config" ]]; then
-    aspire_run cp -a "$repo/config/." "$HOME/.config/"
-    aspire_info "config/  ->  ~/.config"
+    if aspire_run cp -a "$repo/config/." "$HOME/.config/"; then
+      aspire_info "config/  ->  ~/.config"
+    else
+      aspire_fail "No se pudo copiar config/ a ~/.config."
+      rc=1
+    fi
   fi
 
   if [[ -d "$repo/dots" ]]; then
-    aspire_run cp -a "$repo/dots/." "$HOME/.dots/"
-    aspire_info "dots/    ->  ~/.dots"
+    if aspire_run cp -a "$repo/dots/." "$HOME/.dots/"; then
+      aspire_info "dots/    ->  ~/.dots"
+    else
+      aspire_fail "No se pudo copiar dots/ a ~/.dots."
+      rc=1
+    fi
   fi
 
   local f
   for f in .zshrc .bashrc .bash_profile .gitconfig; do
     [[ -f "$repo/$f" ]] || continue
-    aspire_run cp -a "$repo/$f" "$HOME/$f"
-    aspire_info "$f  ->  ~/"
+    if aspire_run cp -a "$repo/$f" "$HOME/$f"; then
+      aspire_info "$f  ->  ~/"
+    else
+      aspire_fail "No se pudo copiar $f a ~/."
+      rc=1
+    fi
   done
+  return "$rc"
 }
 
 # ---------------------------------------------------------------------------
@@ -229,8 +290,14 @@ aspire_build_apps() {
   local apps_dir=$1 stage_dir=$2 filter=${3:-all}
   aspire_step "Compilando apps Aspire"
 
-  aspire_have cargo || aspire_die "cargo no está instalado (paquete rust)."
-  [[ -d "$apps_dir" ]] || aspire_die "No existe el directorio de apps: $apps_dir"
+  if ! aspire_have cargo; then
+    aspire_fail "cargo no está instalado (paquete rust); se omiten las apps Aspire."
+    return 1
+  fi
+  if [[ ! -d "$apps_dir" ]]; then
+    aspire_fail "No existe el directorio de apps: $apps_dir"
+    return 1
+  fi
 
   local dir app bin
   local -a built=() failed=()
@@ -256,18 +323,25 @@ aspire_build_apps() {
 
     aspire_info "Compilando $app..."
     if ! cargo build --release --manifest-path "$dir/Cargo.toml"; then
-      aspire_warn "Falló la compilación de $app"
-      failed+=("$app")
-      continue
+      aspire_warn "Falló la compilación de $app; reintentando una vez..."
+      if ! cargo build --release --manifest-path "$dir/Cargo.toml"; then
+        aspire_fail "Falló la compilación de $app."
+        failed+=("$app")
+        continue
+      fi
     fi
 
     bin="$dir/target/release/$app"
     if [[ -x "$bin" ]]; then
-      install -Dm755 "$bin" "$stage_dir/$app"
-      built+=("$app")
-      aspire_info "Staging: $stage_dir/$app"
+      if install -Dm755 "$bin" "$stage_dir/$app"; then
+        built+=("$app")
+        aspire_info "Staging: $stage_dir/$app"
+      else
+        aspire_fail "No se pudo copiar $app a $stage_dir."
+        failed+=("$app")
+      fi
     else
-      aspire_warn "No se generó el binario esperado: $bin"
+      aspire_fail "No se generó el binario esperado: $bin"
       failed+=("$app")
     fi
   done
@@ -286,42 +360,57 @@ aspire_build_apps() {
 # ---------------------------------------------------------------------------
 aspire_link_bins() {
   local stage_dir=$1
+  local rc=0
   aspire_step "Enlazando binarios en ~/.local/bin"
-  aspire_run mkdir -p "$HOME/.local/bin"
+  if ! aspire_run mkdir -p "$HOME/.local/bin"; then
+    aspire_fail "No se pudo crear ~/.local/bin."
+    return 1
+  fi
 
   local bin app
   for bin in "$stage_dir"/*; do
     [[ -f "$bin" && -x "$bin" ]] || continue
     app="$(basename "$bin")"
-    aspire_run ln -sfn "$bin" "$HOME/.local/bin/$app"
-    aspire_info "$app"
+    if aspire_run ln -sfn "$bin" "$HOME/.local/bin/$app"; then
+      aspire_info "$app"
+    else
+      aspire_fail "No se pudo enlazar $app en ~/.local/bin."
+      rc=1
+    fi
   done
+  return "$rc"
 }
 
 aspire_ensure_path() {
   aspire_step "Asegurando PATH (~/.local/bin y ~/.dots/bin)"
   local marker='# >>> aspire path >>>'
   local endmark='# <<< aspire path <<<'
-  local rc
+  local rc=0
+  local rcfile
 
-  for rc in "$HOME/.zshrc" "$HOME/.bashrc"; do
+  for rcfile in "$HOME/.zshrc" "$HOME/.bashrc"; do
     if [[ "$DRY_RUN" == 1 ]]; then
-      aspire_run bash -c "grep -qF '$marker' '$rc' || printf '%s\\n' '$marker' >> '$rc'"
+      aspire_run bash -c "grep -qF '$marker' '$rcfile' || printf '%s\\n' '$marker' >> '$rcfile'"
       continue
     fi
-    [[ -f "$rc" ]] || : >"$rc"
-    if ! grep -qF "$marker" "$rc"; then
-      {
+    [[ -f "$rcfile" ]] || : >"$rcfile"
+    if ! grep -qF "$marker" "$rcfile"; then
+      if {
         printf '\n%s\n' "$marker"
         printf 'case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac\n'
         printf 'case ":$PATH:" in *":$HOME/.dots/bin:"*) ;; *) export PATH="$HOME/.dots/bin:$PATH" ;; esac\n'
         printf '%s\n' "$endmark"
-      } >>"$rc"
-      aspire_info "PATH añadido a $rc"
+      } >>"$rcfile"; then
+        aspire_info "PATH añadido a $rcfile"
+      else
+        aspire_fail "No se pudo actualizar $rcfile con el PATH."
+        rc=1
+      fi
     else
-      aspire_info "PATH ya presente en $rc"
+      aspire_info "PATH ya presente en $rcfile"
     fi
   done
+  return "$rc"
 }
 
 # ---------------------------------------------------------------------------
@@ -345,4 +434,17 @@ aspire_summary() {
   aspire_info "Cierra sesión y vuelve a entrar para recargar PATH y servicios."
   aspire_info "Fondo de pantalla por defecto: swaybg (gestionado por aspire-bg)."
   aspire_info "Primer arranque de nvim: LazyVim se descarga automáticamente."
+
+  if ((${#ASPIRE_FAILURES[@]})); then
+    aspire_step "Avisos de la instalación"
+    local f
+    for f in "${ASPIRE_FAILURES[@]}"; do
+      aspire_warn "$f"
+    done
+    aspire_info "La instalación terminó, pero revisa los avisos anteriores."
+    return 1
+  fi
+
+  aspire_info "Instalación completada sin errores."
+  return 0
 }

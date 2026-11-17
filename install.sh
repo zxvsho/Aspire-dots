@@ -70,15 +70,21 @@ fi
 if [[ "$SKIP_PACKAGES" == 0 ]]; then
   aspire_sync_repo
   aspire_install_repo_packages "$REPO_DIR/packages/arch.txt" || \
-    aspire_warn "Algunos paquetes oficiales no se instalaron."
+    aspire_info "Se continúa con el resto de la instalación."
 
   if helper="$(aspire_ensure_aur_helper)"; then
-    [[ -n "$helper" ]] || aspire_die "No se pudo preparar yay ni paru."
-    aspire_install_aur_packages "$REPO_DIR/packages/aur.txt" "$helper" || \
-      aspire_warn "Algunos paquetes AUR no se instalaron."
+    if [[ -n "$helper" ]]; then
+      aspire_install_aur_packages "$REPO_DIR/packages/aur.txt" "$helper" || \
+        aspire_info "Se continúa sin el resto de paquetes AUR."
+    else
+      aspire_fail "No se pudo preparar yay ni paru; se omiten los paquetes AUR."
+    fi
   else
-    aspire_warn "No se pudo preparar un helper de AUR; se omiten los paquetes AUR."
+    aspire_fail "No se pudo preparar un helper de AUR; se omiten los paquetes AUR."
   fi
+
+  aspire_verify_packages || \
+    aspire_info "Se continúa; revisa los paquetes que falten antes de reiniciar."
 else
   aspire_info "Instalación de paquetes omitida"
 fi
@@ -87,7 +93,8 @@ fi
 # 3. Configuraciones
 # ---------------------------------------------------------------------------
 if [[ "$SKIP_RESTORE" == 0 ]]; then
-  aspire_restore_configs "$REPO_DIR"
+  aspire_restore_configs "$REPO_DIR" || \
+    aspire_info "Se continúa con el resto de la instalación."
 else
   aspire_info "Restauración de configuraciones omitida"
 fi
@@ -97,7 +104,7 @@ fi
 # ---------------------------------------------------------------------------
 if [[ "$SKIP_BUILD" == 0 ]]; then
   aspire_build_apps "$REPO_DIR/dots/aspire" "$HOME/.dots/bin" || \
-    aspire_warn "Algunas apps no se compilaron correctamente."
+    aspire_info "Se continúa con enlaces y PATH; revisa las apps que fallaron."
 else
   aspire_info "Compilación omitida"
 fi
@@ -106,8 +113,10 @@ fi
 # 5. Enlaces y PATH
 # ---------------------------------------------------------------------------
 if [[ "$SKIP_PATH" == 0 ]]; then
-  aspire_link_bins "$HOME/.dots/bin"
-  aspire_ensure_path
+  aspire_link_bins "$HOME/.dots/bin" || \
+    aspire_info "Se continúa; algunos enlaces no se pudieron crear."
+  aspire_ensure_path || \
+    aspire_info "Se continúa; revisa el PATH manualmente si hace falta."
 else
   aspire_info "Enlaces y PATH omitidos"
 fi
@@ -116,4 +125,5 @@ fi
 # 6. Resumen
 # ---------------------------------------------------------------------------
 aspire_lazyvim_note
-aspire_summary "$ASPIRE_BACKUP_DIR"
+aspire_summary "$ASPIRE_BACKUP_DIR" || true
+exit 0

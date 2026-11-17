@@ -49,6 +49,20 @@ Al terminar, cierra sesión y vuelve a entrar.
 ./install.sh --dry-run         # muestra las acciones sin ejecutarlas
 ```
 
+### Si algo falla
+
+El instalador no aborta por un paquete o una app concreta:
+
+- Si falla la instalación conjunta de paquetes, reintenta **uno a uno**.
+- Si falla `pacman -Syu`, intenta refrescar el llavero y seguir.
+- Si no hay `paru`/`yay`, construye `paru`; si tampoco puede, omite AUR y sigue.
+- Si una app falla al compilar, **reintenta una vez** y continúa con las demás.
+- Si falla el respaldo, la copia de configuraciones o los enlaces, avisa y sigue.
+- Al final muestra un **resumen de avisos** con todo lo que no se pudo completar.
+
+La copia de seguridad se crea antes de tocar nada, así que siempre puedes
+recuperar `~/.config` y `~/.dots` desde `~/.aspire-backup/`.
+
 ## Estructura
 
 ```text
@@ -99,7 +113,8 @@ Aspire-dots/
 
 Los binarios quedan en `~/.dots/bin/<app>` y `~/.local/bin/<app>` apunta a
 ellos. `aspire-core` se compila como dependencia, pero no se instala como
-ejecutable.
+ejecutable. `aspire-files` usa este mismo compilador genérico: no tiene script
+de instalación propio.
 
 ## Paquetes
 

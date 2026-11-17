@@ -31,7 +31,7 @@ aspire-files/
 │   ├── aspire-fs/                   archivos, búsqueda, marcadores, papelera
 │   ├── aspire-config/               config.toml y migración de formato
 │   └── aspire-thumb/                miniaturas y caché LRU
-└── scripts/install.sh
+└── (sin scripts propios)
 ```
 
 ## Dependencias
@@ -63,12 +63,15 @@ Instalar siguiendo la convención de las apps aspire (staging en
 `~/.dots/bin` y enlace en `~/.local/bin`):
 
 ```bash
-./scripts/install.sh
+~/.dots/build.sh aspire-files
 # equivale a:
-#   cargo build --release -p aspire-files
+#   cargo build --release --manifest-path ~/.dots/aspire/aspire-files/Cargo.toml
 #   install -Dm755 target/release/aspire-files ~/.dots/bin/aspire-files
 #   ln -sfn ~/.dots/bin/aspire-files ~/.local/bin/aspire-files
 ```
+
+No hay script de instalación propio: el compilador genérico
+`~/.dots/build.sh` se encarga de `aspire-files` igual que del resto de apps.
 
 ## CLI
 
