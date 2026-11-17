@@ -9,9 +9,9 @@ use gtk::prelude::*;
 use gtk::{
     Application, ApplicationWindow, Box as GtkBox, Button, CheckButton, ContentFit, CssProvider,
     Dialog, DropDown, Entry, FlowBox, Label, Orientation, Picture, PolicyType, ResponseType,
-    ScrolledWindow,
+    ScrolledWindow, Spinner,
 };
-use gtk4_layer_shell::{KeyboardMode, Layer, LayerShell};
+use gtk4_layer_shell::{Edge, KeyboardMode, Layer, LayerShell};
 use relm4::{ComponentParts, ComponentSender, RelmApp, SimpleComponent};
 use std::cell::{Cell, RefCell};
 #[cfg(feature = "wallhaven")]
@@ -26,6 +26,14 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+/// Tamaño de la tarjeta en modo normal/Wallhaven: escala el diseño base
+/// (1000x640, pensado para 1080p) según la resolución del monitor, para que
+/// crezca solo en pantallas grandes y no desborde en pequeñas.
+const CARD_BASE_W: f64 = 1000.0;
+const CARD_BASE_H: f64 = 640.0;
+const CARD_BASE_MONITOR_W: f64 = 1920.0;
+const CARD_BASE_MONITOR_H: f64 = 1080.0;
+/// Fallback si no hay monitor disponible.
 const WIN_W: i32 = 1000;
 const WIN_H: i32 = 640;
 const THUMB_PX: i32 = 720;
@@ -514,18 +522,43 @@ fn walk_images(folder: &str, recursive: bool, hidden: bool) -> Vec<String> {
     v
 }
 
-fn sample_images(
+/// Mensaje de progreso durante el escaneo de carpetas
+enum ScanProgress {
+    /// (procesados, total_estimada) — total_estimada=None si aún no se conoce
+    Count(usize, Option<usize>),
+    /// Escaneo completado con los resultados
+    Done(Vec<String>),
+}
+
+fn sample_images_with_progress(
     folder: &str,
     recursive: bool,
     hidden: bool,
     sort_mode: &str,
     n: usize,
+    progress_tx: &std::sync::mpsc::Sender<ScanProgress>,
 ) -> Vec<String> {
     if n == 0 {
         return Vec::new();
     }
     if sort_mode == "random" {
-        // Reservoir sampling: O(N), memoria O(n).
+        // First pass: count total files for progress tracking
+        let mut total_count: u64 = 0;
+        let mut stack = vec![folder.to_string()];
+        while let Some(dir) = stack.pop() {
+            let Ok(rd) = std::fs::read_dir(&dir) else { continue; };
+            for e in rd.flatten() {
+                let p = e.path();
+                let name = p.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+                if !hidden && name.starts_with('.') { continue; }
+                if p.is_dir() {
+                    if recursive { stack.push(p.to_string_lossy().into_owned()); }
+                } else if p.is_file() && is_image(&name) {
+                    total_count += 1;
+                }
+            }
+        }
+        // Second pass: reservoir sampling with progress
         let mut reservoir: Vec<String> = Vec::with_capacity(n);
         let mut count: u64 = 0;
         let mut seed = SystemTime::now()
@@ -541,24 +574,16 @@ fn sample_images(
         };
         let mut stack = vec![folder.to_string()];
         while let Some(dir) = stack.pop() {
-            let Ok(rd) = std::fs::read_dir(&dir) else {
-                continue;
-            };
+            let Ok(rd) = std::fs::read_dir(&dir) else { continue; };
             for e in rd.flatten() {
                 let p = e.path();
-                let name = p
-                    .file_name()
-                    .map(|s| s.to_string_lossy().into_owned())
-                    .unwrap_or_default();
-                if !hidden && name.starts_with('.') {
-                    continue;
-                }
+                let name = p.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+                if !hidden && name.starts_with('.') { continue; }
                 if p.is_dir() {
-                    if recursive {
-                        stack.push(p.to_string_lossy().into_owned());
-                    }
+                    if recursive { stack.push(p.to_string_lossy().into_owned()); }
                 } else if p.is_file() && is_image(&name) {
                     count += 1;
+                    let _ = progress_tx.send(ScanProgress::Count(count as usize, Some(total_count as usize)));
                     if reservoir.len() < n {
                         reservoir.push(p.to_string_lossy().into_owned());
                     } else {
@@ -570,32 +595,41 @@ fn sample_images(
                 }
             }
         }
-        let _ = count;
         reservoir
     } else {
-        // Top-n por mtime/created con heap acotado (sin Vec completo).
+        // First pass: count total files
+        let mut total_count: u64 = 0;
+        let mut stack = vec![folder.to_string()];
+        while let Some(dir) = stack.pop() {
+            let Ok(rd) = std::fs::read_dir(&dir) else { continue; };
+            for e in rd.flatten() {
+                let p = e.path();
+                let name = p.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+                if !hidden && name.starts_with('.') { continue; }
+                if p.is_dir() {
+                    if recursive { stack.push(p.to_string_lossy().into_owned()); }
+                } else if p.is_file() && is_image(&name) {
+                    total_count += 1;
+                }
+            }
+        }
+        // Second pass: top-n with progress
         use std::cmp::Reverse;
         use std::collections::BinaryHeap;
         let mut heap: BinaryHeap<Reverse<(SystemTime, String)>> = BinaryHeap::new();
+        let mut count: u64 = 0;
         let mut stack = vec![folder.to_string()];
         while let Some(dir) = stack.pop() {
-            let Ok(rd) = std::fs::read_dir(&dir) else {
-                continue;
-            };
+            let Ok(rd) = std::fs::read_dir(&dir) else { continue; };
             for e in rd.flatten() {
                 let p = e.path();
-                let name = p
-                    .file_name()
-                    .map(|s| s.to_string_lossy().into_owned())
-                    .unwrap_or_default();
-                if !hidden && name.starts_with('.') {
-                    continue;
-                }
+                let name = p.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+                if !hidden && name.starts_with('.') { continue; }
                 if p.is_dir() {
-                    if recursive {
-                        stack.push(p.to_string_lossy().into_owned());
-                    }
+                    if recursive { stack.push(p.to_string_lossy().into_owned()); }
                 } else if p.is_file() && is_image(&name) {
+                    count += 1;
+                    let _ = progress_tx.send(ScanProgress::Count(count as usize, Some(total_count as usize)));
                     let key = std::fs::metadata(&p).ok().and_then(|m| {
                         if sort_mode == "created" {
                             m.created().ok().or_else(|| m.modified().ok())
@@ -618,6 +652,18 @@ fn sample_images(
         }
         v.into_iter().map(|Reverse((_, p))| p).collect()
     }
+}
+
+fn sample_images(
+    folder: &str,
+    recursive: bool,
+    hidden: bool,
+    sort_mode: &str,
+    n: usize,
+) -> Vec<String> {
+    // Dummy channel — discards progress messages
+    let (tx, _rx) = std::sync::mpsc::channel();
+    sample_images_with_progress(folder, recursive, hidden, sort_mode, n, &tx)
 }
 
 fn order_images(mut v: Vec<String>, sort: &str) -> Vec<String> {
@@ -1212,6 +1258,9 @@ struct Ui {
     pending_query: Arc<Mutex<Option<String>>>,
     view_stack: Rc<RefCell<Option<gtk::Stack>>>,
     toolbar_stack: Rc<RefCell<Option<gtk::Stack>>>,
+    loading_spinner: Spinner,
+    loading_label: Label,
+    root_overlay: gtk::Overlay,
 }
 
 struct BgAppInit {
@@ -1229,6 +1278,8 @@ enum BgMsg {
     ChooseFolder,
     MoveSelection { delta: isize, by_row: bool },
     ToggleCarousel,
+    OpenWallhaven,
+    CloseWallhaven,
 }
 
 struct BgApp {
@@ -1274,6 +1325,22 @@ impl SimpleComponent for BgApp {
                 let carousel =
                     self.ui.local_display.visible_child_name().as_deref() != Some("carousel");
                 set_carousel_mode(&self.ui, carousel);
+            }
+            BgMsg::OpenWallhaven => {
+                if let Some(vs) = self.ui.view_stack.borrow().as_ref() {
+                    vs.set_visible_child_name("wallhaven");
+                }
+                if let Some(ts) = self.ui.toolbar_stack.borrow().as_ref() {
+                    ts.set_visible_child_name("wallhaven");
+                }
+            }
+            BgMsg::CloseWallhaven => {
+                if let Some(vs) = self.ui.view_stack.borrow().as_ref() {
+                    vs.set_visible_child_name("local");
+                }
+                if let Some(ts) = self.ui.toolbar_stack.borrow().as_ref() {
+                    ts.set_visible_child_name("local");
+                }
             }
         }
     }
@@ -1436,12 +1503,15 @@ menubutton.bg-options-button > button:hover {{ background: {sel}; border-color: 
 .bg-opt {{ background: transparent; border-bottom: 1px solid {alt}; padding: 6px 20px; }}
 .bg-optlabel {{ color: {fg}; font-size: 12px; opacity: 0.7; }}
 .bg-grid {{ background: transparent; padding: 12px; }}
-.bg-tile {{ background: transparent; border: {tile_border}px solid transparent; border-radius: 0; padding: 4px; }}
-.bg-grid child:selected .bg-tile, .bg-grid flowboxchild:focus .bg-tile {{ background: {alt}; border-color: {sel}; }}
+.bg-tile {{ background: transparent; border: {tile_border}px solid transparent; border-radius: 0; padding: 4px; transition: all 200ms ease; }}
+.bg-grid child:selected .bg-tile, .bg-grid flowboxchild:focus .bg-tile {{ background: {alt}; border-color: {sel}; transform: scale(1.02); }}
 .bg-current {{ background: {alt}; border-color: {sel}; }}
-.bg-thumb {{ background: transparent; }}
-.bg-carousel-side {{ opacity: 0.68; }}
-.bg-carousel-center {{ border: {carousel_border}px solid {sel}; }}
+.bg-thumb {{ background: transparent; transition: opacity 300ms ease; }}
+.bg-loading-spinner {{ color: {sel}; }}
+.bg-loading-label {{ color: {fg}; font-size: 14px; font-weight: bold; }}
+.bg-carousel-side {{ opacity: 0.68; transition: opacity 400ms ease, transform 400ms ease; transform: scale(0.92); }}
+.bg-carousel-side:hover {{ opacity: 0.9; transform: scale(0.97); }}
+.bg-carousel-center {{ border: {carousel_border}px solid {sel}; transition: transform 400ms ease; }}
 "#
     )
 }
@@ -1732,6 +1802,7 @@ fn launch_sample(ui: &Ui) {
         st.sample_gen
     };
     let (tx, rx) = std::sync::mpsc::channel();
+    let (progress_tx, progress_rx) = std::sync::mpsc::channel();
     {
         let mut st = ui.state.borrow_mut();
         st.sample_rx = Some(rx);
@@ -1743,8 +1814,30 @@ fn launch_sample(ui: &Ui) {
     let hidden = cfg.show_hidden;
     let sort_mode = cfg.sort_mode.clone();
     std::thread::spawn(move || {
-        let shown = sample_images(&folder, recursive, hidden, &sort_mode, 30);
+        let shown = sample_images_with_progress(&folder, recursive, hidden, &sort_mode, 30, &progress_tx);
         let _ = tx.send(SampleMsg::Sample { gen, shown });
+    });
+    // Progress polling — use a channel to send progress text to the UI thread
+    let (ui_progress_tx, ui_progress_rx) = std::sync::mpsc::channel();
+    let progress_rx_wrapper = progress_rx;
+    std::thread::spawn(move || {
+        while let Ok(ScanProgress::Count(processed, total)) = progress_rx_wrapper.recv() {
+            let text = if let Some(total) = total {
+                let pct = if total > 0 { (processed as f64 / total as f64 * 100.0) as u32 } else { 0 };
+                format!("Loading folder... {}%", pct)
+            } else {
+                format!("Scanning... {} files", processed)
+            };
+            let _ = ui_progress_tx.send(text);
+        }
+    });
+    // UI thread progress updater
+    let loading_label = ui.loading_label.clone();
+    glib::timeout_add_local(std::time::Duration::from_millis(50), move || {
+        while let Ok(text) = ui_progress_rx.try_recv() {
+            loading_label.set_text(&text);
+        }
+        glib::ControlFlow::Continue
     });
     let ui2 = ui.clone();
     if !ui.state.borrow().sample_drainer_active {
@@ -1779,6 +1872,9 @@ fn launch_sample(ui: &Ui) {
             } else {
                 ui2.state.borrow_mut().sample_rx = None;
                 ui2.state.borrow_mut().sample_drainer_active = false;
+                // Hide loading overlay when sample is done
+                ui2.loading_spinner.set_visible(false);
+                ui2.loading_label.set_visible(false);
                 glib::ControlFlow::Break
             }
         });
@@ -1786,6 +1882,10 @@ fn launch_sample(ui: &Ui) {
 }
 
 fn resample(ui: &Ui) {
+    // Show loading overlay during resample
+    ui.loading_spinner.set_visible(true);
+    ui.loading_label.set_visible(true);
+    ui.loading_label.set_text("Loading folder...");
     {
         let mut st = ui.state.borrow_mut();
         st.all.clear();
@@ -1954,6 +2054,7 @@ fn show_help(parent: &ApplicationWindow) {
          Ctrl+S — toggle grid/carousel (saved for next launch)\n\
          Ctrl+D — refresh wallpapers in Carousel\n\
          Ctrl+Z — hide or show controls in grid mode\n\
+         Ctrl+W — toggle Wallhaven mode\n\
          Esc — exit   ? — help\n\
          Search is available in Wallhaven mode\n\
          Change the color engine in aspire-menu › Style › Engine",
@@ -1979,22 +2080,57 @@ fn set_zen(ui: &Ui, zen: bool) {
 }
 
 fn set_carousel_mode(ui: &Ui, enabled: bool) {
-    for edge in [
-        gtk4_layer_shell::Edge::Top,
-        gtk4_layer_shell::Edge::Bottom,
-        gtk4_layer_shell::Edge::Left,
-        gtk4_layer_shell::Edge::Right,
-    ] {
-        ui.window.set_anchor(edge, enabled);
-    }
     if enabled {
+        // Carousel mode: la tarjeta llena la ventana completa. Con Align::Fill
+        // el overlay asigna todo el espacio disponible sin depender del
+        // natural (que está deliberadamente tapado; ver Geometría en README).
+        ui.card.set_size_request(-1, -1);
+        ui.card.set_halign(gtk::Align::Fill);
+        ui.card.set_valign(gtk::Align::Fill);
+        ui.card.set_hexpand(true);
+        ui.card.set_vexpand(true);
         ui.local_display.set_visible_child_name("carousel");
         ui.card.add_css_class("bg-carousel-mode");
         ui.carousel_picture.grab_focus();
+        // Animate carousel pictures entrance using timeout-based animation
+        for side in &ui.carousel_side_pictures {
+            side.set_opacity(0.0);
+        }
+        ui.carousel_picture.set_opacity(0.0);
+        let side_pics: Vec<Picture> = ui.carousel_side_pictures.clone();
+        let center_pic = ui.carousel_picture.clone();
+        let mut frame = 0u32;
+        glib::timeout_add_local(std::time::Duration::from_millis(16), move || {
+            frame += 1;
+            let progress = (frame as f64 / 25.0).min(1.0); // ~400ms over 25 frames
+            let opacity = progress * 1.0;
+            for side in &side_pics {
+                side.set_opacity(opacity);
+            }
+            center_pic.set_opacity(opacity);
+            if frame >= 25 {
+                glib::ControlFlow::Break
+            } else {
+                glib::ControlFlow::Continue
+            }
+        });
     } else {
+        // Normal mode: tarjeta del tamaño del monitor, centrada en la ventana
+        // transparente a pantalla completa
+        let (card_w, card_h) = card_size_for(&ui.window);
+        ui.card.set_size_request(card_w, card_h);
+        ui.card.set_halign(gtk::Align::Center);
+        ui.card.set_valign(gtk::Align::Center);
+        ui.card.set_hexpand(false);
+        ui.card.set_vexpand(false);
         ui.local_display.set_visible_child_name("grid");
         ui.card.remove_css_class("bg-carousel-mode");
         ui.grid.grab_focus();
+        // Reset carousel opacity when leaving
+        for side in &ui.carousel_side_pictures {
+            side.set_opacity(1.0);
+        }
+        ui.carousel_picture.set_opacity(1.0);
     }
     if ui.config.borrow().carousel_mode != enabled {
         ui.config.borrow_mut().carousel_mode = enabled;
@@ -2309,6 +2445,16 @@ fn connect_signals(ui: &Ui, sender: ComponentSender<BgApp>) {
                 sender.input(BgMsg::ToggleCarousel);
                 return Propagation::Stop;
             }
+            // Ctrl+W: toggle Wallhaven mode
+            if state.contains(ModifierType::CONTROL_MASK) && keyval == Key::w {
+                let is_wh = wh_mode;
+                if is_wh {
+                    sender.input(BgMsg::CloseWallhaven);
+                } else {
+                    sender.input(BgMsg::OpenWallhaven);
+                }
+                return Propagation::Stop;
+            }
             if !wh_mode
                 && ui_k.local_display.visible_child_name().as_deref() == Some("carousel")
                 && state.contains(ModifierType::CONTROL_MASK)
@@ -2376,6 +2522,8 @@ fn connect_signals(ui: &Ui, sender: ComponentSender<BgApp>) {
     ui.window.add_controller(key);
 }
 
+
+
 fn monitor_list() -> Vec<String> {
     let mut v = vec!["All".to_string()];
     if let Some(display) = gtk::gdk::Display::default() {
@@ -2400,6 +2548,28 @@ fn monitor_list() -> Vec<String> {
     v
 }
 
+/// Tamaño (ancho, alto) de la tarjeta para el monitor donde vive la ventana.
+/// En modo normal y Wallhaven la tarjeta es una ventana centrada de este
+/// tamaño sobre el layer-shell transparente a pantalla completa.
+fn card_size_for(window: &ApplicationWindow) -> (i32, i32) {    let monitor = window.monitor().or_else(|| {
+        gtk::gdk::Display::default().and_then(|display| {
+            display
+                .monitors()
+                .item(0)
+                .and_then(|obj| obj.downcast::<gtk::gdk::Monitor>().ok())
+        })
+    });
+    let Some(monitor) = monitor else {
+        return (WIN_W, WIN_H);
+    };
+    let geo = monitor.geometry();
+    let scale = (geo.width().max(1) as f64 / CARD_BASE_MONITOR_W)
+        .min(geo.height().max(1) as f64 / CARD_BASE_MONITOR_H);
+    let width = CARD_BASE_W * scale;
+    let height = CARD_BASE_H * scale;
+    ((width as i32).max(640), (height as i32).max(400))
+}
+
 fn scroll_edge(ui: &Ui, top: bool) {
     let adj = ui.scroll.vadjustment();
     adj.set_value(if top {
@@ -2418,6 +2588,9 @@ fn scroll_edge(ui: &Ui, top: bool) {
 }
 
 fn choose_folder(ui: &Ui) {
+    // Dim the aspire-bg window so it passes to background visually
+    ui.card.set_opacity(0.3);
+
     let folder = ui.config.borrow().folder.clone();
     let bin_name = format!("{}", "aspire-files");
     let mut command = std::process::Command::new(&bin_name);
@@ -2428,12 +2601,12 @@ fn choose_folder(ui: &Ui) {
     let child = match command.spawn() {
         Ok(child) => child,
         Err(error) => {
+            ui.card.set_opacity(1.0);
             set_status(ui, &format!("Error: could not open aspire-files: {error}"));
             return;
         }
     };
 
-    set_status(ui, "Select a folder in aspire-files");
     let (tx, rx) = std::sync::mpsc::channel();
     std::thread::spawn(move || {
         let result = child.wait_with_output();
@@ -2442,6 +2615,8 @@ fn choose_folder(ui: &Ui) {
     let ui = ui.clone();
     glib::timeout_add_local(Duration::from_millis(100), move || match rx.try_recv() {
         Ok(Ok(output)) if output.status.success() => {
+            // Restore opacity before processing
+            ui.card.set_opacity(1.0);
             let folder = String::from_utf8_lossy(&output.stdout).trim().to_string();
             if folder.is_empty() {
                 set_status(&ui, "Folder selection cancelled");
@@ -2463,6 +2638,7 @@ fn choose_folder(ui: &Ui) {
             glib::ControlFlow::Break
         }
         Ok(Ok(output)) => {
+            ui.card.set_opacity(1.0);
             let detail = String::from_utf8_lossy(&output.stderr);
             if !detail.trim().is_empty() {
                 set_status(&ui, &format!("Error: aspire-files: {}", detail.trim()));
@@ -2472,11 +2648,13 @@ fn choose_folder(ui: &Ui) {
             glib::ControlFlow::Break
         }
         Ok(Err(error)) => {
+            ui.card.set_opacity(1.0);
             set_status(&ui, &format!("Error: aspire-files: {error}"));
             glib::ControlFlow::Break
         }
         Err(std::sync::mpsc::TryRecvError::Empty) => glib::ControlFlow::Continue,
         Err(std::sync::mpsc::TryRecvError::Disconnected) => {
+            ui.card.set_opacity(1.0);
             set_status(&ui, "Error: aspire-files folder selector disconnected");
             glib::ControlFlow::Break
         }
@@ -2500,7 +2678,6 @@ fn build_ui(
     sender: ComponentSender<BgApp>,
 ) -> Ui {
     window.add_css_class("bg-window");
-    window.set_size_request(WIN_W, -1);
     window.set_decorated(false);
 
     window.init_layer_shell();
@@ -2508,18 +2685,22 @@ fn build_ui(
     window.set_namespace(Some("aspire-bg"));
     window.set_keyboard_mode(KeyboardMode::Exclusive);
     window.set_exclusive_zone(0);
+    // Always anchor all edges: layer-shell window fills the screen with transparent background.
+    // The card inside controls the visible size: sized relative to the monitor
+    // and centered in normal/Wallhaven mode, fullscreen in carousel.
     for edge in [
-        gtk4_layer_shell::Edge::Top,
-        gtk4_layer_shell::Edge::Bottom,
-        gtk4_layer_shell::Edge::Left,
-        gtk4_layer_shell::Edge::Right,
+        Edge::Top,
+        Edge::Bottom,
+        Edge::Left,
+        Edge::Right,
     ] {
-        window.set_anchor(edge, config.carousel_mode);
+        window.set_anchor(edge, true);
     }
 
     let card = GtkBox::new(Orientation::Vertical, 0);
     card.add_css_class("bg-card");
-    card.set_size_request(WIN_W, WIN_H);
+    let (card_w, card_h) = card_size_for(&window);
+    card.set_size_request(card_w, card_h);
     card.set_halign(gtk::Align::Center);
     card.set_valign(gtk::Align::Center);
     card.set_hexpand(false);
@@ -2590,7 +2771,10 @@ fn build_ui(
         w.set_valign(gtk::Align::Center);
     }
     let scroll = ScrolledWindow::new();
-    scroll.set_policy(PolicyType::Never, PolicyType::Automatic);
+    // Horizontal Automatic (no Never): con Never el natural del scroll sería el
+    // ancho del contenido (imágenes grandes) y la tarjeta, centrada con
+    // halign=Center, heredaría ese natural ocupando toda la pantalla.
+    scroll.set_policy(PolicyType::Automatic, PolicyType::Automatic);
     scroll.set_has_frame(false);
     scroll.set_vexpand(true);
     scroll.set_hexpand(true);
@@ -2615,8 +2799,7 @@ fn build_ui(
     carousel_box.set_halign(gtk::Align::Center);
     carousel_box.set_valign(gtk::Align::Fill);
     carousel_box.set_hexpand(true);
-    carousel_box.set_vexpand(true);
-    let carousel_row = GtkBox::new(Orientation::Horizontal, 10);
+    carousel_box.set_vexpand(true);    let carousel_row = GtkBox::new(Orientation::Horizontal, 10);
     carousel_row.set_halign(gtk::Align::Center);
     carousel_row.set_valign(gtk::Align::Center);
     carousel_row.set_hexpand(true);
@@ -2640,8 +2823,26 @@ fn build_ui(
     carousel_picture.set_focusable(true);
     carousel_picture.add_css_class("bg-carousel-center");
     carousel_row.insert_child_after(&carousel_picture, carousel_side_pictures.get(1));
+    // GtkBox no centra verticalmente a los hijos no expansivos (valign se
+    // ignora); con espaciadores expansivos la fila queda centrada en el
+    // carrusel a pantalla completa.
+    let carousel_spacer_top = GtkBox::new(Orientation::Vertical, 0);
+    carousel_spacer_top.set_vexpand(true);
+    let carousel_spacer_bottom = GtkBox::new(Orientation::Vertical, 0);
+    carousel_spacer_bottom.set_vexpand(true);
+    carousel_box.append(&carousel_spacer_top);
     carousel_box.append(&carousel_row);
-    local_display.add_named(&carousel_box, Some("carousel"));
+    carousel_box.append(&carousel_spacer_bottom);
+    // El scroll tapa el natural ancho de las Pictures del carrusel (natural =
+    // ancho de la textura), que si no infla el tamaño natural de todo el
+    // stack y la tarjeta centrada acaba ocupando toda la pantalla.
+    let carousel_scroll = ScrolledWindow::new();
+    carousel_scroll.set_policy(PolicyType::Automatic, PolicyType::Automatic);
+    carousel_scroll.set_has_frame(false);
+    carousel_scroll.set_vexpand(true);
+    carousel_scroll.set_hexpand(true);
+    carousel_scroll.set_child(Some(&carousel_box));
+    local_display.add_named(&carousel_scroll, Some("carousel"));
 
     let view_stack = gtk::Stack::new();
     view_stack.set_vexpand(true);
@@ -2672,26 +2873,56 @@ fn build_ui(
     opt_box.append(&sub_check);
     opt_box.append(&hidden_check);
     opt_box.append(&btn_folder);
-    let btn_exit = Button::with_label("Exit");
-    btn_exit.add_css_class("bg-btn");
-    opt_box.append(&btn_exit);
     #[cfg(feature = "wallhaven")]
     let btn_wh = {
+        let sep = gtk::Separator::new(Orientation::Horizontal);
+        sep.set_margin_top(6);
+        sep.set_margin_bottom(6);
+        opt_box.append(&sep);
         let button = Button::with_label("Wallhaven");
         button.add_css_class("bg-btn");
+        button.add_css_class("bg-btn-suggested-action");
         opt_box.append(&button);
         button
     };
+    let btn_exit = Button::with_label("Exit");
+    btn_exit.add_css_class("bg-btn");
+    opt_box.append(&btn_exit);
     opt_popover.set_child(Some(&opt_box));
     btn_options.set_popover(Some(&opt_popover));
 
     card.append(&toolbar_stack);
     card.append(&view_stack);
     let root = gtk::Overlay::new();
-    root.set_hexpand(true);
-    root.set_vexpand(true);
     root.set_child(Some(&card));
+    // Loading overlay with spinner + progress label
+    let loading_box = GtkBox::new(Orientation::Vertical, 8);
+    loading_box.set_halign(gtk::Align::Center);
+    loading_box.set_valign(gtk::Align::Center);
+    let loading_spinner = Spinner::new();
+    loading_spinner.add_css_class("bg-loading-spinner");
+    loading_spinner.set_size_request(48, 48);
+    loading_spinner.start();
+    let loading_label = Label::new(Some("Loading..."));
+    loading_label.add_css_class("bg-loading-label");
+    loading_label.set_halign(gtk::Align::Center);
+    loading_box.append(&loading_spinner);
+    loading_box.append(&loading_label);
+    loading_box.set_visible(true);
+    root.add_overlay(&loading_box);
     window.set_child(Some(&root));
+
+    // layer-shell asigna el monitor real al mapear la ventana: recalcular el
+    // tamaño de la tarjeta para ese monitor (salvo en modo carrusel).
+    {
+        let card_map = card.clone();
+        window.connect_map(move |w| {
+            if !card_map.has_css_class("bg-carousel-mode") {
+                let (card_w, card_h) = card_size_for(w);
+                card_map.set_size_request(card_w, card_h);
+            }
+        });
+    }
 
     let provider = CssProvider::new();
     provider.load_from_string(&build_css());
@@ -2764,6 +2995,9 @@ fn build_ui(
         pending_query: Arc::new(Mutex::new(None)),
         view_stack: Rc::new(RefCell::new(Some(view_stack.clone()))),
         toolbar_stack: Rc::new(RefCell::new(Some(toolbar_stack.clone()))),
+        loading_spinner: loading_spinner.clone(),
+        loading_label: loading_label.clone(),
+        root_overlay: root.clone(),
     };
 
     #[cfg(feature = "wallhaven")]
@@ -2875,7 +3109,6 @@ fn build_ui(
             &format!("New {system} theme: choose a wallpaper and press Enter"),
         );
     }
-    window.set_default_size(WIN_W, WIN_H);
     let initial_focus = if ui.config.borrow().carousel_mode {
         carousel_picture.clone().upcast::<gtk::Widget>()
     } else {
@@ -2892,7 +3125,8 @@ fn setup_wallhaven(ui: &Ui, view_stack: &gtk::Stack, toolbar_stack: &gtk::Stack,
     use crate::wallhaven;
     // widgets
     let wh_scroll = ScrolledWindow::new();
-    wh_scroll.set_policy(PolicyType::Never, PolicyType::Automatic);
+    // Ídem: Automatic para no propagar el natural ancho del grid al tamaño de la tarjeta.
+    wh_scroll.set_policy(PolicyType::Automatic, PolicyType::Automatic);
     wh_scroll.set_has_frame(false);
     wh_scroll.set_vexpand(true);
     wh_scroll.set_hexpand(true);
@@ -2949,6 +3183,8 @@ fn setup_wallhaven(ui: &Ui, view_stack: &gtk::Stack, toolbar_stack: &gtk::Stack,
     toolbar_stack.add_named(&wh_toolbar, Some("wallhaven"));
 
     let wh_box = GtkBox::new(Orientation::Vertical, 0);
+    wh_box.set_vexpand(true);
+    wh_box.set_hexpand(true);
     wh_status.set_margin_top(0);
     wh_status.set_margin_bottom(0);
     wh_box.append(&wh_status);
@@ -3390,9 +3626,16 @@ fn setup_wallhaven(ui: &Ui, view_stack: &gtk::Stack, toolbar_stack: &gtk::Stack,
                         }
                         for it in &sp.items {
                             if let Ok(path) = wallhaven::download_thumb(&it.thumb_url) {
-                                if let Ok(px) =
-                                    gdk_pixbuf::Pixbuf::from_file_at_scale(&path, 200, 200, true)
-                                {
+                                // Misma cota que el modo local (720): la API devuelve
+                                // miniaturas pequeñas y sin este límite la decodificación
+                                // escalaría; con la cota se decodifican a su tamaño
+                                // nativo y el tile las muestra nítidas.
+                                if let Ok(px) = gdk_pixbuf::Pixbuf::from_file_at_scale(
+                                    &path,
+                                    THUMB_PX,
+                                    THUMB_PX,
+                                    true,
+                                ) {
                                     let width = px.width();
                                     let height = px.height();
                                     let stride = px.rowstride() as usize;

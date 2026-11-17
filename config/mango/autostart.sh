@@ -13,9 +13,7 @@ mako >/dev/null 2>&1 &
 ~/.local/bin/aspire-bg --restore &
 
 # Top bar
-mangobar >/dev/null 2>&1 &
-
-# Foot server para live reload de temas
+#mangobar >/dev/null 2>&1 &
 
 # Iniciar WOB (Wayland Overlay Bar)
 rm -f /tmp/wobpipe
@@ -27,13 +25,3 @@ echo "Xft.dpi: 140" | xrdb -merge
 
 # Portapapeles (persistencia)
 wl-clip-persist --clipboard regular --reconnect-tries 0 >/dev/null 2>&1 &
-
-# Iniciar backend de Walker si no está corriendo
-#if ! systemctl --user is-active --quiet elephant.service; then
-#  systemctl --user start elephant.service
-# sleep 1
-#fi
-
-# Iniciar Walker como servicio D-Bus
-#walker --gapplication-service >/dev/null 2>&1 &
-bash ~/.dots/scripts/Utils/status-bar-selector.sh auto &

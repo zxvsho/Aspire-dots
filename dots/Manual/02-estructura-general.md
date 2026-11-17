@@ -16,6 +16,7 @@ Todo lo de esta página está verificado contra el sistema real (octubre 2026).
 │   │   └── src/ (lib.rs, colors.rs, theme_engine.rs)
 │   ├── aspire-bg/        # Selector de fondos + motor de color (Rust+Relm4/GTK4)
 │   ├── aspire-clip/      # Portapapeles con preview (Rust+GTK4)
+│   ├── aspire-files/     # Gestor de archivos (Rust+GTK4; workspace de 4 crates)
 │   ├── aspire-menu/      # Menú global (Rust+Relm4/GTK4)
 │   │   ├── actions/      # Acciones: Apps/ Settings/ Style/ Utils/ Install/ Remove/ Update/ Extras/ System/
 │   │   ├── lib/          # Helpers compartidos (clamp/desaturate)
@@ -26,14 +27,16 @@ Todo lo de esta página está verificado contra el sistema real (octubre 2026).
 │   ├── aspire-themes/    # Selector de temas Aspire
 │   └── aspire-bar/       # Editor de Waybar para MangoWM (Rust+GTK4)
 ├── assets/               # Wallpapers, iconos, fuentes y waybar-themes/
-├── bin/                  # Staging generado por build.sh (aspire-bar)
-├── build.sh              # Compila aspire-bar a staging; deploy explícito
+├── bin/                  # Staging generado por build.sh (todas las apps)
+├── build.sh              # Compila las apps aspire y las enlaza en ~/.local/bin
 ├── Manual/               # Manual del dotfile
-└── scripts/              # Scripts legacy y utilidades
+└── scripts/              # Scripts legacy, utilidades y lib.sh (helpers)
 ```
 
-`aspire-files` vive en un repo aparte: `~/Proyectos/aspire-files/`
+`aspire-files` es un workspace dentro de `aspire/aspire-files/`
 (crates: `aspire-files`, `aspire-fs`, `aspire-config`, `aspire-thumb`).
+Su binario sigue la misma convención: staging en `bin/aspire-files` y
+enlace en `~/.local/bin/aspire-files`.
 
 ## Configuración en `~/.config/`
 
@@ -80,18 +83,23 @@ se compila y se despliega. El antiguo laboratorio `~/Proyectos/Mangowm_dots/`
 (remoto `zxvsho/Mangowm_dots`) quedó **obsoleto**: no se usa ni se
 sincroniza; su valor es solo el historial git de referencia.
 
-Binarios vivos en `~/.local/bin/` (verificado octubre 2026):
+Binarios vivos en `~/.local/bin/` (verificado noviembre 2026):
 
-- `aspire-menu`, `aspire-clip`, `aspire-bg`, `aspire-files`: **copias** de
-  `target/release`. Tras compilar hay que copiar el binario nuevo.
-- `aspire-music`: **symlink** a snapshot estable,
-  `~/.dots/aspire/aspire-music/releases/aspire-music-<fecha>` (nunca a
-  `target/release`; flujo dev/deploy en parte 08).
-- `aspire-bar`: copia de release desplegada con `~/.dots/build.sh deploy`;
-  el staging previo queda en `~/.dots/bin/aspire-bar`.
+- Todas las apps (`aspire-bar`, `aspire-bg`, `aspire-clip`, `aspire-files`,
+  `aspire-menu`, `aspire-music`, `aspire-themes`, `aspire-tui`) se compilan
+  con `~/.dots/build.sh` y quedan en `~/.dots/bin/<app>`.
+- `~/.local/bin/<app>` es un **symlink** a `~/.dots/bin/<app>`; el repo no
+  versiona binarios, solo el código y el script de compilación.
 
-`build.sh` compila y deja aspire-bar en `~/.dots/bin/`; el deploy es
-explícito. Los demás crates se compilan desde su directorio con Cargo.
+```bash
+~/.dots/build.sh              # compila todas las apps y crea los symlinks
+~/.dots/build.sh aspire-files # compila solo una app
+~/.dots/build.sh --no-link    # compila sin tocar ~/.local/bin
+```
+
+`~/.dots/build.sh` reemplaza al antiguo flujo de compilar cada crate a mano.
+Los binarios no se suben al repositorio: se generan al instalar o al
+ejecutar `build.sh` en la máquina.
 
 `~/.config/rofi-menu/menu.toml` ya **no es symlink**: es un fichero vivo
 en `~/.config/` (edítalo ahí; se lee al abrir el menú, sin recompilar).

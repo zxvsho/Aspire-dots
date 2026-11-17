@@ -5,6 +5,7 @@ edition = "2021"
 description = "MangoWM wallpaper picker - Relm4/GTK4 layer-shell grid, swaybg backend, system theme colors"
 
 [features]
+default = ["wallhaven"]
 wallhaven = ["dep:ureq", "dep:serde_json"]
 
 [dependencies]

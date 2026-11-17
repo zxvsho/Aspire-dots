@@ -1,0 +1,109 @@
+# Paquetes de los repositorios oficiales de Arch Linux.
+# Funcionan igual en Arch Linux y CachyOS.
+# Un paquete por línea. Las líneas con # se ignoran.
+
+# Base y compilación
+git
+base-devel
+rust
+pkgconf
+zsh
+fish
+sudo
+unzip
+rsync
+github-cli
+
+# Wayland, portales y escritorio
+mesa
+vulkan-icd-loader
+xdg-terminal-exec
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
+xdg-utils
+polkit
+wl-clipboard
+wl-clip-persist
+grim
+slurp
+satty
+swappy
+wob
+xorg-xrdb
+brightnessctl
+libnotify
+
+# Audio
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+gst-plugin-pipewire
+
+# Fuentes
+noto-fonts
+noto-fonts-emoji
+ttf-nerd-fonts-symbols
+ttf-jetbrains-mono-nerd
+ttf-victor-mono-nerd
+
+# Compositor, barra y tema
+mangowm
+waybar
+matugen
+nwg-look
+gtk3
+gtk4
+gtk4-layer-shell
+gdk-pixbuf2
+
+# Terminales
+rio
+foot
+
+# Launchers
+fuzzel
+rofi
+
+# Notificaciones y sesión
+mako
+
+# Archivos e imágenes
+yazi
+imv
+
+# Editor
+neovim
+
+# Multimedia
+mpv
+cava
+kew
+obs-studio
+
+# Sistema
+btop
+htop
+fastfetch
+zsh-autosuggestions
+zsh-syntax-highlighting
+
+# Fondos (backend por defecto de aspire-bg)
+swaybg
+
+# Utilidades
+android-tools
+aria2
+btrfs-assistant
+btrfs-progs
+bluez
+bluez-utils
+bluetui
+wiremix
+cliphist
+jmtpfs
+
+# Miniaturas de aspire-files
+poppler
+ffmpegthumbnailer

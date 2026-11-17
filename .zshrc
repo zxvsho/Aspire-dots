@@ -44,12 +44,12 @@ bindkey '^[[1;5D' backward-word
 bindkey '^H' backward-kill-word
 
 # Prompt (init cacheado)
-omp_cfg=~/.cache/oh-my-posh/themes/dracula.omp.json
-omp_cache=~/.cache/oh-my-posh/init.zsh
-if [[ ! -f $omp_cache || $omp_cfg -nt $omp_cache ]]; then
-  oh-my-posh init zsh --config $omp_cfg > $omp_cache
-fi
-source $omp_cache
+#omp_cfg=~/.cache/oh-my-posh/themes/dracula.omp.json
+#omp_cache=~/.cache/oh-my-posh/init.zsh
+#if [[ ! -f $omp_cache || $omp_cfg -nt $omp_cache ]]; then
+ # oh-my-posh init zsh --config $omp_cfg > $omp_cache
+#fi
+#source $omp_cache
 
 # Sugerencias
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -61,3 +61,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export PATH="$HOME/.npm-global/bin:$PATH"
 
+export PATH="$HOME/.dots/bin:$HOME/.local/bin:$PATH"

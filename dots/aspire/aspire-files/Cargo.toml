@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/aspire-config",
+    "crates/aspire-fs",
+    "crates/aspire-thumb",
+    "crates/aspire-files",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+
+[workspace.dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+walkdir = "2"
+percent-encoding = "2"
+gdk-pixbuf = { version = "0.22", features = ["v2_42"] }
+gio = "0.22"
+gtk = { package = "gtk4", version = "0.11", features = ["v4_12"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

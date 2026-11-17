@@ -3,27 +3,27 @@
  * Colors — generado por aspire-bg (tinty)
  **/
 * {
-    background:     #282a36FF;
-    background-alt: #21222cFF;
-    foreground:     #f8f8f2FF;
-    selected:       #bd93f9FF;
-    selectedtext:   #282a36FF;
-    active:         #bd93f9FF;
-    urgent:         #ff5555FF;
-    color0:       #282a36FF;
-    color1:       #ff5555FF;
-    color2:       #50fa7bFF;
-    color3:       #f1fa8cFF;
-    color4:       #bd93f9FF;
-    color5:       #ff79c6FF;
-    color6:       #8be9fdFF;
-    color7:       #f8f8f2FF;
-    color8:       #6272a4FF;
-    color9:       #ff6e6eFF;
-    color10:       #69ff94FF;
-    color11:       #ffffa5FF;
-    color12:       #d6acffFF;
-    color13:       #ff92dfFF;
-    color14:       #a4ffffFF;
-    color15:       #ffffffFF;
+    background:     #333c43FF;
+    background-alt: #3a464cFF;
+    foreground:     #d3c6aaFF;
+    selected:       #9da9a0FF;
+    selectedtext:   #000000FF;
+    active:         #d3c6aaFF;
+    urgent:         #e67e80FF;
+    color0:       #333c43FF;
+    color1:       #e67e80FF;
+    color2:       #a7c080FF;
+    color3:       #dbbc7fFF;
+    color4:       #7fbbb3FF;
+    color5:       #d699b6FF;
+    color6:       #83c092FF;
+    color7:       #d3c6aaFF;
+    color8:       #859289FF;
+    color9:       #e67e80FF;
+    color10:       #a7c080FF;
+    color11:       #dbbc7fFF;
+    color12:       #7fbbb3FF;
+    color13:       #d699b6FF;
+    color14:       #83c092FF;
+    color15:       #f3ead3FF;
 }

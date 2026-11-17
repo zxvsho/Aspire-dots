@@ -12,3 +12,4 @@ PS1='[\u@\h \W]\$ '
 #neofetch
 fastfetch
 
+export PATH="$HOME/.dots/bin:$HOME/.local/bin:$PATH"

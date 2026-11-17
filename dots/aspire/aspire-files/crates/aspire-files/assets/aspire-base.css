@@ -1,0 +1,168 @@
+window, .background {
+    background-color: @background;
+    color: @foreground;
+}
+
+headerbar {
+    background-color: @background-alt;
+    color: @foreground;
+    box-shadow: none;
+    border-bottom: 1px solid alpha(@foreground, 0.08);
+    min-height: 42px;
+}
+
+headerbar button,
+headerbar menubutton > button {
+    background: transparent;
+    color: @foreground;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+headerbar button:hover,
+headerbar menubutton > button:hover {
+    background: alpha(@foreground, 0.10);
+}
+
+headerbar button:checked,
+headerbar menubutton > button:checked {
+    background: alpha(@selected, 0.35);
+}
+
+entry, searchentry {
+    background: alpha(@foreground, 0.08);
+    color: @foreground;
+    border: 1px solid alpha(@foreground, 0.12);
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+entry:focus, searchentry:focus {
+    border-color: @selected;
+    box-shadow: none;
+}
+
+button {
+    background: transparent;
+    color: @foreground;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+}
+
+button:hover { background: alpha(@foreground, 0.10); }
+button:checked { background: alpha(@selected, 0.35); }
+
+.path-button {
+    background: transparent;
+    padding: 2px 6px;
+    min-height: 22px;
+    font-weight: normal;
+}
+
+.path-button:hover { background: alpha(@foreground, 0.10); }
+
+.tab-strip {
+    background: @background-alt;
+    padding: 2px 6px;
+    border-bottom: 1px solid alpha(@foreground, 0.08);
+}
+
+.tab {
+    padding: 2px 10px;
+    min-height: 24px;
+    border-radius: 5px 5px 0 0;
+    color: alpha(@foreground, 0.75);
+}
+
+.tab:hover { background: alpha(@foreground, 0.08); }
+
+.tab-active {
+    background: alpha(@selected, 0.28);
+    color: @foreground;
+    font-weight: bold;
+}
+
+.tab-close {
+    padding: 0 4px;
+    min-height: 18px;
+    min-width: 18px;
+    border-radius: 4px;
+}
+
+.sidebar {
+    background: @background-alt;
+    border-right: 1px solid alpha(@foreground, 0.08);
+}
+
+.sidebar row {
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 1px 6px;
+    color: alpha(@foreground, 0.85);
+}
+
+.sidebar row:hover { background: alpha(@foreground, 0.08); }
+
+.sidebar row:selected {
+    background: alpha(@selected, 0.32);
+    color: @foreground;
+}
+
+.sidebar row:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.sidebar row:focus-visible {
+    outline: 1px solid alpha(@selected, 0.7);
+    outline-offset: -1px;
+}
+
+.sidebar-section {
+    font-size: 0.78em;
+    font-weight: bold;
+    color: alpha(@foreground, 0.55);
+    padding: 8px 14px 2px 14px;
+}
+
+listview, gridview {
+    background: transparent;
+    color: @foreground;
+}
+
+listview > row {
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+listview > row:hover { background: alpha(@foreground, 0.06); }
+
+listview > row:selected,
+gridview > child:selected {
+    background: alpha(@selected, 0.30);
+    color: @foreground;
+}
+
+.grid-cell {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.grid-cell:hover { background: alpha(@foreground, 0.06); }
+
+.grid-label {
+    font-size: 0.88em;
+}
+
+.statusbar {
+    background: @background-alt;
+    color: alpha(@foreground, 0.75);
+    padding: 3px 10px;
+    border-top: 1px solid alpha(@foreground, 0.08);
+    font-size: 0.86em;
+}
+
+.trash-hint { color: @urgent; }

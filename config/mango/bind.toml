@@ -27,10 +27,10 @@
 
 [bind.default]
 "SUPER+CTRL+return" = "reload_config"
-"ALT+space" = "spawn,rofi -show drun -theme ~/.config/rofi/launchers/type1/style1.rasi"
-"ALT+t" = "spawn,foot"
+"SUPER+space" = "spawn,fuzzel"
+"ALT+Return" = "spawn,foot"
 "SUPER+Return" = "spawn,rio"
-"SUPER+ALT+space" = "spawn_shell,pkill -x aspire-menu || ~/.local/bin/aspire-menu"
+"ALT+space" = "spawn_shell,pkill -x aspire-menu || ~/.local/bin/aspire-menu"
 "SUPER+b" = "spawn_shell,pkill -x aspire-bar || ~/.local/bin/aspire-bar"
 "SUPER+ALT+SHIFT+b" = "spawn_shell,pkill -x aspire-bar || ~/.local/bin/aspire-bar"
 "SUPER+v" = "spawn_shell,pkill -x aspire-clip || ~/.local/bin/aspire-clip"

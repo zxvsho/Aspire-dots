@@ -1,89 +1,119 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# ============================================================================
+# Aspire Dots — instalador para Arch Linux y CachyOS
+#
+#   ./install.sh                 instalación completa
+#   ./install.sh --skip-packages no instala paquetes (solo configs y build)
+#   ./install.sh --skip-backup   no crea copia de seguridad
+#   ./install.sh --skip-restore  no copia config/ ni dots/ a ~
+#   ./install.sh --skip-build    no compila las apps Aspire
+#   ./install.sh --skip-path     no toca ~/.local/bin ni el PATH
+#   ./install.sh --dry-run       muestra lo que haría sin ejecutar
+# ============================================================================
+
 set -uo pipefail
-cd "$(dirname "$(readlink -f "$0")")"
 
-G='\033[0;32m'; Y='\033[1;33m'; R='\033[0;31m'; N='\033[0m'
-[ "$EUID" -eq 0 ] && { echo -e "${R}No ejecutes como root.${N}"; exit 1; }
+REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=dots/scripts/lib.sh
+source "$REPO_DIR/dots/scripts/lib.sh"
 
-echo -e "${G}[1/5] Sistema base y paru${N}"
-sudo pacman -Syu --noconfirm || exit 1
-sudo pacman -S --needed --noconfirm git base-devel rust zsh fish || exit 1
-if ! command -v paru &>/dev/null; then
-  rm -rf /tmp/paru-bin
-  git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
-  (cd /tmp/paru-bin && makepkg -si --noconfirm) || exit 1
-fi
+SKIP_PACKAGES=0
+SKIP_BACKUP=0
+SKIP_RESTORE=0
+SKIP_BUILD=0
+SKIP_PATH=0
+ASPIRE_BACKUP_DIR=""
 
-echo -e "${G}[2/5] Paquetes (uno por uno, sin abortar)${N}"
-PKGS=(
-  # base gráfica / terminales / launchers
-  mesa vulkan-icd-loader xdg-terminal-exec xdg-desktop-portal xdg-desktop-portal-gtk
-  xdg-desktop-portal-wlr polkit xfce-polkit wl-clipboard grim slurp
-  foot rio kitty ghostty xfce4-terminal rofi fuzzel waybar mako wlogout
-  # fuentes
-  noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols ttf-victor-mono-nerd ttf-ms-fonts
-  # compositor / estilo
-  mango mangobar-git swww wallust matugen tinty-git waypaper nwg-look
-  gtk3 gtk4 brightnessctl
-  # apps
-  android-tools aria2 bluetui bluez bluez-utils btop btrfs-assistant btrfs-progs
-  cava chromium google-chrome clipse fastfetch htop kew libfm micro mpv nautilus nemo
-  neovim obs-studio onlyoffice-bin opencode procps-ng qalculate-gtk thunar tubetui
-  vesktop yazi zed zim visual-studio-code-bin
-  # AUR varios
-  aurelia-bin cliamp-bin fetch-git freellmapi-desktop-git fsel-bin hopper
-  hydra-launcher-bin jmtpfs lavat-git limusic-bin peaclock sherlock-launcher-bin tuios-bin
-)
-failed=()
-for p in "${PKGS[@]}"; do
-  paru -S --needed --noconfirm "$p" || failed+=("$p")
+usage() {
+  printf 'Uso: %s [opciones]\n\n' "$0"
+  printf '  --skip-packages  No instala paquetes de pacman ni de AUR\n'
+  printf '  --skip-backup    No crea copia de seguridad en ~/.aspire-backup\n'
+  printf '  --skip-restore   No copia config/ ni dots/ a ~\n'
+  printf '  --skip-build     No compila las apps Aspire\n'
+  printf '  --skip-path      No enlaza binarios ni modifica el PATH\n'
+  printf '  --dry-run        Muestra las acciones sin ejecutarlas\n'
+  printf '  -h, --help       Muestra esta ayuda\n'
+}
+
+while (($#)); do
+  case "$1" in
+    --skip-packages) SKIP_PACKAGES=1 ;;
+    --skip-backup)   SKIP_BACKUP=1 ;;
+    --skip-restore)  SKIP_RESTORE=1 ;;
+    --skip-build)    SKIP_BUILD=1 ;;
+    --skip-path)     SKIP_PATH=1 ;;
+    --dry-run)       DRY_RUN=1 ;;
+    -h|--help)       usage; exit 0 ;;
+    *) aspire_err "Opción desconocida: $1"; usage >&2; exit 2 ;;
+  esac
+  shift
 done
 
-echo -e "${G}[3/5] Restaurando configuraciones (ANTES de compilar)${N}"
-[ -d ~/.config ] && cp -a ~/.config ~/.config.bak.$(date +%s)
-mkdir -p ~/.config ~/.dots/bin ~/.local/bin
-[ -d config ] && cp -a config/. ~/.config/ && echo "✓ config"
-[ -d dots ]   && cp -a dots/.   ~/.dots/   && echo "✓ dots"
-for f in .zshrc .bashrc .bash_profile .gitconfig; do
-  [ -f "$f" ] && cp -a "$f" ~/"$f" && echo "✓ $f"
-done
-find ~/.dots ~/.config -type f \( -path '*/bin/*' -o -name '*.sh' \) -exec chmod +x {} + 2>/dev/null
+aspire_require_arch
 
-# Terminal por defecto para xdg-terminal-exec
-[ -f ~/.config/xdg-terminals.list ] || echo "rio.desktop" > ~/.config/xdg-terminals.list
+aspire_step "Aspire Dots — instalación"
+aspire_info "Repo: $REPO_DIR"
+aspire_info "Destino: $HOME"
 
-echo -e "${G}[4/5] Compilando aspire-tools${N}"
-if [ -d ~/.dots/aspire ]; then
-  for d in ~/.dots/aspire/*/; do
-    n=$(basename "$d")
-    [ -f "$d/Cargo.toml" ] || continue
-    if (cd "$d" && cargo build --release); then
-      if [ -f "$d/target/release/$n" ]; then
-        cp "$d/target/release/$n" ~/.dots/bin/
-        ln -sf ~/.dots/bin/"$n" ~/.local/bin/"$n"
-        echo "✓ $n"
-      else
-        failed+=("build:$n (sin binario)")
-      fi
-    else
-      failed+=("build:$n")
-    fi
-  done
+# ---------------------------------------------------------------------------
+# 1. Copia de seguridad
+# ---------------------------------------------------------------------------
+if [[ "$SKIP_BACKUP" == 0 ]]; then
+  aspire_backup
 else
-  echo -e "${Y}No existe ~/.dots/aspire${N}"
+  aspire_info "Copia de seguridad omitida"
 fi
 
-echo -e "${G}[5/5] PATH${N}"
-for rc in ~/.zshrc ~/.bashrc; do
-  grep -q '\.dots/bin' "$rc" 2>/dev/null || \
-    echo 'export PATH="$HOME/.dots/bin:$HOME/.local/bin:$PATH"' >> "$rc"
-done
-fish -c 'fish_add_path ~/.dots/bin ~/.local/bin' 2>/dev/null
+# ---------------------------------------------------------------------------
+# 2. Paquetes
+# ---------------------------------------------------------------------------
+if [[ "$SKIP_PACKAGES" == 0 ]]; then
+  aspire_sync_repo
+  aspire_install_repo_packages "$REPO_DIR/packages/arch.txt" || \
+    aspire_warn "Algunos paquetes oficiales no se instalaron."
 
-echo ""
-if [ ${#failed[@]} -gt 0 ]; then
-  echo -e "${R}Fallaron:${N} ${failed[*]}"
+  if helper="$(aspire_ensure_aur_helper)"; then
+    [[ -n "$helper" ]] || aspire_die "No se pudo preparar yay ni paru."
+    aspire_install_aur_packages "$REPO_DIR/packages/aur.txt" "$helper" || \
+      aspire_warn "Algunos paquetes AUR no se instalaron."
+  else
+    aspire_warn "No se pudo preparar un helper de AUR; se omiten los paquetes AUR."
+  fi
 else
-  echo -e "${G}Todo instalado.${N}"
+  aspire_info "Instalación de paquetes omitida"
 fi
-echo "Reinicia la sesión."
+
+# ---------------------------------------------------------------------------
+# 3. Configuraciones
+# ---------------------------------------------------------------------------
+if [[ "$SKIP_RESTORE" == 0 ]]; then
+  aspire_restore_configs "$REPO_DIR"
+else
+  aspire_info "Restauración de configuraciones omitida"
+fi
+
+# ---------------------------------------------------------------------------
+# 4. Compilar apps
+# ---------------------------------------------------------------------------
+if [[ "$SKIP_BUILD" == 0 ]]; then
+  aspire_build_apps "$REPO_DIR/dots/aspire" "$HOME/.dots/bin" || \
+    aspire_warn "Algunas apps no se compilaron correctamente."
+else
+  aspire_info "Compilación omitida"
+fi
+
+# ---------------------------------------------------------------------------
+# 5. Enlaces y PATH
+# ---------------------------------------------------------------------------
+if [[ "$SKIP_PATH" == 0 ]]; then
+  aspire_link_bins "$HOME/.dots/bin"
+  aspire_ensure_path
+else
+  aspire_info "Enlaces y PATH omitidos"
+fi
+
+# ---------------------------------------------------------------------------
+# 6. Resumen
+# ---------------------------------------------------------------------------
+aspire_lazyvim_note
+aspire_summary "$ASPIRE_BACKUP_DIR"

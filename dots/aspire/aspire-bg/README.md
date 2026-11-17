@@ -60,27 +60,56 @@ cargo build --release
 cargo build --release --features wallhaven
 ```
 
-Para instalar la compilación con Wallhaven:
-
-```bash
-install -m 755 target/release/aspire-bg ~/.local/bin/aspire-bg
-```
-
 El perfil `release` activa optimización, LTO, `strip`, una unidad de
 generación de código y `panic = "abort"`. La característica `wallhaven`
 activa `ureq` con TLS Rustls y `serde_json`; sin ella no se compilan las
 dependencias de red ni la interfaz Wallhaven.
 
+### Cómo probar un cambio antes de instalarlo
+
+El binario que corre el sistema NO vive en este directorio: es
+`~/.dots/bin/aspire-bg` (en el `PATH`; `~/.local/bin/aspire-bg` es un symlink
+al mismo archivo). `target/release/aspire-bg` es solo un artefacto de
+compilación que cargo sobreescribe en cada compilación. El flujo es:
+
+1. Compilar con los cambios: `cargo build --release` (o `cargo build` para
+   iterar más rápido en modo debug: `target/debug/aspire-bg`).
+2. Probar esa versión directamente, sin tocar el binario estable:
+
+   ```bash
+   target/release/aspire-bg          # o target/debug/aspire-bg
+   ```
+
+3. Si convence, promocionar la versión a staging y relanzar:
+
+   ```bash
+   install -Dm755 target/release/aspire-bg ~/.dots/bin/aspire-bg
+   killall aspire-bg 2>/dev/null; aspire-bg &
+   ```
+
+No usar `cargo install` para esto: deja una copia desincronizada en
+`~/.cargo/bin` y tampoco actualiza `~/.dots/bin`. Tampoco enlazar
+`~/.dots/bin/aspire-bg` como hardlink a `target/release/`: cargo escribe un
+archivo nuevo al compilar y el enlace seguiría apuntando al binario viejo;
+`install` (copia) evita ese problema.
+
+Para depurar tamaño y layout se puede arrancar con `ASPIRE_BG_DEBUG=1` y
+consultar el `stderr` (asignaciones y monitor usado); los mensajes son
+informativos y no afectan al comportamiento.
+
 Un smoke test con Xvfb puede confirmar que GTK inicia, pero no valida el
 comportamiento visual de layer-shell. Los bordes, el centrado y los anclajes
-deben comprobarse en un compositor Wayland real.
+deben comprobarse en un compositor Wayland real (`grim` sirve para capturar
+la salida y medir la tarjeta).
 
 ## Modos de interfaz
 
 ### Selector local
 
-- La ventana normal mide aproximadamente `1000×640` y presenta una
-  cuadrícula de tres columnas con tarjetas de `300×168`.
+- La ventana normal mide `1000×640` en un monitor de referencia 1080p y
+  escala con él: `card_size_for` multiplica el diseño base por
+  `min(ancho/1920, alto/1080)` del monitor de la ventana (mínimo 640×400).
+  Presenta una cuadrícula de tres columnas con tarjetas de `300×168`.
 - Se muestran como máximo 30 elementos por selección.
 - En `Random` se usa muestreo de reservorio para no conservar toda la lista
   en memoria. `Last modified`, `Date added` y `Oldest first` seleccionan los
@@ -225,9 +254,11 @@ fuera éxito.
 - `walk_images` acepta PNG, JPG/JPEG, WebP, BMP, GIF y los formatos de vídeo
   MP4, M4V, WebM, MKV, MOV, AVI y OGV. El escaneo puede ser recursivo y
   filtrar nombres ocultos.
-- La vista previa raster se limita a 720 px en su dimensión mayor y se guarda
-  como PNG bajo `~/.cache/aspire-bg/`. La clave considera ruta, mtime, tamaño
-  y resolución de miniatura.
+- La vista previa raster se limita a 720 px (`THUMB_PX`) en su dimensión
+  mayor y se guarda como PNG bajo `~/.cache/aspire-bg/`. La clave considera
+  ruta, mtime, tamaño y resolución de miniatura. Las miniaturas de Wallhaven
+  se decodifican con la misma cota (`THUMB_PX`), por lo que se muestran a su
+  resolución nativa y tan nítidas como las locales.
 - Para vídeo, un trabajador ejecuta `ffmpeg` desde 0.5 s, codifica 1.5 s a
   8 fps en GIF y el hilo GTK anima la miniatura seleccionada y el carrusel.
 - El trabajo de disco/red se hace fuera del hilo GTK. Los trabajadores envían
@@ -266,9 +297,35 @@ de Matugen, Tinty, escritura de colores y aplicación a otros componentes.
 
 La tarjeta `bg-card` debe permanecer como hijo principal de `GtkOverlay`, no
 como overlay no medido. El hijo principal participa en la medición del tamaño
-de la ventana normal y evita recortar los bordes laterales. El tamaño solicitado
-de la tarjeta es `WIN_W × WIN_H`; sus bordes CSS de un píxel forman parte de
-la tarjeta.
+de la ventana normal y evita recortar los bordes laterales.
+
+El tamaño visible lo controla la tarjeta sobre una ventana layer-shell
+anclada a los cuatro bordes con fondo transparente. En modo normal y
+Wallhaven el tamaño lo calcula `card_size_for` a partir de la geometría del
+monitor (`window.monitor()`, con fallback al primer monitor y a `WIN_W ×
+WIN_H` si no hay ninguno); en carrusel la tarjeta cambia a
+`halign/valign = Fill` con `set_size_request(-1, -1)` y `hexpand/vexpand`
+para que el overlay le asigne toda la ventana sin depender del natural
+(tapado a propósito; con `Center` el carrusel colapsaría al mínimo).
+
+Advertencia importante: un widget centrado con `halign/valign = Center`
+recibe de GTK su **tamaño natural**, no su tamaño solicitado. Si algún
+descendiente infla el natural, la tarjeta acaba ocupando toda la pantalla
+aunque `set_size_request` diga otra cosa. Dos reglas para evitarlo:
+
+1. Los `ScrolledWindow` que envuelven cuadrículas deben usar política
+   `(Automatic, Automatic)`, nunca `Never` en horizontal: con `Never` el
+   natural del scroll es el ancho del contenido completo (miniaturas de
+   hasta 720 px por tres columnas).
+2. `GtkPicture` reporta como natural el ancho de su textura aunque tenga
+   `can_shrink(true)`. La página `carousel` del stack (cinco `Picture`) va
+   por eso envuelta en un `ScrolledWindow` con política `Automatic`: su
+   natural deja de propagarse al stack y al resto de la ventana aunque no
+   sea la página visible.
+
+Si se cambia el árbol de widgets, verificar el natural con
+`Widget::measure` o lanzar con `ASPIRE_BG_DEBUG=1` y comprobar que la
+allocation de la tarjeta coincide con el tamaño calculado.
 
 En carrusel, `set_carousel_mode` ancla la misma ventana a los cuatro bordes
 para ocupar la salida y centra la vista en la tarjeta. Si se cambia el árbol
@@ -318,6 +375,14 @@ el selector de `aspire-files` sí se guardan. `--backend`, `--monitor` y
 8. Al cambiar geometría, CSS, anclajes o selección, valida cuadrícula,
    carrusel, foco de teclado, aplicación por monitor y ejecución con y sin
    `wallhaven`.
+9. Antes de tocar el tamaño o el layout de la tarjeta, leer la sección
+   "Geometría y estilos GTK": un widget centrado se dimensiona por su natural
+   y un solo `ScrolledWindow` con política `Never` o una `Picture` suelta
+   pueden volver a estirar la tarjeta a pantalla completa.
+10. Probar siempre con el binario recién compilado antes de promocionar a
+    `~/.dots/bin` (ver "Cómo probar un cambio antes de instalarlo"): ejecutar
+    `target/release/aspire-bg` o `target/debug/aspire-bg` directamente no
+    afecta al binario estable del `PATH`.
 
 ## Validación de cambios
 

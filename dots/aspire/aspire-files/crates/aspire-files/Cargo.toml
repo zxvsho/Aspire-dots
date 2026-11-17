@@ -1,0 +1,12 @@
+[package]
+name = "aspire-files"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+aspire-config = { path = "../aspire-config" }
+aspire-fs = { path = "../aspire-fs" }
+aspire-thumb = { path = "../aspire-thumb" }
+gtk.workspace = true

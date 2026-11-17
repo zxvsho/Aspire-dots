@@ -2,11 +2,25 @@
 engine = "auto"
 colors_file = "~/.config/theme-engine/current/colors.css"
 
-[preferences]
-default_view = "grid"
+[general]
+folders_first = true
+expandable_folders = false
+open_action = "double"
+optional_actions = [
+    "create_link",
+    "delete_permanently",
+]
+
+[view]
+view_mode = "grid"
 icon_size = 128
 show_hidden = false
-sidebar_visible = true
 sort_by = "modified"
 sort_descending = false
-folders_first = true
+search_subfolders = false
+show_thumbnails = true
+count_items_in_folders = true
+date_format = "simple"
+
+[window]
+sidebar_visible = true

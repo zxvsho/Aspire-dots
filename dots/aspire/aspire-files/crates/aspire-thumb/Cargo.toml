@@ -1,0 +1,9 @@
+[package]
+name = "aspire-thumb"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+gdk-pixbuf.workspace = true
+gio.workspace = true

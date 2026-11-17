@@ -5,7 +5,9 @@ Gestor de archivos en Rust (GTK4), inspirado en GNOME Files (Nautilus),
 Su rasgo distintivo: **el aspecto lo controlan Matugen o Tinty**
 (colores inyectados y recargados en caliente).
 
-Repo propio: `~/Proyectos/aspire-files/` (no está dentro de `Mangowm_dots`).
+Vive con las demás apps aspire: `~/.dots/aspire/aspire-files/` (workspace
+con crates propios). Binario staged en `~/.dots/bin/aspire-files` y enlace
+en `~/.local/bin/aspire-files`.
 
 ---
 
@@ -98,7 +100,7 @@ Marcadores: `~/.config/gtk-3.0/bookmarks` (no hay `gtk-4.0/bookmarks`).
 ## Compilar y ejecutar
 
 ```bash
-cd ~/Proyectos/aspire-files
+cd ~/.dots/aspire/aspire-files
 cargo build --release
 ./target/release/aspire-files [DIRECTORIO]
 ```

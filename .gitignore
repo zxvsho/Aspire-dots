@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+# Artefactos de compilación
+# ---------------------------------------------------------------------------
+**/target/
+**/node_modules/
+**/dist/
+**/build/
+
+# Binarios staged: se generan con install.sh / build.sh
+dots/bin/*
+!dots/bin/.gitkeep
+
+# Releases y paquetes
+dots/aspire/*/releases/
+*.AppImage
+*.deb
+*.rpm
+*.pkg.tar.zst
+
+# ---------------------------------------------------------------------------
+# Caches y estado de ejecución (no son configuración)
+# ---------------------------------------------------------------------------
+**/.cache/
+config/dconf/
+config/fish/fish_variables
+config/theme-engine/.rendered-*
+config/color-engine/last-wallpaper
+config/rofi/launcher_activo
+config/cliamp/history.toml
+config/cliamp/resume.json
+config/htop/htop_history
+config/micro/buffers/history
+config/GIMP/*/action-history
+config/retroarch/playlists/builtin/*_history.lpl
+config/aspire-bg/wallhaven/
+config/zen/
+config/chromium/
+config/chromium-headless/
+config/google-chrome/
+config/Code/
+config/Electron/
+config/go/
+config/goa-1.0/
+config/nvim.bak/
+config/herdr-app/
+config/vercel-plugin/
+config/UNDERTALE/
+
+# ---------------------------------------------------------------------------
+# Secretos y credenciales (NUNCA subir)
+# ---------------------------------------------------------------------------
+config/gh/hosts.yml
+config/opencode/service.json
+config/opencode/auth.json
+config/pulse/
+config/Aurelia/
+**/*.pem
+**/*.key
+**/id_rsa
+**/id_ed25519
+**/.env
+**/.env.*
+
+# Backups y restos de ejecución
+config/mango/*.bak-*
+config/obs-studio/logs/
+config/retroarch/playlists/builtin/*_history.lpl
+config/rofi/launcher_activo
+config/micro/buffers/
+config/cliamp/*.log
+config/cliamp/*.lock
+**/*.bak-*
+**/bak-*/
+config/theme-engine/current

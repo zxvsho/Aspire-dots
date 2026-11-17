@@ -1,0 +1,37 @@
+# Paquetes de AUR (se instalan con paru).
+# Un paquete por línea. Las líneas con # se ignoran.
+
+# Tema
+tinty-git
+
+# Sesión y notificaciones
+wlogout
+xfce-polkit
+
+# Fuentes
+ttf-ms-fonts
+
+# Shell
+oh-my-posh-bin
+
+# Launchers
+sherlock-launcher-bin
+fsel-bin
+
+# Navegador
+zen-browser-bin
+
+# Multimedia
+limusic-bin
+cliamp-bin
+tubetui-bin
+
+# Utilidades
+peaclock
+lavat-git
+
+# Mensajería / juegos
+vesktop
+hydra-launcher-bin
+anytype-bin
+steam-tui

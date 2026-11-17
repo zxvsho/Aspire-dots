@@ -1,4 +1,15 @@
 {
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "base_keymap": "JetBrains",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "project_panel": {
     "dock": "right"
   },
@@ -16,5 +27,9 @@
   "git_panel": {
     "dock": "right"
   },
-  "theme": "Everforest Dark Soft (material)"
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark"
+  }
 }

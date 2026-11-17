@@ -24,10 +24,12 @@ de la carpeta y permite cambiarla, ordenarla y actualizarla desde la barra.
 
 ## Modo local
 
-La cuadrícula muestra hasta 30 fondos de la carpeta configurada, en tres
-columnas. Acepta imágenes PNG, JPEG, WebP, BMP y GIF, además de vídeos MP4,
-M4V, WebM, MKV, MOV, AVI y OGV. La vista previa se carga en segundo plano y se
-guarda en `~/.cache/aspire-bg/`.
+La ventana se presenta centrada sobre el fondo, con un tamaño que se adapta a
+la resolución del monitor (equivalente a 1000×640 en una pantalla de
+referencia 1080p). La cuadrícula muestra hasta 30 fondos de la carpeta
+configurada, en tres columnas. Acepta imágenes PNG, JPEG, WebP, BMP y GIF,
+además de vídeos MP4, M4V, WebM, MKV, MOV, AVI y OGV. La vista previa se carga
+en segundo plano y se guarda en `~/.cache/aspire-bg/`.
 
 Haz clic en una miniatura para aplicar el fondo. También puedes enfocar una
 miniatura con el teclado y pulsar **Enter**. Después de aplicarlo, Aspire BG

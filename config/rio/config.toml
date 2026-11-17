@@ -1,9 +1,9 @@
+theme = "aspire"
 # ~/.config/rio/config.toml
 
 # ---- Parámetros globales (deben ir ANTES de cualquier [sección]) ----
 
 # Tema (matugen / tinty): descomenta cuando exista ~/.config/rio/themes/matugen.toml
-theme = "aspire"
 
 confirm-before-quit = false
 copy-on-select = true
