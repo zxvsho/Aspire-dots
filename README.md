@@ -77,11 +77,11 @@ Aspire-dots/
 |---|---|---|
 | `aspire-bar` | Editor visual de Waybar para MangoWM | `~/.config/aspire-bar/` |
 | `aspire-bg` | Selector de fondos y motor de color (matugen/tinty). Backend por defecto: `swaybg` | `~/.config/aspire-bg/` |
-| `aspire-clip` | Historial de portapapeles con vista previa (lee `cliphist`) | `~/.config/aspire-clip/` |
+| `aspire-clip` | Historial de portapapeles con vista previa (lee `cliphist`) | — |
 | `aspire-files` | Gestor de archivos GTK4 (workspace de 4 crates) | `~/.config/aspire-files/config.toml` |
 | `aspire-menu` | Menú global del dotfile | `~/.config/rofi-menu/menu.toml` |
 | `aspire-music` | Reproductor de música TUI (Ratatui + MPV) | config del crate |
-| `aspire-themes` | Selector de temas con vista previa | `~/.config/aspire-themes/` |
+| `aspire-themes` | Selector de temas con vista previa | — |
 | `aspire-tui` | Experimentos TUI | — |
 | `aspire-core` | Librería compartida (motor de color y paleta). No genera binario | — |
 
