@@ -102,7 +102,6 @@ bluez-utils
 bluetui
 wiremix
 cliphist
-jmtpfs
 
 # Miniaturas de aspire-files
 poppler

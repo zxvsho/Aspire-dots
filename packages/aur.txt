@@ -35,3 +35,6 @@ vesktop
 hydra-launcher-bin
 anytype-bin
 steam-tui
+
+# MTP
+jmtpfs
